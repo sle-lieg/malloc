@@ -2,53 +2,58 @@
 # define FT_MALLOC_H
 
 #include <stdlib.h>
+#include <unistd.h>
 #include <sys/mman.h>
 #include "libft/inc/libft.h"
 #include "libft/inc/ft_printf.h"
 
-#define TINY_MAX 992
-#define SMALL_MAX 992
-#define LARGE_MAX 992
+#define TINY_MAX 80
+#define SMALL_MAX 245
+#define MEM_ALIGN_SHIFT 5
+#define MEM_ALIGN 16
 
-typedef struct S_Tiny   T_Tiny;
-typedef struct S_Small  T_Small;
-typedef struct S_Large  T_Large;
+#define MMAP_BAD_ALLOC 0x1
+
+typedef struct S_Datas  T_Datas;
 typedef struct S_Pages_Pointers  T_PgePointers;
 
-#define CTRL_STRUCT_SIZE sizeof(struct S_Tiny)
+#define DATAS_CTRL_SIZE sizeof(T_Datas)
 
 struct  S_Pages_Pointers
 {
-    T_Tiny  *firstT;
-    T_Small *firstS;
-    T_Large *firstL;
+    T_Datas *firstT;
+    T_Datas *firstS;
+    T_Datas *firstL;
+    T_Datas *toReturn;
+    int     pageSize;
+    char    errors;
 };
 
-struct S_Tiny
+struct S_Datas
 {
-    T_Tiny  *prev;
-    T_Tiny  *next;
+    T_Datas  *prev;
+    T_Datas  *next;
     size_t  size;
     int     free;
-    char    block[1];
+    char    data[1];
 };
 
-struct S_Small
-{
-    T_Tiny  *prev;
-    T_Tiny  *next;
-    size_t  size;    
-    int     free;
-    char    block[1];    
-};
+T_PgePointers   pgePointers;
 
-struct S_Large
-{
-    T_Tiny  *prev;
-    T_Tiny  *next;
-    size_t  size;    
-    int     free;
-    char    block[1];    
-};
+/**
+ *      MALLOC.C
+ **/
+void        *malloc(size_t size);
+void        handleTiny(size_t size);
+void        handleSmall(size_t size);
+void        handleLarge(size_t size);
+
+/**
+ *      ALLOCATOR.C
+ **/
+T_Datas*    getNewPage(T_Datas* lastBlock, size_t size);
+void        initBlock(T_Datas* newBlock, T_Datas* lastBlock, size_t size);
+void        findFreeBlock(T_Datas* block, size_t size);
+void        splitBlock(T_Datas* block, size_t size);
 
 #endif
