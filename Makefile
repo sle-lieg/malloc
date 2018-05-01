@@ -1,1 +1,46 @@
-EXEC=malloc
+EXEC	= malloc
+CC		= gcc
+FLAGS	= -Wall -Wextra -Werror
+RM		= rm -rf
+
+SRC_DIR = src/
+OBJ_DIR = obj/
+LIB_DIR = libft/
+INC_DIR = inc/
+
+SRC_F	= main.c malloc.c allocator.c
+SRC = $(addprefix $(SRC_DIR), $(SRC_F))
+OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+
+INC		= -I $(INC_DIR)
+INC_LIB = -I $(LIB_DIR)$(INC_DIR)
+LIB		= -L$(LIB_DIR) -lftprintf
+LIBFT	= $(LIB_DIR)libftprintf.a
+
+all: createDir $(LIBFT) $(EXEC)
+
+createDir:
+	@test -d $(SRC_DIR) || mkdir $(SRC_DIR)
+	@test -d $(OBJ_DIR) || mkdir $(OBJ_DIR)
+
+$(LIBFT):
+	@echo "Creating $@..."
+	@make -C $(LIB_DIR)
+
+$(EXEC): $(OBJ)
+	$(CC) -o $@ $^ $(LIBFT)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(FLAGS) -o $@ -c $< $(INC) $(INC_LIB)
+
+clean:
+	@$(RM) $(OBJ)
+	make clean -C $(LIB_DIR)
+
+fclean: clean
+	@$(RM) $(EXEC)
+	make fclean -C $(LIB_DIR)
+
+re: fclean all
+
+.PHONY: clean fclean re

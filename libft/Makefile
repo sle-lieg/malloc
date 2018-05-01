@@ -35,18 +35,16 @@ PRINTFOBJ = $(addprefix $(PATH_OBJ), $(SRC_PRINTF:.c=.o))
 all : $(NAME)
 
 $(NAME) : $(LIBOBJ) $(PRINTFOBJ)
-	@echo "\033[1;32m◊ +++++ CREATING $(NAME) : √\033[0m"
+	@echo "\033[1;32m◊ +++++ created $(NAME) : √\033[0m"
 	@ar rc $(NAME) $(PRINTFOBJ) $(LIBOBJ)
 	@ranlib $(NAME)
 
 $(PATH_OBJ)%.o: $(PATH_LIB)%.c
 	@mkdir $(PATH_OBJ) 2> /dev/null || true
-	@echo "\033[1;36m◊ +++++ CREATING $@ : √\033[0m"
 	@$(CC) -o $@ -c $(INC_LIB) $<
 
 $(PATH_OBJ)%.o: $(PATH_PRINTF)%.c
 	@mkdir $(PATH_OBJ) 2> /dev/null || true
-	@echo "\033[1;34m◊ +++++ CREATING $@ : √\033[0m"
 	@$(CC) -o $@ -c $(INC_LIB) $<
 
 .PHONY : fclean clean re

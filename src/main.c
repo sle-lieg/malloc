@@ -2,17 +2,24 @@
 
 int main()
 {
-    T_Datas *tmp;
-    T_Datas *tmp2;
-    
-    // ft_printf("tmp: %u\n", sizeof(tmp->block));
+    ft_printf("tmp: %u\n", sizeof(t_datas));
+    char *ptr;
 
-	tmp = (T_Datas*)mmap(NULL, 1, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-    tmp->size = 256;
+    ptr = ft_malloc(42);
+    for (int i = 0; i < 42; ++i)
+        ptr[i] = 'A';
+    ft_printf("%s\n", ptr);
+    show_alloc_mem();
+    // T_Datas *tmp;
+    // // T_Datas *tmp2;
     
-    // tmp2 = (T_Datas*)((char*)tmp + 48);
-    ft_printf("tmp->datas:              %p\n", tmp->data);
-    ft_printf("tmp->datas + tmp->size:  %p\n", tmp->data + tmp->size);
+
+	// tmp = (T_Datas*)mmap(NULL, 1, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+    // tmp->size = 256;
+    
+    // // tmp2 = (T_Datas*)((char*)tmp + 48);
+    // ft_printf("tmp->datas:              %p\n", tmp->data);
+    // ft_printf("tmp->datas + tmp->size:  %p\n", tmp->data + tmp->size);
 
     // printf("tmp2 - tmp = %ld\n", ((char*)tmp2 - (char*)tmp));
 

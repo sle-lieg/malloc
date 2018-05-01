@@ -1,23 +1,23 @@
 #include "malloc.h"
 
-T_Datas*	getNewPage(T_Datas* lastBlock, size_t size)
+t_datas*	getNewPage(t_datas* lastBlock, size_t size)
 {
-	T_Datas* tmp;
+	t_datas* tmp;
 
-	tmp = (T_Datas*)mmap(lastBlock, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	tmp = (t_datas*)mmap(lastBlock, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (tmp == MAP_FAILED)
 	{
 		pgePointers.errors |= MMAP_BAD_ALLOC;
 		return NULL;
 	}
-	if (lastBlock && lastBlock->free && (lastBlock->data + lastBlock->size) == tmp)
+	if (lastBlock && lastBlock->free && (lastBlock->data + lastBlock->size) == (char*)tmp)
 		lastBlock->size += pgePointers.pageSize;
 	else
 		initBlock(tmp, lastBlock, size);
 	return tmp;
 }
 
-void initBlock(T_Datas* newBlock, T_Datas* lastBlock, size_t size)
+void initBlock(t_datas* newBlock, t_datas* lastBlock, size_t size)
 {
 	newBlock->prev = lastBlock;
 	newBlock->next = lastBlock ? lastBlock->next : NULL;
@@ -29,7 +29,7 @@ void initBlock(T_Datas* newBlock, T_Datas* lastBlock, size_t size)
 		newBlock->size = pgePointers.pageSize - DATAS_CTRL_SIZE;
 }
 
-void	findFreeBlock(T_Datas* block, size_t size)
+void	findFreeBlock(t_datas* block, size_t size)
 {
 	while (block)
 	{
@@ -52,7 +52,7 @@ void	findFreeBlock(T_Datas* block, size_t size)
 	- else
 		just return the block in state
 */
-void	splitBlock(T_Datas* block, size_t size)
+void	splitBlock(t_datas* block, size_t size)
 {
 	int	newBlockSize;
 
@@ -61,5 +61,6 @@ void	splitBlock(T_Datas* block, size_t size)
 	block->free = 0;
 	if (block->size < (size + DATAS_CTRL_SIZE))
 		return;
-	initBlock(block->data + size, block, newBlockSize);
+	block->size = size;
+	initBlock((t_datas*)block->data + size, block, newBlockSize);
 }
