@@ -1,6 +1,6 @@
 #include "malloc.h"
 
-void*	getNewPage(size_t size)
+void*	getNewPage(t_mem_ctrl* pageMemCtrl, size_t size)
 {
 	void* tmp;
 
@@ -10,12 +10,32 @@ void*	getNewPage(size_t size)
 		pgePointers.errors |= MMAP_BAD_ALLOC;
 		return NULL;
 	}
+	if (pageMemCtrl)
+	{
+		pageMemCtrl->pageAddr = tmp;
+		pageMemCtrl->allocatedSize = pgePointers.pageSize;
+		pageMemCtrl->free = 1;
+		pageMemCtrl->pageSerie = ++pgePointers.pageSerieCount;
+	}
 	return tmp;
 }
 
+// void*	getNewPage(size_t size)
+// {
+// 	void* tmp;
+
+// 	tmp = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+// 	if (tmp == MAP_FAILED)
+// 	{
+// 		pgePointers.errors |= MMAP_BAD_ALLOC;
+// 		return NULL;
+// 	}
+// 	return tmp;
+// }
+
 void	createMemCtrl(t_mem_ctrl* newNodeAddr, void* pageAddress, size_t size)
 {
-
+	
 }
 
 /**
@@ -26,12 +46,16 @@ void	createMemCtrl(t_mem_ctrl* newNodeAddr, void* pageAddress, size_t size)
  **	not enough space left on the page, so create a new t_memCtrl, and store
  ** in its ->pageAddr a new fresh page. 
  **/
-void	findFreeBlock(t_mem_ctrl* block, size_t size)
+void	findFreeBlock(t_mem_ctrl* node, size_t size)
 {
-	if (block->lnode && block->lnode->allocatedSize > size)
-		findFreeBlock(block->lnode, size);
-	else if (block->rnode && block->rnode->allocatedSize > size)
-	
+	if (pgePointers.toReturn)
+		return;
+	if (node->lchild && size < node->allocatedSize)
+		findFreeBlock(node->lchild, size);
+	if (size <= node->allocatedSize && !pgePointers.toReturn)
+		pgePointers.toReturn = node;
+	else if (node->rchild && !pgePointers.toReturn)
+		findFreeBlock(node->rchild, size);
 }
 
 // void initBlock(t_mem_ctrl* newBlock, t_mem_ctrl* lastBlock, size_t size)
