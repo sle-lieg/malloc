@@ -4,7 +4,7 @@ void*	ft_malloc(size_t size)
 {
 	pgePointers.toReturn = NULL;
 	pgePointers.pageSize = getpagesize();
-	pgePointers.requiredSize = size;
+	pgePointers.size = size;
 	size = (size % MEM_ALIGN) ? ((size >> MEM_ALIGN_SHIFT) << MEM_ALIGN_SHIFT) + MEM_ALIGN : size;
 	if (size <= TINY_MAX)
 		handleTiny(size);
@@ -14,15 +14,24 @@ void*	ft_malloc(size_t size)
 	// 	handleLarge(size);
 	if (pgePointers.errors)
 		return NULL;
-	return pgePointers.toReturn->data;
+	return pgePointers.toReturn;
 }
 
 void	handleTiny(size_t size)
 {
-	if (!pgePointers.firstT)
-		if (!(pgePointers.firstT = getNewPage(NULL, size)))
+	t_mem_ctrl* tmp;
+
+	if (!pgePointers.rootTiny)
+	{
+		if (!(pgePointers.rootTiny = getNewPage(NULL, size)) ||
+			!(pgePointers.tinyPage = getNewPage(NULL, size)))
 			return;
-	findFreeBlock(pgePointers.firstT, size);
+		pgePointers.rootTiny->pageAddr = pgePointers.tinyPage;
+		pgePointers.rootTiny->allocatedSize = pgePointers.pageSize;
+		pgePointers.rootTiny->free = 1;
+		// createMemCtrl(pgePointers.rootTiny, pgePointers.tinyPage, size);
+	}
+	findFreeBlock(pgePointers.rootTiny, size);
 }
 
 // void	handleSmall(size_t size)
@@ -43,14 +52,14 @@ void	handleTiny(size_t size)
 
 void	show_alloc_mem()
 {
-	t_datas* tmp;
+	t_mem_ctrl* tmp;
 
 	tmp = pgePointers.firstT;
 	if (tmp)
 		ft_printf("TINY : %p\n", tmp);	
 	while (tmp)
 	{
-		ft_printf("%#5X - %#5X : %d octets\n", tmp->data, tmp->next, tmp->size);
+		ft_printf("%#5X - %#5X : %d octets\n", tmp->pageAddr, tmp->pageAddr + tmp->requiredSize, tmp->requiredSize);
 		tmp = tmp->next;
 	}
 }

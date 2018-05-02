@@ -14,35 +14,38 @@
 
 #define MMAP_BAD_ALLOC 0x1
 
-typedef struct s_datas          t_datas;
-typedef struct s_pagesPointers t_pagesPointers;
+typedef struct s_memory_ctrl    t_mem_ctrl;
+typedef struct s_pagesPointers  t_pagesPointers;
 
-#define DATAS_CTRL_SIZE sizeof(t_datas)
+#define DATAS_CTRL_SIZE sizeof(t_mem_ctrl)
 
 struct  s_pagesPointers
 {
-    t_datas *firstT;
-    t_datas *firstS;
-    t_datas *firstL;
-
-    void*   tinyPage;
-    void*   smallPage;
-    void*   largePage;
+    t_mem_ctrl* rootTiny;
+    t_mem_ctrl* rootSmall;
+    t_mem_ctrl* rootLarge;
+    void*       tinyPage;
+    void*       smallPage;
+    void*       largePage;
+    size_t      size;
+    int         pageSize;
     
-    t_datas *toReturn;
-    int     requiredSize;
-    int     pageSize;
-    char    errors;
+    char*       toReturn;
+
+    char        errors;
 };
 
-struct s_datas
+struct s_memory_ctrl
 {
-    t_datas*    prev;
-    t_datas*    next;
+    t_mem_ctrl* lnode;
+    t_mem_ctrl* rnode;    
+    t_mem_ctrl* prev;
+    t_mem_ctrl* next;
     char*       pageAddr;
-    size_t      size;
+    size_t      allocatedSize;
     size_t      requiredSize;
-    int         free;
+    int         free; 
+    int         pageSerie; // allow fusion if eguals to other memCtrl
 };
 
 t_pagesPointers   pgePointers;
@@ -59,9 +62,9 @@ void        show_alloc_mem();
 /**
  *      ALLOCATOR.C
  **/
-t_datas*    getNewPage(t_datas* lastBlock, size_t size);
-void        initBlock(t_datas* newBlock, t_datas* lastBlock, size_t size);
-void        findFreeBlock(t_datas* block, size_t size);
-void        splitBlock(t_datas* block, size_t size);
+t_mem_ctrl*    getNewPage(t_mem_ctrl* lastBlock, size_t size);
+void        initBlock(t_mem_ctrl* newBlock, t_mem_ctrl* lastBlock, size_t size);
+void        findFreeBlock(t_mem_ctrl* block, size_t size);
+void        splitBlock(t_mem_ctrl* block, size_t size);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 18:49:40 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/29 17:31:45 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/05/01 23:47:08 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char *tmp;
+	char *start;
+	char *end;
 
-	tmp = s;
-	while (tmp < (char *)s + n)
-		*tmp++ = '\0';
+	start = s;
+	end = (char*)s + n;
+	while (start < end)
+		*start++ = '\0';
 }

@@ -5,6 +5,8 @@ ELEMENTS:
         noeudControl*   pere; ???    
         noeudControl*   fils gauche;
         noeudControl*   fils droit;
+        noeudControl*   next;
+        noeudControl*   prev;
         char*           addresse allouee;
         size_t          taille allouee;
         size_t          taille demandee;
@@ -22,6 +24,3 @@ ELEMENTS:
         size_t          tailleDemandee;
         size_t          tailleAllouee;
 
-
-*entree de malloc:
-    si 
