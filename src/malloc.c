@@ -33,7 +33,7 @@ void	handleTiny(size_t size)
 	findFreeBlock(pgePointers.rootTiny, size);
 	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.
 	{
-		getNewPage(createNewMemCtrl(pgePointers.lastTinyCtrl), size));
+		getNewPage(createNewMemCtrl(pgePointers.lastTinyCtrl), size);
 		if (pgePointers.errors)
 			return;
 		pgePointers.toReturn = pgePointers.lastTinyCtrl;

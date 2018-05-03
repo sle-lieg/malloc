@@ -31,9 +31,6 @@ struct  s_pagesPointers
     t_mem_ctrl* lastTinyCtrl;   // contains the last memCtrl created
     t_mem_ctrl* lastSmallCtrl;
     t_mem_ctrl* lastLargeCtrl;
-    // void*       tinyPage;
-    // void*       smallPage;
-    // void*       largePage;
     size_t      memCtrlSizeLeft;
     size_t      size;
     int         pageSize;
@@ -46,6 +43,7 @@ struct  s_pagesPointers
 
 struct s_memory_ctrl
 {
+    t_mem_ctrl* father;    
     t_mem_ctrl* lchild;
     t_mem_ctrl* rchild;    
     t_mem_ctrl* prev;
@@ -66,14 +64,25 @@ void*       ft_malloc(size_t size);
 void        handleTiny(size_t size);
 // void        handleSmall(size_t size);
 // void        handleLarge(size_t size);
-void        show_alloc_mem();
 
 /**
  *      ALLOCATOR.C
  **/
-t_mem_ctrl*    getNewPage(t_mem_ctrl* lastBlock, size_t size);
-void        initBlock(t_mem_ctrl* newBlock, t_mem_ctrl* lastBlock, size_t size);
-void        findFreeBlock(t_mem_ctrl* block, size_t size);
-void        splitBlock(t_mem_ctrl* block, size_t size);
+void*       getNewPage(t_mem_ctrl* pageMemCtrl, size_t size);
+t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited);
+void        splitMemory(size_t size);
+
+/**
+ *      TREE_OPERATIONS.C
+ **/
+void        findFreeBlock(t_mem_ctrl* node, size_t size);
+
+
+/**
+ *      DEBUG.C
+ **/
+void        show_alloc_mem();
+
+
 
 #endif
