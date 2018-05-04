@@ -45,6 +45,8 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 	else
 		newMemCtrl = pgePointers.lastTinyCtrl + MEM_CTRL_SIZE;
 	newMemCtrl->prev = memCtrlSplited;
+	newMemCtrl->next = memCtrlSplited->next;
+	memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
 	memCtrlSplited->next = newMemCtrl;
 	pgePointers.lastTinyCtrl = newMemCtrl;
 	pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
@@ -53,30 +55,34 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 	return newMemCtrl;
 }
 
+// TODO: IMPORTANT : CHECK TO REFACTOR createNewMemCtrl && splitMemory
+// 		ADD a setMemCtrl function, to use in createNewMemCtrl and popLostMemCtrl
+
 /** 
  ** @brief  Split memory pointed by pgePointers.toReturn
  ** @note	pgePointer.toReturn contains the address to split
- **			Call @createNewMemCtrl(@address to split)
+ **			If there are lost memCtrl due to block fusion, re use first of it
+ **			Else, call @createNewMemCtrl(@address to split)
  **			Set the headers value size of splited header and new header.
  **			Set the new header->pageAddr, toReturn->pageAddr doesn't change.
- **			
+ **
  ** @param  size: 
  ** @retval	None
  **/
-void	splitMemory(size_t size)
+t_mem_ctrl*	splitMemory(size_t size)
 {
-	t_mem_ctrl* memSplited;
+	t_mem_ctrl* newMemCtrl;
 
-	if (!(memSplited = createNewMemCtrl(pgePointers.toReturn)))
-		return;
-	memSplited->allocatedSize = pgePointers.toReturn->allocatedSize - size;
-	pgePointers.toReturn->allocatedSize = size;
+	if (!(newMemCtrl = popLostMemCtrl(pgePointers.toReturn)))
+		if (!(newMemCtrl = createNewMemCtrl(pgePointers.toReturn)))
+			return;
+	newMemCtrl->prev = pgePointers.toReturn;
+	newMemCtrl->next = pgePointers.toReturn->next;
+	newMemCtrl->allocatedSize = pgePointers.toReturn->allocatedSize - size;
+	pgePointers.toReturn->next ? pgePointers.toReturn->next->prev = newMemCtrl : 0;
+	pgePointers.toReturn->next = newMemCtrl;
 	pgePointers.toReturn->requiredSize = pgePointers.size;
-
-	// Enlever toReturn de l' arbre.
-	// Ajouter memSplited dans l' arbre.
-	// Equilibrer l' arbre.
-	removeNode();
-	insertNode(memSplited);	
+	pgePointers.toReturn->allocatedSize = size;
+	pgePointers.toReturn->free = 0;
+	return newMemCtrl;
 }
-

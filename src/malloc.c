@@ -43,5 +43,11 @@ void	handleTiny(size_t size)
 	 * split le block a return, faire les links, et ajouter les block crees dans
 	 * l' arbre de tri par taille.
 	 */
-	splitMemory(size);
+	// Enlever toReturn de l' arbre.
+	// Ajouter newMemCtrl dans l' arbre.
+	// Equilibrer l' arbre.
+	removeNode(pgePointers.toReturn);
+	addNode(&pgePointers.rootTiny, splitMemory(size));
+	// removeNode();
+	// insertNode(newMemCtrl);
 }

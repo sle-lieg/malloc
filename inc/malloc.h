@@ -39,6 +39,8 @@ struct  s_pagesPointers
     t_mem_ctrl* toReturn;
 
     char        errors;
+    
+    // t_mem_ctrl* lost_mem_ctrl // PROTOTYPE list of lost t_mem_ctrl after blocks-fusion
 };
 
 struct s_memory_ctrl
@@ -70,7 +72,7 @@ void        handleTiny(size_t size);
  **/
 void*       getNewPage(t_mem_ctrl* pageMemCtrl, size_t size);
 t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited);
-void        splitMemory(size_t size);
+t_mem_ctrl* splitMemory(size_t size);
 
 /**
  *      TREE_OPERATIONS.C
