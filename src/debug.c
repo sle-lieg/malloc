@@ -6,10 +6,18 @@ void	show_alloc_mem()
 
 	tmp = pgePointers.firstTinyCtrl;
 	if (tmp)
-		ft_printf("TINY : %p\n", tmp);
-	while (tmp)
+		ft_printf("TINY\n");
+	while (tmp->next)
 	{
-		ft_printf("%#5X - %#5X : %d octets\n", tmp->pageAddr, tmp->pageAddr + tmp->requiredSize, tmp->requiredSize);
+		ft_printf("Header: %#5X: %#5X - %#5X :\
+		memAlloc: %d. memRequired: %d octets\n",\
+		tmp,\
+		tmp->pageAddr,\
+		tmp->pageAddr + tmp->requiredSize,\
+		tmp->allocatedSize,\
+		tmp->requiredSize);
+
 		tmp = tmp->next;
 	}
+	ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pgePointers.lastTinyCtrl, pgePointers.lastTinyCtrl->pageAddr, pgePointers.lastTinyCtrl->pageAddr + pgePointers.lastTinyCtrl->allocatedSize, pgePointers.lastTinyCtrl->allocatedSize);
 }

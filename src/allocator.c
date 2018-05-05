@@ -43,7 +43,7 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 		// if (!newMemCtrl->next = getNewPage(NULL, )
 	}
 	else
-		newMemCtrl = (char*)pgePointers.lastTinyCtrl + MEM_CTRL_SIZE;
+		newMemCtrl = (t_mem_ctrl*)((char*)pgePointers.lastTinyCtrl + MEM_CTRL_SIZE);
 	newMemCtrl->prev = memCtrlSplited;
 	newMemCtrl->next = memCtrlSplited->next;
 	memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
@@ -77,8 +77,8 @@ t_mem_ctrl*	splitMemory(size_t size)
 		if (!(newMemCtrl = createNewMemCtrl(pgePointers.toReturn)))
 			return NULL;
 	newMemCtrl->prev = pgePointers.toReturn;
-	newMemCtrl->next = pgePointers.toReturn->next;
 	newMemCtrl->allocatedSize = pgePointers.toReturn->allocatedSize - size;
+	newMemCtrl->pageAddr = pgePointers.toReturn->pageAddr + size;
 	pgePointers.toReturn->next ? pgePointers.toReturn->next->prev = newMemCtrl : 0;
 	pgePointers.toReturn->next = newMemCtrl;
 	pgePointers.toReturn->requiredSize = pgePointers.size;

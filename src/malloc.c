@@ -38,6 +38,7 @@ void	handleTiny(size_t size)
 		if (pgePointers.errors)
 			return;
 		pgePointers.toReturn = pgePointers.lastTinyCtrl;
+		addNode(&pgePointers.rootTiny, pgePointers.toReturn);
 	}
 	removeNode(pgePointers.toReturn);
 	checkHeight(pgePointers.rootTiny);

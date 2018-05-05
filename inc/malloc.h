@@ -7,7 +7,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-#define TINY_MAX 180
+#define TINY_MAX 5000
 #define SMALL_MAX 245
 #define MEM_ALIGN_SHIFT 4
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
