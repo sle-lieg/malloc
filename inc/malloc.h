@@ -7,9 +7,10 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-#define TINY_MAX 80
+#define TINY_MAX 180
 #define SMALL_MAX 245
-#define MEM_ALIGN_SHIFT 5
+#define MEM_ALIGN_SHIFT 4
+// TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN 16
 #define NB_PAGES 10
 
@@ -40,20 +41,21 @@ struct  s_pagesPointers
 
     char        errors;
     
-    // t_mem_ctrl* lost_mem_ctrl // PROTOTYPE list of lost t_mem_ctrl after blocks-fusion
+    t_mem_ctrl* lost_mem_ctrl; // PROTOTYPE list of lost t_mem_ctrl after blocks-fusion
 };
 
 struct s_memory_ctrl
 {
-    t_mem_ctrl* father;    
+    t_mem_ctrl* father; // tree links for the research by free space
     t_mem_ctrl* lchild;
-    t_mem_ctrl* rchild;    
-    t_mem_ctrl* prev;
-    t_mem_ctrl* next;
+    t_mem_ctrl* rchild;
+    t_mem_ctrl* prev; // list links for the order of the memory blocks, to
+    t_mem_ctrl* next; // merge blocks together if they are free
     char*       pageAddr;   // point to the address to return to caller
     size_t      allocatedSize;
     size_t      requiredSize;
-    int         free; 
+    int         height; // height in the tree for balance factor
+    int         free;
     int         pageSerie; // allow fusion if eguals to other memCtrl
 };
 
@@ -75,10 +77,46 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited);
 t_mem_ctrl* splitMemory(size_t size);
 
 /**
- *      TREE_OPERATIONS.C
+ *      TREE_CHECKER.C
  **/
 void        findFreeBlock(t_mem_ctrl* node, size_t size);
+int         checkBalance(t_mem_ctrl* node);
+int         maxHeight(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB);
+void        checkHeight(t_mem_ctrl* node);
 
+/**
+ *      TREE_GETTERS.C
+ **/
+t_mem_ctrl* getInOrderPredecessor(t_mem_ctrl* node);
+t_mem_ctrl* getInOrderSuccessor(t_mem_ctrl* node);
+int         getHeight(t_mem_ctrl* node);
+
+/**
+ *      TREE_INSERTERS.C
+ **/
+void        addNode(t_mem_ctrl** root, t_mem_ctrl* newNode);
+void        recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode);
+
+/**
+ *      TREE_REMOVER.C
+ **/
+void        removeNode(t_mem_ctrl* node);
+void        removeLeaf(t_mem_ctrl* node);
+void        removeParentOfChildren(t_mem_ctrl* node);
+void        removeParentOfOrphan(t_mem_ctrl* node);
+
+/**
+ *      TREE_ROTATIONS.C
+ **/
+void        rotateLeft(t_mem_ctrl* node);
+void        rotateRight(t_mem_ctrl* node);
+
+/**
+ *      TREE_TOOLS.C
+ **/
+void        linkNodes(t_mem_ctrl* father, t_mem_ctrl* child);
+void        swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node);
+void        replaceIfRoot(t_mem_ctrl* node);
 
 /**
  *      DEBUG.C

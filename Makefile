@@ -1,6 +1,6 @@
 EXEC	= malloc
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 RM		= rm -rf
 
 SRC_DIR = src/
@@ -8,7 +8,8 @@ OBJ_DIR = obj/
 LIB_DIR = libft/
 INC_DIR = inc/
 
-SRC_F	= main.c malloc.c allocator.c
+SRC_F	=	main.c malloc.c allocator.c debug.c treeChecker.c treeGetters.c\
+			treeInserter.c treeRemover.c treeRotations.c treeTools.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_F))
 OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

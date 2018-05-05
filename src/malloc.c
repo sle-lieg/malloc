@@ -26,6 +26,7 @@ void	handleTiny(size_t size)
 		if (!(pgePointers.firstTinyCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)) ||
 													!(getNewPage(pgePointers.firstTinyCtrl, size)))
 			return;
+		pgePointers.firstTinyCtrl->next = NULL;
 		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
 		pgePointers.lastTinyCtrl = pgePointers.firstTinyCtrl;
 		pgePointers.rootTiny = pgePointers.firstTinyCtrl;
@@ -38,16 +39,7 @@ void	handleTiny(size_t size)
 			return;
 		pgePointers.toReturn = pgePointers.lastTinyCtrl;
 	}
-
-	/**
-	 * split le block a return, faire les links, et ajouter les block crees dans
-	 * l' arbre de tri par taille.
-	 */
-	// Enlever toReturn de l' arbre.
-	// Ajouter newMemCtrl dans l' arbre.
-	// Equilibrer l' arbre.
 	removeNode(pgePointers.toReturn);
+	checkHeight(pgePointers.rootTiny);
 	addNode(&pgePointers.rootTiny, splitMemory(size));
-	// removeNode();
-	// insertNode(newMemCtrl);
 }
