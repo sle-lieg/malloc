@@ -68,6 +68,8 @@ void*       ft_malloc(size_t size);
 void        handleTiny(size_t size);
 // void        handleSmall(size_t size);
 // void        handleLarge(size_t size);
+int			initRootTiny(size_t size);
+
 
 /**
  *      ALLOCATOR.C
@@ -75,6 +77,8 @@ void        handleTiny(size_t size);
 void*       getNewPage(t_mem_ctrl* pageMemCtrl, size_t size);
 t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited);
 t_mem_ctrl* splitMemory(size_t size);
+void			setMemCtrl(t_mem_ctrl* newMemCtrl, t_mem_ctrl* memCtrlSplited);
+t_mem_ctrl* popLostMemCtrl(t_mem_ctrl* memCtrlSplited);
 
 /**
  *      TREE_CHECKER.C
@@ -122,7 +126,17 @@ void        replaceIfRoot(t_mem_ctrl* node);
  *      DEBUG.C
  **/
 void        show_alloc_mem();
+void			printTree(t_mem_ctrl* root);
+void			printLevels(t_mem_ctrl* node, int i);
 
 
+/**
+ *      FREE.C
+ **/
+void			ft_free(void* ptr);;
+void			checkTiny(char* ptr);
+void			freeMemCtrl(t_mem_ctrl* ptr);
+void 			linkLostPrevNext(t_mem_ctrl* ptr);
+void			pushToLost(t_mem_ctrl* ptr);
 
 #endif

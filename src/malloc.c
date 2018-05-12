@@ -18,19 +18,24 @@ void*	ft_malloc(size_t size)
 	return pgePointers.toReturn->pageAddr;
 }
 
+/** 
+ * @brief  
+ * @note		If tinyRoot == NULL:
+ * 				init tinyRoot
+ * 			findFreeSpace (saved in pgePointer.toReturn)
+ * 			!if pgeP.toReturn: ( means not enough space free on the heap)
+ * 				alloc new Page
+ * 			if size > pgeP.toReturn->allocSize + 20:
+ * 				tmp = splitMemory()
+ * 			
+ * @param  size: 
+ * @retval None
+ */
 void	handleTiny(size_t size)
 {
 	if (!pgePointers.rootTiny)
-	{
-		pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
-		if (!(pgePointers.firstTinyCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)) ||
-													!(getNewPage(pgePointers.firstTinyCtrl, size)))
+		if (!initRootTiny(size))
 			return;
-		pgePointers.firstTinyCtrl->next = NULL;
-		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
-		pgePointers.lastTinyCtrl = pgePointers.firstTinyCtrl;
-		pgePointers.rootTiny = pgePointers.firstTinyCtrl;
-	}
 	findFreeBlock(pgePointers.rootTiny, size);
 	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.
 	{
@@ -38,9 +43,27 @@ void	handleTiny(size_t size)
 		if (pgePointers.errors)
 			return;
 		pgePointers.toReturn = pgePointers.lastTinyCtrl;
-		addNode(&pgePointers.rootTiny, pgePointers.toReturn);
+		// addNode(&pgePointers.rootTiny, pgePointers.toReturn);
 	}
-	removeNode(pgePointers.toReturn);
-	checkHeight(pgePointers.rootTiny);
-	addNode(&pgePointers.rootTiny, splitMemory(size));
+	else
+	{
+		removeNode(pgePointers.toReturn);
+		checkHeight(pgePointers.rootTiny);
+	}
+	if (size < pgePointers.toReturn->allocatedSize + 20)
+		addNode(&pgePointers.rootTiny, splitMemory(size));
+}
+
+int	initRootTiny(size_t size)
+{
+	pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
+	if (!(pgePointers.firstTinyCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)) ||
+												!(getNewPage(pgePointers.firstTinyCtrl, size)))
+		return 0;
+	pgePointers.firstTinyCtrl->next = NULL;
+	pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
+	pgePointers.lastTinyCtrl = pgePointers.firstTinyCtrl;
+	pgePointers.rootTiny = pgePointers.firstTinyCtrl;
+
+	return 1;
 }

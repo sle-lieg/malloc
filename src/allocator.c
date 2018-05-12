@@ -44,13 +44,16 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 	}
 	else
 		newMemCtrl = (t_mem_ctrl*)((char*)pgePointers.lastTinyCtrl + MEM_CTRL_SIZE);
-	newMemCtrl->prev = memCtrlSplited;
-	newMemCtrl->next = memCtrlSplited->next;
-	memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
-	memCtrlSplited->next = newMemCtrl;
 	pgePointers.lastTinyCtrl = newMemCtrl;
-	pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
-	newMemCtrl->free = TRUE;
+	setMemCtrl(newMemCtrl, memCtrlSplited);
+
+	// newMemCtrl->prev = memCtrlSplited;
+	// newMemCtrl->next = memCtrlSplited->next;
+	// memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
+	// memCtrlSplited->next = newMemCtrl;
+	// pgePointers.lastTinyCtrl = newMemCtrl;
+	// pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
+	// newMemCtrl->free = TRUE;
 
 	return newMemCtrl;
 }
@@ -73,10 +76,10 @@ t_mem_ctrl*	splitMemory(size_t size)
 {
 	t_mem_ctrl* newMemCtrl;
 
-	// if (!(newMemCtrl = popLostMemCtrl(pgePointers.toReturn)))
+	if (!(newMemCtrl = popLostMemCtrl(pgePointers.toReturn)))
 		if (!(newMemCtrl = createNewMemCtrl(pgePointers.toReturn)))
 			return NULL;
-	newMemCtrl->prev = pgePointers.toReturn;
+	// newMemCtrl->prev = pgePointers.toReturn;
 	newMemCtrl->allocatedSize = pgePointers.toReturn->allocatedSize - size;
 	newMemCtrl->pageAddr = pgePointers.toReturn->pageAddr + size;
 	pgePointers.toReturn->next ? pgePointers.toReturn->next->prev = newMemCtrl : 0;
@@ -84,5 +87,28 @@ t_mem_ctrl*	splitMemory(size_t size)
 	pgePointers.toReturn->requiredSize = pgePointers.size;
 	pgePointers.toReturn->allocatedSize = size;
 	pgePointers.toReturn->free = FALSE;
+	return newMemCtrl;
+}
+
+void	setMemCtrl(t_mem_ctrl* newMemCtrl, t_mem_ctrl* memCtrlSplited)
+{
+	newMemCtrl->prev = memCtrlSplited;
+	newMemCtrl->next = memCtrlSplited->next;
+	memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
+	memCtrlSplited->next = newMemCtrl;
+	// pgePointers.lastTinyCtrl = newMemCtrl;
+	pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
+	newMemCtrl->free = TRUE;
+}
+
+t_mem_ctrl* popLostMemCtrl(t_mem_ctrl* memCtrlSplited)
+{
+	t_mem_ctrl* newMemCtrl;
+
+	if (!pgePointers.lost_mem_ctrl)
+		return NULL;
+	newMemCtrl = pgePointers.lost_mem_ctrl;
+	pgePointers.lost_mem_ctrl = pgePointers.lost_mem_ctrl->next;
+	setMemCtrl(newMemCtrl, memCtrlSplited);
 	return newMemCtrl;
 }
