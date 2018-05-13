@@ -8,6 +8,7 @@ void	removeNode(t_mem_ctrl* node)
 		removeParentOfChildren(node);
 	else
 		removeParentOfOrphan(node);
+	node->free = FALSE;
 }
 
 void	removeLeaf(t_mem_ctrl* node)

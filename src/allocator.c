@@ -82,11 +82,11 @@ t_mem_ctrl*	splitMemory(size_t size)
 	// newMemCtrl->prev = pgePointers.toReturn;
 	newMemCtrl->allocatedSize = pgePointers.toReturn->allocatedSize - size;
 	newMemCtrl->pageAddr = pgePointers.toReturn->pageAddr + size;
-	pgePointers.toReturn->next ? pgePointers.toReturn->next->prev = newMemCtrl : 0;
-	pgePointers.toReturn->next = newMemCtrl;
+	// pgePointers.toReturn->next ? pgePointers.toReturn->next->prev = newMemCtrl : 0;
+	// pgePointers.toReturn->next = newMemCtrl;
 	pgePointers.toReturn->requiredSize = pgePointers.size;
 	pgePointers.toReturn->allocatedSize = size;
-	pgePointers.toReturn->free = FALSE;
+	// pgePointers.toReturn->free = FALSE;
 	return newMemCtrl;
 }
 
@@ -96,9 +96,9 @@ void	setMemCtrl(t_mem_ctrl* newMemCtrl, t_mem_ctrl* memCtrlSplited)
 	newMemCtrl->next = memCtrlSplited->next;
 	memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
 	memCtrlSplited->next = newMemCtrl;
-	// pgePointers.lastTinyCtrl = newMemCtrl;
 	pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
 	newMemCtrl->free = TRUE;
+	newMemCtrl->pageSerie = memCtrlSplited->pageSerie;	
 }
 
 t_mem_ctrl* popLostMemCtrl(t_mem_ctrl* memCtrlSplited)

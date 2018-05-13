@@ -33,26 +33,30 @@ void	checkTiny(char* ptr)
 
 void	freeMemCtrl(t_mem_ctrl* ptr)
 {
+	t_mem_ctrl* tmp;
+
 	ptr->free = TRUE;
 	ptr->requiredSize = 0;
 	if (ptr->next && ptr->next->free == 1 && ptr->pageSerie == ptr->next->pageSerie)
 	{
-		ptr->allocatedSize += ptr->next->allocatedSize;
+		tmp = ptr->next;
+		removeNode(tmp);
 		linkLostPrevNext(ptr);
-		pushToLost(ptr->next);
+		pushToLost(tmp);
 	}
 	if (ptr->prev && ptr->prev->free == 1 && ptr->pageSerie == ptr->prev->pageSerie)
 	{
+		tmp = ptr;
 		ptr = ptr->prev;
-		ptr->allocatedSize += ptr->next->allocatedSize;
 		linkLostPrevNext(ptr);
-		pushToLost(ptr->next);
+		pushToLost(tmp);
 	}
 	addNode(&pgePointers.rootTiny, ptr);
 }
 
 void linkLostPrevNext(t_mem_ctrl* ptr)
 {
+	ptr->allocatedSize += ptr->next->allocatedSize;
 	if (ptr->next->next)
 		ptr->next->next->prev = ptr;
 	ptr->next = ptr->next->next;
@@ -60,7 +64,6 @@ void linkLostPrevNext(t_mem_ctrl* ptr)
 
 void	pushToLost(t_mem_ctrl* ptr)
 {
-	removeNode(ptr);
 	ptr->pageAddr = NULL;
 	ptr->allocatedSize = 0;
 	ptr->requiredSize = 0;

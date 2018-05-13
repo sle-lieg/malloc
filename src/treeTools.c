@@ -2,10 +2,10 @@
 
 void	linkNodes(t_mem_ctrl* father, t_mem_ctrl* child)
 {
-	if (father && father->allocatedSize < child->allocatedSize)
-		father->rchild = child;
-	else if (father)
+	if (father && child && child->allocatedSize <= father->allocatedSize)
 		father->lchild = child;
+	else if (father)
+		father->rchild = child;
    if (child)
    	child->father = father;
 }

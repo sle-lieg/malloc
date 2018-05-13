@@ -18,8 +18,8 @@ void*	ft_malloc(size_t size)
 	return pgePointers.toReturn->pageAddr;
 }
 
-/** 
- * @brief  
+/**
+ * @brief
  * @note		If tinyRoot == NULL:
  * 				init tinyRoot
  * 			findFreeSpace (saved in pgePointer.toReturn)
@@ -27,8 +27,8 @@ void*	ft_malloc(size_t size)
  * 				alloc new Page
  * 			if size > pgeP.toReturn->allocSize + 20:
  * 				tmp = splitMemory()
- * 			
- * @param  size: 
+ *
+ * @param  size:
  * @retval None
  */
 void	handleTiny(size_t size)
@@ -50,7 +50,7 @@ void	handleTiny(size_t size)
 		removeNode(pgePointers.toReturn);
 		checkHeight(pgePointers.rootTiny);
 	}
-	if (size < pgePointers.toReturn->allocatedSize + 20)
+	if (size + 24 <= pgePointers.toReturn->allocatedSize)
 		addNode(&pgePointers.rootTiny, splitMemory(size));
 }
 

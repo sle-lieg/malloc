@@ -29,7 +29,7 @@ struct  s_pagesPointers
     t_mem_ctrl* firstTinyCtrl;   // contains the first memCtrl created
     t_mem_ctrl* firstSmallCtrl;
     t_mem_ctrl* firstLargeCtrl;
-    t_mem_ctrl* lastTinyCtrl;   // contains the last memCtrl created
+    t_mem_ctrl* lastTinyCtrl;   // phisically last memCtrl on the heap (used to create new mem_ctrl from its address + mem_ctrl size)
     t_mem_ctrl* lastSmallCtrl;
     t_mem_ctrl* lastLargeCtrl;
     size_t      memCtrlSizeLeft;
