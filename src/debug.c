@@ -35,7 +35,7 @@ void	printTree(t_mem_ctrl* root)
 
 	if (!root)
 		return;
-	checkHeight(root);
+	// checkHeight(root);
 	i = 1;
 	while (i <= root->height)
 	{
@@ -58,8 +58,8 @@ void 	printLevels(t_mem_ctrl* node, int i)
 		while (j++ < node->height)
 			ft_printf("    ");
 		ft_printf("%d", node->allocatedSize);
-		// while (j--)
-		// 	ft_printf("    ");
+		while (j--)
+			ft_printf("    ");
 		return;
 	}
 	printLevels(node->lchild, i);

@@ -51,7 +51,8 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 		linkLostPrevNext(ptr);
 		pushToLost(tmp);
 	}
-	addNode(&pgePointers.rootTiny, ptr);
+	else
+		addNode(&pgePointers.rootTiny, ptr);
 }
 
 void linkLostPrevNext(t_mem_ctrl* ptr)

@@ -4,8 +4,8 @@ t_mem_ctrl*	getInOrderPredecessor(t_mem_ctrl* node)
 {
 	if (!node->rchild)
 	{
-		linkNodes(node->father->father, node);
 		linkNodes(node, node->father->rchild);
+		linkNodes(node->father->father, node);
 	}
 	else
 	{
@@ -22,8 +22,8 @@ t_mem_ctrl*	getInOrderSuccessor(t_mem_ctrl* node)
 {
 	if (!node->lchild)
 	{
-		linkNodes(node->father->father, node);
 		linkNodes(node, node->father->lchild);
+		linkNodes(node->father->father, node);
 	}
 	else
 	{
