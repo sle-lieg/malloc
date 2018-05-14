@@ -7,12 +7,12 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-#define TINY_MAX 5000
+#define TINY_MAX 50000
 #define SMALL_MAX 245
 #define MEM_ALIGN_SHIFT 4
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN 16
-#define NB_PAGES 10
+#define NB_PAGES 1
 
 #define MMAP_BAD_ALLOC 0x1
 
@@ -78,7 +78,7 @@ void*       getNewPage(t_mem_ctrl* pageMemCtrl, size_t size);
 t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited);
 t_mem_ctrl* splitMemory(size_t size);
 void			setMemCtrl(t_mem_ctrl* newMemCtrl, t_mem_ctrl* memCtrlSplited);
-t_mem_ctrl* popLostMemCtrl(t_mem_ctrl* memCtrlSplited);
+t_mem_ctrl* popLostMemCtrl();
 
 /**
  *      TREE_CHECKER.C

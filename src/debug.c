@@ -55,11 +55,17 @@ void 	printLevels(t_mem_ctrl* node, int i)
 	j = 0;
 	if (i == checkDepth(node))
 	{
-		while (j++ < node->height)
+		if (node->father && !node->father->lchild)
+			// while (j++ < maxHeight(node->lchild, node->rchild) + 1)
+			while (j++ < node->height + 1)
+				ft_printf("    ");
+		j = 0;			
+		// while (j++ < maxHeight(node->lchild, node->rchild) + 1)
+		while (j++ < node->height + 1)
 			ft_printf("    ");
 		ft_printf("%d", node->allocatedSize);
-		while (j--)
-			ft_printf("    ");
+		// while (j--)
+		// 	ft_printf("    ");
 		return;
 	}
 	printLevels(node->lchild, i);

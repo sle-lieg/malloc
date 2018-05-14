@@ -22,7 +22,7 @@ void	checkTiny(char* ptr)
 	tmp = pgePointers.firstTinyCtrl;
 	while (tmp)
 	{
-		if (tmp->pageAddr == ptr)
+		if (tmp->pageAddr == ptr && !tmp->free)
 		{
 			freeMemCtrl(tmp);
 			return;

@@ -20,7 +20,8 @@ void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 		else
 		{
 			linkNodes(node, newNode);
-			newNode->height = node->height;			
+			newNode->height = 1;
+			// newNode->height = node->height;			
 		}
 	}
 	else
@@ -30,9 +31,9 @@ void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 		else
 		{
 			linkNodes(node, newNode);
-			newNode->height = node->height;
+			newNode->height = 1;
 		}
 	}
+	node->height = maxHeight(node->lchild, node->rchild) + 1;
 	checkBalance(node);
-	node->height = maxHeight(node->rchild, node->lchild) + 1;
 }
