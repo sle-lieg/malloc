@@ -8,13 +8,18 @@
          "name": "malloc",
          "type": "cppdbg",
          "request": "launch",
-         "program": "${workspaceFolder}/malloc",
-         "args": [],
+         "program": "/bin/ls",
+         "args": ["-l"],
          "stopAtEntry": true,
-         "cwd": "${workspaceFolder}",
-         "environment": [],
+         "cwd": "/bin/",
+         "environment": [
+				{"name": "DYLD_LIBRARY_PATH", "value":"."},
+				{"name": "DYLD_INSERT_LIBRARIES", "value":"libft_malloc.so"},
+				{"name": "DYLD_FORCE_FLAT_NAMESPACE", "value":"1"}
+			],
          "externalConsole": true,
-         "MIMode": "lldb"
+			"MIMode": "lldb",
+			
       }
    ]
 }

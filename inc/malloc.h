@@ -7,12 +7,12 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-#define TINY_MAX 50000
+#define TINY_MAX 50000000
 #define SMALL_MAX 245
 #define MEM_ALIGN_SHIFT 4
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN 16
-#define NB_PAGES 1
+#define NB_PAGES 10
 
 #define MMAP_BAD_ALLOC 0x1
 
@@ -64,7 +64,7 @@ t_pagesPointers   pgePointers;
 /**
  *      MALLOC.C
  **/
-void*       ft_malloc(size_t size);
+void*       malloc(size_t size);
 void        handleTiny(size_t size);
 // void        handleSmall(size_t size);
 // void        handleLarge(size_t size);
@@ -133,10 +133,16 @@ void			printLevels(t_mem_ctrl* node, int i);
 /**
  *      FREE.C
  **/
-void			ft_free(void* ptr);;
+void			free(void* ptr);;
 void			checkTiny(char* ptr);
 void			freeMemCtrl(t_mem_ctrl* ptr);
 void 			linkLostPrevNext(t_mem_ctrl* ptr);
 void			pushToLost(t_mem_ctrl* ptr);
+
+/**
+ *      REALLOC.C
+ **/
+void *realloc(void *ptr, size_t size);
+
 
 #endif

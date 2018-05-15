@@ -2,8 +2,9 @@
 
 //TODO: shit free, just implemented to check if malloc works
 //			implement it with multithreading
-void	ft_free(void* ptr)
+void	free(void* ptr)
 {
+	return ;
 	if (!ptr)
 		return;
 	if (pgePointers.firstTinyCtrl && (char*)ptr >= pgePointers.firstTinyCtrl->pageAddr
@@ -70,6 +71,8 @@ void	pushToLost(t_mem_ctrl* ptr)
 	ptr->requiredSize = 0;
 	ptr->pageSerie = 0;
 	ptr->height = 0;
+	ptr->lchild = NULL;
+	ptr->rchild = NULL;
 	ptr->prev = NULL;
 	ptr->next = pgePointers.lost_mem_ctrl;
 	pgePointers.lost_mem_ctrl = ptr;

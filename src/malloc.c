@@ -1,6 +1,6 @@
 #include "malloc.h"
 
-void*	ft_malloc(size_t size)
+void*	malloc(size_t size)
 {
 	pgePointers.toReturn = NULL;
 	pgePointers.pageSize = getpagesize();

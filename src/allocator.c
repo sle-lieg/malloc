@@ -50,61 +50,10 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 		pgePointers.lastTinyCtrl = newMemCtrl;
 	}
 	setMemCtrl(newMemCtrl, memCtrlSplited);
-
-	// newMemCtrl->prev = memCtrlSplited;
-	// newMemCtrl->next = memCtrlSplited->next;
-	// memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
-	// memCtrlSplited->next = newMemCtrl;
-	// pgePointers.lastTinyCtrl = newMemCtrl;
-	// pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
-	// newMemCtrl->free = TRUE;
-
+	
 	return newMemCtrl;
 }
 
-// t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
-// {
-// 	t_mem_ctrl* newMemCtrl;
-
-// 	if (pgePointers.memCtrlSizeLeft < MEM_CTRL_SIZE)
-// 	{
-// 		pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
-// 		// if (!(pgePointers.lastTinyCtrl->next = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
-// 		if (!(newMemCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
-// 			return NULL;
-// 		// newMemCtrl = pgePointers.lastTinyCtrl->next;
-// 		// if (!newMemCtrl->next = getNewPage(NULL, )
-// 	}
-// 	else
-// 		newMemCtrl = (t_mem_ctrl*)((char*)pgePointers.lastTinyCtrl + MEM_CTRL_SIZE);
-// 	pgePointers.lastTinyCtrl = newMemCtrl;
-// 	setMemCtrl(newMemCtrl, memCtrlSplited);
-
-// 	// newMemCtrl->prev = memCtrlSplited;
-// 	// newMemCtrl->next = memCtrlSplited->next;
-// 	// memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
-// 	// memCtrlSplited->next = newMemCtrl;
-// 	// pgePointers.lastTinyCtrl = newMemCtrl;
-// 	// pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
-// 	// newMemCtrl->free = TRUE;
-
-// 	return newMemCtrl;
-// }
-
-// TODO: IMPORTANT : CHECK TO REFACTOR createNewMemCtrl && splitMemory
-// 		ADD a setMemCtrl function, to use in createNewMemCtrl and popLostMemCtrl
-
-/** 
- ** @brief  Split memory pointed by pgePointers.toReturn
- ** @note	pgePointer.toReturn contains the address to split
- **			If there are lost memCtrl due to block fusion, re use first of it
- **			Else, call @createNewMemCtrl(@address to split)
- **			Set the headers value size of splited header and new header.
- **			Set the new header->pageAddr, toReturn->pageAddr doesn't change.
- **
- ** @param  size: 
- ** @retval	None
- **/
 t_mem_ctrl*	splitMemory(size_t size)
 {
 	t_mem_ctrl* newMemCtrl;
