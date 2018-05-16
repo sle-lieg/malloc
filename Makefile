@@ -8,7 +8,8 @@ LIB_DIR = libft/
 INC_DIR = inc/
 
 SRC_F	=	malloc.c allocator.c treeChecker.c treeGetters.c treeInserter.c\
-			treeRemover.c treeRotations.c treeTools.c free.c realloc.c #debug.c
+			treeRemover.c treeRotations.c treeTools.c free.c realloc.c calloc.c\
+			debug.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_F))
 OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

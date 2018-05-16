@@ -2,6 +2,9 @@
 
 void*	malloc(size_t size)
 {
+	ft_printf("Malloc(%lu): MEM_CTRL_SIZE=%lu\n", size, pgePointers.memCtrlSizeLeft);
+	if (!checkLimit(size))
+		return NULL;
 	pgePointers.toReturn = NULL;
 	pgePointers.pageSize = getpagesize();
 	pgePointers.size = size;
@@ -15,6 +18,8 @@ void*	malloc(size_t size)
 	// 	handleLarge(size);
 	if (pgePointers.errors)
 		return NULL;
+	// printAll();
+	// printTree(pgePointers.rootTiny);
 	return pgePointers.toReturn->pageAddr;
 }
 
@@ -65,5 +70,15 @@ int	initRootTiny(size_t size)
 	pgePointers.lastTinyCtrl = pgePointers.firstTinyCtrl;
 	pgePointers.rootTiny = pgePointers.firstTinyCtrl;
 
+	return 1;
+}
+
+int	checkLimit(size_t size)
+{
+	struct rlimit limit;
+
+	getrlimit(RLIMIT_DATA, &limit);
+	if (size > limit.rlim_max)
+		return 0;
 	return 1;
 }

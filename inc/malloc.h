@@ -6,8 +6,9 @@
 #include <sys/mman.h>
 #include "libft.h"
 #include "ft_printf.h"
+#include <sys/resource.h>
 
-#define TINY_MAX 50000000
+#define TINY_MAX 2147483648
 #define SMALL_MAX 245
 #define MEM_ALIGN_SHIFT 4
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
@@ -69,6 +70,8 @@ void        handleTiny(size_t size);
 // void        handleSmall(size_t size);
 // void        handleLarge(size_t size);
 int			initRootTiny(size_t size);
+int			checkLimit(size_t size);
+
 
 
 /**
@@ -128,6 +131,7 @@ void        replaceIfRoot(t_mem_ctrl* node);
 void        show_alloc_mem();
 void			printTree(t_mem_ctrl* root);
 void			printLevels(t_mem_ctrl* node, int i);
+void			printAll();
 
 
 /**
@@ -142,7 +146,9 @@ void			pushToLost(t_mem_ctrl* ptr);
 /**
  *      REALLOC.C
  **/
-void *realloc(void *ptr, size_t size);
+void*			realloc(void *ptr, size_t size);
+t_mem_ctrl* getMemCtrl(void* ptr);
+void			checkSize(size_t size);
 
 
 #endif

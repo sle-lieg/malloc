@@ -4,12 +4,13 @@
 //			implement it with multithreading
 void	free(void* ptr)
 {
-	return ;
+	return;
+	ft_printf("Free(%p)\n", ptr);
 	if (!ptr)
 		return;
-	if (pgePointers.firstTinyCtrl && (char*)ptr >= pgePointers.firstTinyCtrl->pageAddr
-											&& (char*)ptr <= pgePointers.lastTinyCtrl->pageAddr)
-		checkTiny(ptr);
+	// if (pgePointers.firstTinyCtrl && (char*)ptr >= pgePointers.firstTinyCtrl->pageAddr
+	// 										&& (char*)ptr <= pgePointers.lastTinyCtrl->pageAddr)
+	checkTiny(ptr);
 	// if (ptr >= pgePointers.firstSmallCtrl && ptr <= pgePointers.lastSmallCtrl)
 	// 	checkSmall(ptr);
 	// if (ptr >= pgePointers.firstLargeCtrl && ptr <= pgePointers.lastLargeCtrl)
