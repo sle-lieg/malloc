@@ -13,6 +13,7 @@ void	removeNode(t_mem_ctrl* node)
 
 void	removeLeaf(t_mem_ctrl* node)
 {
+	// ft_printf("Remove leaf\n");	
 	if (node == pgePointers.rootTiny)
 		pgePointers.rootTiny = NULL;
 	else if (node->allocatedSize <= node->father->allocatedSize)
@@ -23,13 +24,17 @@ void	removeLeaf(t_mem_ctrl* node)
 
 void	removeParentOfChildren(t_mem_ctrl* node)
 {
+	// ft_printf("Remove childrens\n");
 	t_mem_ctrl* tmp;
 
 	if (node->lchild->height >= node->rchild->height)
 	{
 		tmp = getInOrderPredecessor(node->lchild);
 		if (node->lchild != tmp)
+		{
 			swapNodes(tmp, node);
+			// ft_printf("After2: N=%p F=%p LC=%p RC=%p\n", node, node->father, node->lchild, node->rchild);
+		}
 	}
 	else
 	{
@@ -38,15 +43,20 @@ void	removeParentOfChildren(t_mem_ctrl* node)
 			swapNodes(tmp, node);		
 	}
 	if (node == pgePointers.rootTiny)
+	{
 		pgePointers.rootTiny = tmp;
+	}
 }
 
 void	removeParentOfOrphan(t_mem_ctrl* node)
 {
+	// ft_printf("Remove orphan\n");
+	// printTree2(pgePointers.rootTiny);
 	if (node->lchild)
 		linkNodes(node->father, node->lchild);
 	else
 		linkNodes(node->father, node->rchild);
 	if (node == pgePointers.rootTiny)
 		pgePointers.rootTiny = node->lchild ? node->lchild : node->rchild;
+		// printTree2(pgePointers.rootTiny);		
 }

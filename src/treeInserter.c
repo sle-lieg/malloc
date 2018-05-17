@@ -2,6 +2,7 @@
 
 void	addNode(t_mem_ctrl** root, t_mem_ctrl* newNode)
 {
+	// ft_printf("Add Node\n");
 	if (!*root)
 	{
 		*root = newNode;
@@ -35,5 +36,7 @@ void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 		}
 	}
 	node->height = maxHeight(node->lchild, node->rchild) + 1;
+	// printTree2(pgePointers.rootTiny);
+	// ft_printf("\n");
 	checkBalance(node);
 }

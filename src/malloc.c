@@ -2,7 +2,7 @@
 
 void*	malloc(size_t size)
 {
-	ft_printf("Malloc(%lu): MEM_CTRL_SIZE=%lu\n", size, pgePointers.memCtrlSizeLeft);
+	// ft_printf("Malloc(%lu): MEM_CTRL_SIZE=%lu\n", size, pgePointers.memCtrlSizeLeft);
 	if (!checkLimit(size))
 		return NULL;
 	pgePointers.toReturn = NULL;
@@ -56,7 +56,11 @@ void	handleTiny(size_t size)
 		checkHeight(pgePointers.rootTiny);
 	}
 	if (size + 24 <= pgePointers.toReturn->allocatedSize)
+	{
+		// ft_printf("Spliting\n");		
 		addNode(&pgePointers.rootTiny, splitMemory(size));
+	}
+		// printTree2(pgePointers.rootTiny);	
 }
 
 int	initRootTiny(size_t size)

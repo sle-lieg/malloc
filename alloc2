@@ -1,0 +1,1781 @@
+Malloc(32): MEM_CTRL_SIZE=0
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{4064}: addr=0x103dd9050 | page=0x103de3020 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(32): MEM_CTRL_SIZE=40800
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{4032}: addr=0x103dd90a0 | page=0x103de3040 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40720
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3968}: addr=0x103dd90f0 | page=0x103de3080 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40640
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3904}: addr=0x103dd9140 | page=0x103de30c0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40560
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3840}: addr=0x103dd9190 | page=0x103de3100 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40480
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3776}: addr=0x103dd91e0 | page=0x103de3140 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40400
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3712}: addr=0x103dd9230 | page=0x103de3180 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(32): MEM_CTRL_SIZE=40320
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3680}: addr=0x103dd9280 | page=0x103de31a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40240
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3616}: addr=0x103dd92d0 | page=0x103de31e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40160
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3552}: addr=0x103dd9320 | page=0x103de3220 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40080
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3488}: addr=0x103dd9370 | page=0x103de3260 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=40000
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3424}: addr=0x103dd93c0 | page=0x103de32a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39920
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3360}: addr=0x103dd9410 | page=0x103de32e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39840
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3296}: addr=0x103dd9460 | page=0x103de3320 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39760
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3232}: addr=0x103dd94b0 | page=0x103de3360 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39680
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3168}: addr=0x103dd9500 | page=0x103de33a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39600
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3104}: addr=0x103dd9550 | page=0x103de33e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39520
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3040}: addr=0x103dd95a0 | page=0x103de3420 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39440
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2976}: addr=0x103dd95f0 | page=0x103de3460 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39360
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2912}: addr=0x103dd9640 | page=0x103de34a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39280
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2848}: addr=0x103dd9690 | page=0x103de34e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39200
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2784}: addr=0x103dd96e0 | page=0x103de3520 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39120
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2720}: addr=0x103dd9730 | page=0x103de3560 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=39040
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2656}: addr=0x103dd9780 | page=0x103de35a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38960
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2592}: addr=0x103dd97d0 | page=0x103de35e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38880
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2528}: addr=0x103dd9820 | page=0x103de3620 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38800
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2464}: addr=0x103dd9870 | page=0x103de3660 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38720
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2400}: addr=0x103dd98c0 | page=0x103de36a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38640
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2336}: addr=0x103dd9910 | page=0x103de36e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38560
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2272}: addr=0x103dd9960 | page=0x103de3720 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38480
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2208}: addr=0x103dd99b0 | page=0x103de3760 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38400
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2144}: addr=0x103dd9a00 | page=0x103de37a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38320
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2080}: addr=0x103dd9a50 | page=0x103de37e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38240
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2016}: addr=0x103dd9aa0 | page=0x103de3820 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38160
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1952}: addr=0x103dd9af0 | page=0x103de3860 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38080
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1888}: addr=0x103dd9b40 | page=0x103de38a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=38000
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1824}: addr=0x103dd9b90 | page=0x103de38e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37920
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1760}: addr=0x103dd9be0 | page=0x103de3920 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37840
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1696}: addr=0x103dd9c30 | page=0x103de3960 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37760
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1632}: addr=0x103dd9c80 | page=0x103de39a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37680
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1568}: addr=0x103dd9cd0 | page=0x103de39e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37600
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1504}: addr=0x103dd9d20 | page=0x103de3a20 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37520
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1440}: addr=0x103dd9d70 | page=0x103de3a60 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37440
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1376}: addr=0x103dd9dc0 | page=0x103de3aa0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37360
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1312}: addr=0x103dd9e10 | page=0x103de3ae0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37280
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1248}: addr=0x103dd9e60 | page=0x103de3b20 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37200
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1184}: addr=0x103dd9eb0 | page=0x103de3b60 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37120
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1120}: addr=0x103dd9f00 | page=0x103de3ba0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=37040
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103dd9f50 | page=0x103de3be0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36960
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{992}: addr=0x103dd9fa0 | page=0x103de3c20 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36880
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{928}: addr=0x103dd9ff0 | page=0x103de3c60 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36800
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{864}: addr=0x103dda040 | page=0x103de3ca0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36720
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{800}: addr=0x103dda090 | page=0x103de3ce0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36640
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{736}: addr=0x103dda0e0 | page=0x103de3d20 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36560
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{672}: addr=0x103dda130 | page=0x103de3d60 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36480
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{608}: addr=0x103dda180 | page=0x103de3da0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36400
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{544}: addr=0x103dda1d0 | page=0x103de3de0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36320
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{480}: addr=0x103dda220 | page=0x103de3e20 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36240
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{416}: addr=0x103dda270 | page=0x103de3e60 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36160
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{352}: addr=0x103dda2c0 | page=0x103de3ea0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36080
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{288}: addr=0x103dda310 | page=0x103de3ee0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=36000
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{224}: addr=0x103dda360 | page=0x103de3f20 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35920
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{160}: addr=0x103dda3b0 | page=0x103de3f60 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35840
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{96}: addr=0x103dda400 | page=0x103de3fa0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35760
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35680
+No pop lost MCTRL
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda4f0 
+---	NODE[2]{4032}: addr=0x103dda4f0 | page=0x103de4040 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda4f0 
+---	NODE[2]{4032}: addr=0x103dda4f0 | page=0x103de4040 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35520
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda540 
+---	NODE[2]{3968}: addr=0x103dda540 | page=0x103de4080 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda540 
+---	NODE[2]{3968}: addr=0x103dda540 | page=0x103de4080 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35440
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda590 
+---	NODE[2]{3904}: addr=0x103dda590 | page=0x103de40c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda590 
+---	NODE[2]{3904}: addr=0x103dda590 | page=0x103de40c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35360
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda5e0 
+---	NODE[2]{3840}: addr=0x103dda5e0 | page=0x103de4100 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda5e0 
+---	NODE[2]{3840}: addr=0x103dda5e0 | page=0x103de4100 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35280
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda630 
+---	NODE[2]{3776}: addr=0x103dda630 | page=0x103de4140 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda630 
+---	NODE[2]{3776}: addr=0x103dda630 | page=0x103de4140 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35200
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda680 
+---	NODE[2]{3712}: addr=0x103dda680 | page=0x103de4180 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda680 
+---	NODE[2]{3712}: addr=0x103dda680 | page=0x103de4180 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35120
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda6d0 
+---	NODE[2]{3648}: addr=0x103dda6d0 | page=0x103de41c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda6d0 
+---	NODE[2]{3648}: addr=0x103dda6d0 | page=0x103de41c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=35040
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda720 
+---	NODE[2]{3584}: addr=0x103dda720 | page=0x103de4200 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda720 
+---	NODE[2]{3584}: addr=0x103dda720 | page=0x103de4200 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34960
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda770 
+---	NODE[2]{3520}: addr=0x103dda770 | page=0x103de4240 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda770 
+---	NODE[2]{3520}: addr=0x103dda770 | page=0x103de4240 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34880
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda7c0 
+---	NODE[2]{3456}: addr=0x103dda7c0 | page=0x103de4280 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda7c0 
+---	NODE[2]{3456}: addr=0x103dda7c0 | page=0x103de4280 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34800
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda810 
+---	NODE[2]{3392}: addr=0x103dda810 | page=0x103de42c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda810 
+---	NODE[2]{3392}: addr=0x103dda810 | page=0x103de42c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34720
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda860 
+---	NODE[2]{3328}: addr=0x103dda860 | page=0x103de4300 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda860 
+---	NODE[2]{3328}: addr=0x103dda860 | page=0x103de4300 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34640
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda8b0 
+---	NODE[2]{3264}: addr=0x103dda8b0 | page=0x103de4340 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda8b0 
+---	NODE[2]{3264}: addr=0x103dda8b0 | page=0x103de4340 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34560
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda900 
+---	NODE[2]{3200}: addr=0x103dda900 | page=0x103de4380 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda900 
+---	NODE[2]{3200}: addr=0x103dda900 | page=0x103de4380 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34480
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda950 
+---	NODE[2]{3136}: addr=0x103dda950 | page=0x103de43c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda950 
+---	NODE[2]{3136}: addr=0x103dda950 | page=0x103de43c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34400
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda9a0 
+---	NODE[2]{3072}: addr=0x103dda9a0 | page=0x103de4400 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda9a0 
+---	NODE[2]{3072}: addr=0x103dda9a0 | page=0x103de4400 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34320
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda9f0 
+---	NODE[2]{3008}: addr=0x103dda9f0 | page=0x103de4440 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103dda9f0 
+---	NODE[2]{3008}: addr=0x103dda9f0 | page=0x103de4440 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34240
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaa40 
+---	NODE[2]{2944}: addr=0x103ddaa40 | page=0x103de4480 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaa40 
+---	NODE[2]{2944}: addr=0x103ddaa40 | page=0x103de4480 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34160
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaa90 
+---	NODE[2]{2880}: addr=0x103ddaa90 | page=0x103de44c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaa90 
+---	NODE[2]{2880}: addr=0x103ddaa90 | page=0x103de44c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34080
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaae0 
+---	NODE[2]{2816}: addr=0x103ddaae0 | page=0x103de4500 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaae0 
+---	NODE[2]{2816}: addr=0x103ddaae0 | page=0x103de4500 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=34000
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddab30 
+---	NODE[2]{2752}: addr=0x103ddab30 | page=0x103de4540 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddab30 
+---	NODE[2]{2752}: addr=0x103ddab30 | page=0x103de4540 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33920
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddab80 
+---	NODE[2]{2688}: addr=0x103ddab80 | page=0x103de4580 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddab80 
+---	NODE[2]{2688}: addr=0x103ddab80 | page=0x103de4580 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33840
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddabd0 
+---	NODE[2]{2624}: addr=0x103ddabd0 | page=0x103de45c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddabd0 
+---	NODE[2]{2624}: addr=0x103ddabd0 | page=0x103de45c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33760
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddac20 
+---	NODE[2]{2560}: addr=0x103ddac20 | page=0x103de4600 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddac20 
+---	NODE[2]{2560}: addr=0x103ddac20 | page=0x103de4600 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33680
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddac70 
+---	NODE[2]{2496}: addr=0x103ddac70 | page=0x103de4640 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddac70 
+---	NODE[2]{2496}: addr=0x103ddac70 | page=0x103de4640 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33600
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddacc0 
+---	NODE[2]{2432}: addr=0x103ddacc0 | page=0x103de4680 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddacc0 
+---	NODE[2]{2432}: addr=0x103ddacc0 | page=0x103de4680 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33520
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddad10 
+---	NODE[2]{2368}: addr=0x103ddad10 | page=0x103de46c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddad10 
+---	NODE[2]{2368}: addr=0x103ddad10 | page=0x103de46c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33440
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddad60 
+---	NODE[2]{2304}: addr=0x103ddad60 | page=0x103de4700 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddad60 
+---	NODE[2]{2304}: addr=0x103ddad60 | page=0x103de4700 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33360
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddadb0 
+---	NODE[2]{2240}: addr=0x103ddadb0 | page=0x103de4740 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddadb0 
+---	NODE[2]{2240}: addr=0x103ddadb0 | page=0x103de4740 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33280
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddae00 
+---	NODE[2]{2176}: addr=0x103ddae00 | page=0x103de4780 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddae00 
+---	NODE[2]{2176}: addr=0x103ddae00 | page=0x103de4780 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33200
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddae50 
+---	NODE[2]{2112}: addr=0x103ddae50 | page=0x103de47c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddae50 
+---	NODE[2]{2112}: addr=0x103ddae50 | page=0x103de47c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33120
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaea0 
+---	NODE[2]{2048}: addr=0x103ddaea0 | page=0x103de4800 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaea0 
+---	NODE[2]{2048}: addr=0x103ddaea0 | page=0x103de4800 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=33040
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaef0 
+---	NODE[2]{1984}: addr=0x103ddaef0 | page=0x103de4840 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaef0 
+---	NODE[2]{1984}: addr=0x103ddaef0 | page=0x103de4840 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32960
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaf40 
+---	NODE[2]{1920}: addr=0x103ddaf40 | page=0x103de4880 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaf40 
+---	NODE[2]{1920}: addr=0x103ddaf40 | page=0x103de4880 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32880
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaf90 
+---	NODE[2]{1856}: addr=0x103ddaf90 | page=0x103de48c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddaf90 
+---	NODE[2]{1856}: addr=0x103ddaf90 | page=0x103de48c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32800
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddafe0 
+---	NODE[2]{1792}: addr=0x103ddafe0 | page=0x103de4900 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddafe0 
+---	NODE[2]{1792}: addr=0x103ddafe0 | page=0x103de4900 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32720
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb030 
+---	NODE[2]{1728}: addr=0x103ddb030 | page=0x103de4940 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb030 
+---	NODE[2]{1728}: addr=0x103ddb030 | page=0x103de4940 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32640
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb080 
+---	NODE[2]{1664}: addr=0x103ddb080 | page=0x103de4980 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb080 
+---	NODE[2]{1664}: addr=0x103ddb080 | page=0x103de4980 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32560
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb0d0 
+---	NODE[2]{1600}: addr=0x103ddb0d0 | page=0x103de49c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb0d0 
+---	NODE[2]{1600}: addr=0x103ddb0d0 | page=0x103de49c0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32480
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb120 
+---	NODE[2]{1536}: addr=0x103ddb120 | page=0x103de4a00 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb120 
+---	NODE[2]{1536}: addr=0x103ddb120 | page=0x103de4a00 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32400
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb170 
+---	NODE[2]{1472}: addr=0x103ddb170 | page=0x103de4a40 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb170 
+---	NODE[2]{1472}: addr=0x103ddb170 | page=0x103de4a40 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32320
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb1c0 
+---	NODE[2]{1408}: addr=0x103ddb1c0 | page=0x103de4a80 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb1c0 
+---	NODE[2]{1408}: addr=0x103ddb1c0 | page=0x103de4a80 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32240
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb210 
+---	NODE[2]{1344}: addr=0x103ddb210 | page=0x103de4ac0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb210 
+---	NODE[2]{1344}: addr=0x103ddb210 | page=0x103de4ac0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32160
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb260 
+---	NODE[2]{1280}: addr=0x103ddb260 | page=0x103de4b00 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb260 
+---	NODE[2]{1280}: addr=0x103ddb260 | page=0x103de4b00 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32080
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb2b0 
+---	NODE[2]{1216}: addr=0x103ddb2b0 | page=0x103de4b40 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb2b0 
+---	NODE[2]{1216}: addr=0x103ddb2b0 | page=0x103de4b40 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=32000
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb300 
+---	NODE[2]{1152}: addr=0x103ddb300 | page=0x103de4b80 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb300 
+---	NODE[2]{1152}: addr=0x103ddb300 | page=0x103de4b80 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=31920
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb350 
+---	NODE[2]{1104}: addr=0x103ddb350 | page=0x103de4bb0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb350 
+---	NODE[2]{1104}: addr=0x103ddb350 | page=0x103de4bb0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(64, 1)
+Malloc(64): MEM_CTRL_SIZE=31840
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb3a0 
+---	NODE[2]{1040}: addr=0x103ddb3a0 | page=0x103de4bf0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb3a0 
+---	NODE[2]{1040}: addr=0x103ddb3a0 | page=0x103de4bf0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(1, 56)
+Malloc(56): MEM_CTRL_SIZE=31760
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb3f0 
+---	NODE[2]{976}: addr=0x103ddb3f0 | page=0x103de4c30 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb3f0 
+---	NODE[2]{976}: addr=0x103ddb3f0 | page=0x103de4c30 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Calloc(1, 176)
+Malloc(176): MEM_CTRL_SIZE=31680
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb440 
+---	NODE[2]{800}: addr=0x103ddb440 | page=0x103de4ce0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103dda450 | page=0x103de3fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb440 
+---	NODE[2]{800}: addr=0x103ddb440 | page=0x103de4ce0 | father:0x103dda450 | lchild=0x0 | rchild=0x0 
+Malloc(16): MEM_CTRL_SIZE=31600
+Remove orphan
+---	NODE[1]{800}: addr=0x103ddb440 | page=0x103de4ce0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=31600
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{752}: addr=0x103ddb490 | page=0x103de4d10 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(45): MEM_CTRL_SIZE=31520
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{704}: addr=0x103ddb4e0 | page=0x103de4d40 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(162): MEM_CTRL_SIZE=31440
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{528}: addr=0x103ddb530 | page=0x103de4df0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=31360
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{480}: addr=0x103ddb580 | page=0x103de4e20 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(45): MEM_CTRL_SIZE=31280
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{432}: addr=0x103ddb5d0 | page=0x103de4e50 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(50): MEM_CTRL_SIZE=31200
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{368}: addr=0x103ddb620 | page=0x103de4e90 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=31120
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{320}: addr=0x103ddb670 | page=0x103de4ec0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(47): MEM_CTRL_SIZE=31040
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{272}: addr=0x103ddb6c0 | page=0x103de4ef0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(11): MEM_CTRL_SIZE=30960
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{256}: addr=0x103ddb710 | page=0x103de4f00 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=30880
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{208}: addr=0x103ddb760 | page=0x103de4f30 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(64): MEM_CTRL_SIZE=30800
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{144}: addr=0x103ddb7b0 | page=0x103de4f70 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(49): MEM_CTRL_SIZE=30720
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddb800 | page=0x103de4fb0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=30640
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(67): MEM_CTRL_SIZE=30560
+No pop lost MCTRL
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb8f0 
+---	NODE[2]{4016}: addr=0x103ddb8f0 | page=0x103de5050 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb8f0 
+---	NODE[2]{4016}: addr=0x103ddb8f0 | page=0x103de5050 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+Malloc(52): MEM_CTRL_SIZE=30400
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb940 
+---	NODE[2]{3952}: addr=0x103ddb940 | page=0x103de5090 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb940 
+---	NODE[2]{3952}: addr=0x103ddb940 | page=0x103de5090 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=30320
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb990 
+---	NODE[2]{3904}: addr=0x103ddb990 | page=0x103de50c0 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb990 
+---	NODE[2]{3904}: addr=0x103ddb990 | page=0x103de50c0 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+Malloc(54): MEM_CTRL_SIZE=30240
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb9e0 
+---	NODE[2]{3840}: addr=0x103ddb9e0 | page=0x103de5100 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{32}: addr=0x103ddb850 | page=0x103de4fe0 | father:0x0 | lchild=0x0 | rchild=0x103ddb9e0 
+---	NODE[2]{3840}: addr=0x103ddb9e0 | page=0x103de5100 | father:0x103ddb850 | lchild=0x0 | rchild=0x0 
+Malloc(12): MEM_CTRL_SIZE=30160
+Remove orphan
+---	NODE[1]{3840}: addr=0x103ddb9e0 | page=0x103de5100 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 40)
+Malloc(40): MEM_CTRL_SIZE=30160
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3792}: addr=0x103ddba30 | page=0x103de5130 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(45): MEM_CTRL_SIZE=30080
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3744}: addr=0x103ddba80 | page=0x103de5160 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 32)
+Malloc(32): MEM_CTRL_SIZE=30000
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3712}: addr=0x103ddbad0 | page=0x103de5180 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 176)
+Malloc(176): MEM_CTRL_SIZE=29920
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3536}: addr=0x103ddbb20 | page=0x103de5230 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(93): MEM_CTRL_SIZE=29840
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3440}: addr=0x103ddbb70 | page=0x103de5290 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(16): MEM_CTRL_SIZE=29760
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3424}: addr=0x103ddbbc0 | page=0x103de52a0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(64): MEM_CTRL_SIZE=29680
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3360}: addr=0x103ddbc10 | page=0x103de52e0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(14): MEM_CTRL_SIZE=29600
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3344}: addr=0x103ddbc60 | page=0x103de52f0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 124)
+Malloc(124): MEM_CTRL_SIZE=29520
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{3216}: addr=0x103ddbcb0 | page=0x103de5370 | father:0x0 | lchild=0x0 | rchild=0x0 
+Realloc(0x0, 256)Malloc(256): MEM_CTRL_SIZE=29440
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{2960}: addr=0x103ddbd00 | page=0x103de5470 | father:0x0 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddbcb0]{256}->addr[0x103de5370])
+Link freed next
+Remove leaf
+Add Node
+---	NODE[1]{3216}: addr=0x103ddbcb0 | page=0x103de5370 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(4096): MEM_CTRL_SIZE=29360
+---	NODE[1]{3216}: addr=0x103ddbcb0 | page=0x103de5370 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(2160): MEM_CTRL_SIZE=29360
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x0 | rchild=0x0 
+Malloc(3312): MEM_CTRL_SIZE=29280
+No pop lost MCTRL
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbdf0 | rchild=0x0 
+---	NODE[2]{784}: addr=0x103ddbdf0 | page=0x103de7cf0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbdf0 | rchild=0x0 
+---	NODE[2]{784}: addr=0x103ddbdf0 | page=0x103de7cf0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Malloc(4096): MEM_CTRL_SIZE=29120
+No pop lost MCTRL
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbdf0 | rchild=0x0 
+---	NODE[2]{784}: addr=0x103ddbdf0 | page=0x103de7cf0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Realloc(0x103de7000, 91556)(old = 3312)
+Malloc(91556): MEM_CTRL_SIZE=29040
+No pop lost MCTRL
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbdf0 | rchild=0x0 
+---	NODE[2]{784}: addr=0x103ddbdf0 | page=0x103de7cf0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 72)
+Malloc(72): MEM_CTRL_SIZE=28960
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbee0 | rchild=0x0 
+---	NODE[2]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbee0 | rchild=0x0 
+---	NODE[2]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Realloc(0x0, 1280)Malloc(1280): MEM_CTRL_SIZE=28880
+No pop lost MCTRL
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbee0 | rchild=0x103ddbf80 
+---	NODE[2]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbee0 | rchild=0x103ddbf80 
+---	NODE[2]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 112)
+Malloc(112): MEM_CTRL_SIZE=28720
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbfd0 | rchild=0x103ddbf80 
+---	NODE[2]{592}: addr=0x103ddbfd0 | page=0x103de7db0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddbfd0 | rchild=0x103ddbf80 
+---	NODE[2]{592}: addr=0x103ddbfd0 | page=0x103de7db0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 113)
+Malloc(113): MEM_CTRL_SIZE=28640
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc020 | rchild=0x103ddbf80 
+---	NODE[2]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc020 | rchild=0x103ddbf80 
+---	NODE[2]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 112)
+Malloc(112): MEM_CTRL_SIZE=28560
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc070 | rchild=0x103ddbf80 
+---	NODE[2]{352}: addr=0x103ddc070 | page=0x103de7ea0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc070 | rchild=0x103ddbf80 
+---	NODE[2]{352}: addr=0x103ddc070 | page=0x103de7ea0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc020]{112}->addr[0x103de7e30])
+Link freed next
+Remove leaf
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc020 | rchild=0x103ddbf80 
+---	NODE[2]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc020 | rchild=0x103ddbf80 
+---	NODE[2]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Malloc(32768): MEM_CTRL_SIZE=28480
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc020 | rchild=0x103ddbf80 
+---	NODE[2]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 116)
+Malloc(116): MEM_CTRL_SIZE=28480
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc0c0 | rchild=0x103ddbf80 
+---	NODE[2]{336}: addr=0x103ddc0c0 | page=0x103de7eb0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc0c0 | rchild=0x103ddbf80 
+---	NODE[2]{336}: addr=0x103ddc0c0 | page=0x103de7eb0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 119)
+Malloc(119): MEM_CTRL_SIZE=28400
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc110 | rchild=0x103ddbf80 
+---	NODE[2]{208}: addr=0x103ddc110 | page=0x103de7f30 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc110 | rchild=0x103ddbf80 
+---	NODE[2]{208}: addr=0x103ddc110 | page=0x103de7f30 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 117)
+Malloc(117): MEM_CTRL_SIZE=28320
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Calloc(1, 122)
+Malloc(122): MEM_CTRL_SIZE=28240
+Remove childrens
+Predecessor 1
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc1b0 | rchild=0x0 
+---	NODE[3]{928}: addr=0x103ddc1b0 | page=0x103de5c60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc1b0 | rchild=0x0 
+---	NODE[3]{928}: addr=0x103ddc1b0 | page=0x103de5c60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{928}: addr=0x103ddc1b0 | page=0x103de5c60 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc1b0 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc1b0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 117)
+Malloc(117): MEM_CTRL_SIZE=28160
+Remove childrens
+Predecessor 1
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc200 | rchild=0x0 
+---	NODE[3]{800}: addr=0x103ddc200 | page=0x103de5ce0 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc200 | rchild=0x0 
+---	NODE[3]{800}: addr=0x103ddc200 | page=0x103de5ce0 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{800}: addr=0x103ddc200 | page=0x103de5ce0 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc200 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc200 | lchild=0x0 | rchild=0x0 
+Calloc(1, 118)
+Malloc(118): MEM_CTRL_SIZE=28080
+Remove childrens
+Predecessor 1
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc250 | rchild=0x0 
+---	NODE[3]{672}: addr=0x103ddc250 | page=0x103de5d60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc250 | rchild=0x0 
+---	NODE[3]{672}: addr=0x103ddc250 | page=0x103de5d60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{672}: addr=0x103ddc250 | page=0x103de5d60 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc250 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc250 | lchild=0x0 | rchild=0x0 
+Calloc(1, 121)
+Malloc(121): MEM_CTRL_SIZE=28000
+Remove childrens
+Predecessor 1
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc2a0 | rchild=0x0 
+---	NODE[3]{544}: addr=0x103ddc2a0 | page=0x103de5de0 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc2a0 | rchild=0x0 
+---	NODE[3]{544}: addr=0x103ddc2a0 | page=0x103de5de0 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{544}: addr=0x103ddc2a0 | page=0x103de5de0 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc2a0 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc2a0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 115)
+Malloc(115): MEM_CTRL_SIZE=27920
+Remove childrens
+Predecessor 1
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc2f0 | rchild=0x0 
+---	NODE[3]{416}: addr=0x103ddc2f0 | page=0x103de5e60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc2f0 | rchild=0x0 
+---	NODE[3]{416}: addr=0x103ddc2f0 | page=0x103de5e60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{416}: addr=0x103ddc2f0 | page=0x103de5e60 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc2f0 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc2f0 | lchild=0x0 | rchild=0x0 
+Calloc(1, 117)
+Malloc(117): MEM_CTRL_SIZE=27840
+Remove childrens
+Predecessor 1
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc340 | rchild=0x0 
+---	NODE[3]{288}: addr=0x103ddc340 | page=0x103de5ee0 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc340 | rchild=0x0 
+---	NODE[3]{288}: addr=0x103ddc340 | page=0x103de5ee0 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{288}: addr=0x103ddc340 | page=0x103de5ee0 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc340 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc340 | lchild=0x0 | rchild=0x0 
+Calloc(1, 127)
+Malloc(127): MEM_CTRL_SIZE=27760
+Remove childrens
+Predecessor 1
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc390 | rchild=0x0 
+---	NODE[3]{160}: addr=0x103ddc390 | page=0x103de5f60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x103ddc390 | rchild=0x0 
+---	NODE[3]{160}: addr=0x103ddc390 | page=0x103de5f60 | father:0x103ddbf80 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{160}: addr=0x103ddc390 | page=0x103de5f60 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddbf80 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc390 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc390 | lchild=0x0 | rchild=0x0 
+Calloc(1, 141)
+Malloc(141): MEM_CTRL_SIZE=27680
+Remove childrens
+Predecessor 1
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddbf80 
+---	NODE[2]{2816}: addr=0x103ddbf80 | page=0x103e00500 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Calloc(1, 118)
+Malloc(118): MEM_CTRL_SIZE=27680
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc3e0 
+---	NODE[2]{2688}: addr=0x103ddc3e0 | page=0x103e00580 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc3e0 
+---	NODE[2]{2688}: addr=0x103ddc3e0 | page=0x103e00580 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Calloc(1, 118)
+Malloc(118): MEM_CTRL_SIZE=27600
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc430 
+---	NODE[2]{2560}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc430 
+---	NODE[2]{2560}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Calloc(1, 120)
+Malloc(120): MEM_CTRL_SIZE=27520
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc480 
+---	NODE[2]{2432}: addr=0x103ddc480 | page=0x103e00680 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc480 
+---	NODE[2]{2432}: addr=0x103ddc480 | page=0x103e00680 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Calloc(1, 115)
+Malloc(115): MEM_CTRL_SIZE=27440
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc4d0 
+---	NODE[2]{2304}: addr=0x103ddc4d0 | page=0x103e00700 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc4d0 
+---	NODE[2]{2304}: addr=0x103ddc4d0 | page=0x103e00700 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Calloc(1, 115)
+Malloc(115): MEM_CTRL_SIZE=27360
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc520 
+---	NODE[2]{2176}: addr=0x103ddc520 | page=0x103e00780 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc520 
+---	NODE[2]{2176}: addr=0x103ddc520 | page=0x103e00780 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Calloc(1, 118)
+Malloc(118): MEM_CTRL_SIZE=27280
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc570 
+---	NODE[2]{2048}: addr=0x103ddc570 | page=0x103e00800 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc570 
+---	NODE[2]{2048}: addr=0x103ddc570 | page=0x103e00800 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Calloc(1, 120)
+Malloc(120): MEM_CTRL_SIZE=27200
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc5c0 
+---	NODE[2]{1920}: addr=0x103ddc5c0 | page=0x103e00880 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc5c0 
+---	NODE[2]{1920}: addr=0x103ddc5c0 | page=0x103e00880 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Realloc(0x0, 464)Malloc(464): MEM_CTRL_SIZE=27120
+Remove leaf
+Spliting
+No pop lost MCTRL
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc610 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc610 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Malloc(4096): MEM_CTRL_SIZE=27040
+No pop lost MCTRL
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc610 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc020]{128}->addr[0x103de7e30])
+Add Node
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc610 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc160 | lchild=0x103ddc020 | rchild=0x0 
+---	NODE[3]{128}: addr=0x103ddc020 | page=0x103de7e30 | father:0x103ddc610 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x0 | lchild=0x0 | rchild=0x103ddc610 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc160 | lchild=0x103ddc020 | rchild=0x0 
+---	NODE[3]{128}: addr=0x103ddc020 | page=0x103de7e30 | father:0x103ddc610 | lchild=0x0 | rchild=0x0 
+
+Rotate right
+Rotate left
+---	NODE[1]{128}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddc610 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc0c0]{128}->addr[0x103de7eb0])
+Link freed prev
+---	NODE[1]{256}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddc610 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc430]{128}->addr[0x103e00600])
+Add Node
+---	NODE[1]{256}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddc610 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc020 | lchild=0x0 | rchild=0x103ddc430 
+---	NODE[3]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{256}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddc610 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc020 | lchild=0x0 | rchild=0x103ddc430 
+---	NODE[3]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{256}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc160 | rchild=0x103ddc610 
+---	NODE[2]{80}: addr=0x103ddc160 | page=0x103de7fb0 | father:0x103ddc020 | lchild=0x0 | rchild=0x103ddc430 
+---	NODE[3]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc160 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc110]{128}->addr[0x103de7f30])
+Link freed next
+Remove orphan
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddbd50]{128}->addr[0x103de5be0])
+Add Node
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{128}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{128}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{128}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc1b0]{128}->addr[0x103de5c60])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{256}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc200]{128}->addr[0x103de5ce0])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{384}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc250]{128}->addr[0x103de5d60])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{512}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc2a0]{128}->addr[0x103de5de0])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{640}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc2f0]{128}->addr[0x103de5e60])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{768}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc340]{128}->addr[0x103de5ee0])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{896}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc390]{160}->addr[0x103de5f60])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddbf80]{128}->addr[0x103e00500])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddc610 
+---	NODE[2]{128}: addr=0x103ddc430 | page=0x103e00600 | father:0x103ddc020 | lchild=0x103ddbd50 | rchild=0x0 
+---	NODE[3]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1456}: addr=0x103ddc610 | page=0x103e00a50 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc3e0]{128}->addr[0x103e00580])
+Link freed next
+Remove orphan
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc480]{128}->addr[0x103e00680])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc4d0]{128}->addr[0x103e00700])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc520]{128}->addr[0x103e00780])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc570]{128}->addr[0x103e00800])
+Link freed prev
+---	NODE[1]{464}: addr=0x103ddc020 | page=0x103de7e30 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddc020 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddbfd0]{128}->addr[0x103de7db0])
+Link freed next
+Remove childrens
+Successor 1
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc430 | rchild=0x0 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x103ddbfd0 
+---	NODE[3]{592}: addr=0x103ddbfd0 | page=0x103de7db0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc430 | rchild=0x0 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x103ddbfd0 
+---	NODE[3]{592}: addr=0x103ddbfd0 | page=0x103de7db0 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+
+Rotate left
+Rotate right
+---	NODE[1]{592}: addr=0x103ddbfd0 | page=0x103de7db0 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbfd0 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddbfd0 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddbee0]{112}->addr[0x103de7d40])
+Link freed next
+Remove childrens
+Successor 1
+Add Node
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc430 | rchild=0x0 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x103ddbee0 
+---	NODE[3]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc430 | rchild=0x0 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x103ddbee0 
+---	NODE[3]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x103ddc430 | lchild=0x0 | rchild=0x0 
+
+Rotate left
+Rotate right
+---	NODE[1]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbee0 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddbee0 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddc5c0]{464}->addr[0x103e00880])
+Link freed next
+Remove leaf
+Link freed prev
+---	NODE[1]{704}: addr=0x103ddbee0 | page=0x103de7d40 | father:0x0 | lchild=0x103ddc430 | rchild=0x103ddbd50 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbee0 | lchild=0x0 | rchild=0x0 
+---	NODE[2]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x103ddbee0 | lchild=0x0 | rchild=0x0 
+Free(tmp[0x103ddbdf0]{80}->addr[0x103de7cf0])
+Link freed next
+Remove childrens
+Successor 1
+Link freed prev
+---	NODE[1]{1056}: addr=0x103ddbd50 | page=0x103de5be0 | father:0x0 | lchild=0x103ddc430 | rchild=0x0 
+---	NODE[2]{0}: addr=0x103ddc430 | page=0x0 | father:0x103ddbd50 | lchild=0x0 | rchild=0x0 
+Makefile
+a.out
+a.out.dSYM
+alloc
+alloc2
+exportLib
+inc
+libft
+libft_malloc.so
+libft_malloc_x86_64_Darwin.so
+main.c
+main.o
+obj
+src
+test.c
+valgrind

@@ -29,6 +29,15 @@ void	show_alloc_mem()
 	ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pgePointers.lastTinyCtrl, pgePointers.lastTinyCtrl->pageAddr, pgePointers.lastTinyCtrl->pageAddr + pgePointers.lastTinyCtrl->allocatedSize, pgePointers.lastTinyCtrl->allocatedSize);
 }
 
+void	printTree2(t_mem_ctrl* root)
+{
+	if (!root)
+		return;
+	ft_printf("---	NODE[%d]{%lu}: addr=%p | page=%p | father:%p | lchild=%p | rchild=%p \n", checkDepth(root), root->allocatedSize, root, root->pageAddr, root->father, root->lchild, root->rchild);
+	printTree2(root->lchild);
+	printTree2(root->rchild);
+}
+
 void	printTree(t_mem_ctrl* root)
 {
 	int i;
@@ -56,7 +65,7 @@ void 	printLevels(t_mem_ctrl* node, int i)
 	j = 0;
 	if (i == checkDepth(node))
 	{
-		ft_printf("	NODE: pageAddr=%p | addr=%p | lchild=%p | rchild=%p |", node->pageAddr, node, node->lchild, node->rchild);
+		ft_printf("	NODE[%d]: pageAddr=%p | addr=%p | lchild=%p | rchild=%p |", i, node->pageAddr, node, node->lchild, node->rchild);
 		return;
 	}
 	printLevels(node->lchild, i);
@@ -75,7 +84,7 @@ void	printAll()
 	{
 		if (++i % 3 == 0)
 			ft_printf("\n	");	
-		ft_printf("| MCl=%p, PA=%p |->", tmp->pageAddr, tmp);
+		ft_printf("| MCl=%p, PA=%p |->",	tmp, tmp->pageAddr);
 		if (!tmp->next)
 			ft_printf("HEAP SIZE LEFT= %lu", tmp->allocatedSize);
 		tmp = tmp->next;

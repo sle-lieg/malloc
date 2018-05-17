@@ -129,6 +129,7 @@ void        replaceIfRoot(t_mem_ctrl* node);
  *      DEBUG.C
  **/
 void        show_alloc_mem();
+void			printTree2(t_mem_ctrl* root);
 void			printTree(t_mem_ctrl* root);
 void			printLevels(t_mem_ctrl* node, int i);
 void			printAll();
@@ -138,7 +139,7 @@ void			printAll();
  *      FREE.C
  **/
 void			free(void* ptr);;
-void			checkTiny(char* ptr);
+void			checkTiny(void* ptr);
 void			freeMemCtrl(t_mem_ctrl* ptr);
 void 			linkLostPrevNext(t_mem_ctrl* ptr);
 void			pushToLost(t_mem_ctrl* ptr);
