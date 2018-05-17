@@ -67,11 +67,7 @@ char		**ft_strsplit(const char *s, char c)
 {
 	char	**split;
 	int		nb_words;
-	int		i;
-	int		j;
 
-	j = 0;
-	i = 0;
 	if (!s || c < 32 || c > 126)
 		return (NULL);
 	nb_words = ft_count_words(s, c);
