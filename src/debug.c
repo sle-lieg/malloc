@@ -84,7 +84,7 @@ void	printAll()
 	{
 		if (++i % 3 == 0)
 			ft_printf("\n	");	
-		ft_printf("| MCl=%p, PA=%p |->",	tmp, tmp->pageAddr);
+		ft_printf("| MC%d=%p, PA=%p |->", tmp->free, tmp, tmp->pageAddr);
 		if (!tmp->next)
 			ft_printf("HEAP SIZE LEFT= %lu", tmp->allocatedSize);
 		tmp = tmp->next;

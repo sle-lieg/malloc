@@ -52,6 +52,7 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
 	}
 	setMemCtrl(newMemCtrl, memCtrlSplited);
+	// pgePointers.toReturn = newMemCtrl;
 	
 	return newMemCtrl;
 }
@@ -73,7 +74,7 @@ t_mem_ctrl*	splitMemory(size_t size)
 	pgePointers.toReturn->father = NULL;
 	pgePointers.toReturn->lchild = NULL;
 	pgePointers.toReturn->rchild = NULL;
-	// pgePointers.toReturn->free = FALSE;
+	pgePointers.toReturn->free = FALSE;
 	return newMemCtrl;
 }
 
@@ -96,6 +97,6 @@ t_mem_ctrl* popLostMemCtrl()
 		return NULL;
 	newMemCtrl = pgePointers.lost_mem_ctrl;
 	pgePointers.lost_mem_ctrl = pgePointers.lost_mem_ctrl->next;
-	// setMemCtrl(newMemCtrl, memCtrlSplited);
+	newMemCtrl->next = NULL;
 	return newMemCtrl;
 }

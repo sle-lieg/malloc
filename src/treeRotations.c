@@ -2,7 +2,7 @@
 
 void  rotateLeft(t_mem_ctrl* node)
 {
-	// ft_printf("Rotate left\n");
+	ft_printf("Rotate left\n");
    t_mem_ctrl* tmp;
 
    tmp = node->rchild;
@@ -12,7 +12,9 @@ void  rotateLeft(t_mem_ctrl* node)
 
 	if (node->father)
 	{
-		if (node->allocatedSize <= node->father->allocatedSize)
+		// if (node->allocatedSize <= node->father->allocatedSize)
+		// 	node->father->lchild = tmp;
+		if (node == node->father->lchild)
 			node->father->lchild = tmp;
 		else
 			node->father->rchild = tmp;		
@@ -26,7 +28,7 @@ void  rotateLeft(t_mem_ctrl* node)
 
 void  rotateRight(t_mem_ctrl* node)
 {
-	// ft_printf("Rotate right\n");
+	ft_printf("Rotate right\n");
 	
    t_mem_ctrl* tmp;
 
@@ -37,7 +39,9 @@ void  rotateRight(t_mem_ctrl* node)
 
 	if (node->father)
 	{
-		if (node->allocatedSize <= node->father->allocatedSize)
+		// if (node->allocatedSize <= node->father->allocatedSize)
+		// 	node->father->lchild = tmp;
+		if (node == node->father->lchild)
 			node->father->lchild = tmp;
 		else
 			node->father->rchild = tmp;		

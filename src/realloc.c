@@ -4,6 +4,7 @@
 
 void *realloc(void *ptr, size_t size)
 {
+	ft_printf("REALLOC(%p, %lu)", ptr, size);
 	// ft_printf("Realloc(%p, %lu)", ptr, size);
 	if (!ptr)
 		return (malloc(size));
@@ -49,7 +50,7 @@ void	checkSize(size_t size)
 		pgePointers.errors |= MMAP_BAD_ALLOC;
 		return;
 	}
-	strncpy(tmp, pgePointers.toReturn->pageAddr,
+	ft_memmove(tmp, pgePointers.toReturn->pageAddr,
 		pgePointers.toReturn->requiredSize);
 	free(pgePointers.toReturn->pageAddr);
 	pgePointers.toReturn = tmp;

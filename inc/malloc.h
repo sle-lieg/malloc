@@ -151,5 +151,11 @@ void*			realloc(void *ptr, size_t size);
 t_mem_ctrl* getMemCtrl(void* ptr);
 void			checkSize(size_t size);
 
+/**
+ *      REALLOCF.C
+ **/
+void*			reallocf(void *ptr, size_t size);
+// t_mem_ctrl* getMemCtrl(void* ptr);
+void			checkSizeF(size_t size);
 
 #endif

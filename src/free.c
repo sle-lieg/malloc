@@ -4,6 +4,7 @@
 //			implement it with multithreading
 void	free(void* ptr)
 {
+	ft_printf("Free(%p)\n", ptr);
 	if (!ptr)
 		return;
 	// if (pgePointers.firstTinyCtrl && (char*)ptr >= pgePointers.firstTinyCtrl->pageAddr
@@ -13,6 +14,8 @@ void	free(void* ptr)
 	// 	checkSmall(ptr);
 	// if (ptr >= pgePointers.firstLargeCtrl && ptr <= pgePointers.lastLargeCtrl)
 	// 	checkLarge(ptr);
+	printAll();
+	printTree2(pgePointers.rootTiny);
 }
 
 void	checkTiny(void* ptr)
@@ -33,6 +36,33 @@ void	checkTiny(void* ptr)
 	}
 }
 
+// void	freeMemCtrl(t_mem_ctrl* ptr)
+// {
+// 	t_mem_ctrl* tmp;
+
+// 	ptr->free = TRUE;
+// 	ptr->requiredSize = 0;
+// 	if (ptr->next && ptr->next->free == 1 && ptr->pageSerie == ptr->next->pageSerie)
+// 	{
+// 		// ft_printf("Link freed next\n", ptr);
+// 		tmp = ptr->next;
+// 		removeNode(tmp);
+// 		tmp->father ? checkBalance(tmp->father) : 0;
+// 		linkLostPrevNext(ptr);
+// 		pushToLost(tmp);
+// 	}
+// 	if (ptr->prev && ptr->prev->free == 1 && ptr->pageSerie == ptr->prev->pageSerie)
+// 	{
+// 		// ft_printf("Link freed prev\n", ptr);
+// 		tmp = ptr;
+// 		ptr = ptr->prev;
+// 		linkLostPrevNext(ptr);
+// 		pushToLost(tmp);
+// 	}
+// 	else
+// 		addNode(&pgePointers.rootTiny, ptr);
+// }
+
 void	freeMemCtrl(t_mem_ctrl* ptr)
 {
 	t_mem_ctrl* tmp;
@@ -41,22 +71,24 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 	ptr->requiredSize = 0;
 	if (ptr->next && ptr->next->free == 1 && ptr->pageSerie == ptr->next->pageSerie)
 	{
-		// ft_printf("Link freed next\n", ptr);
+		ft_printf("Link freed next\n", ptr);
 		tmp = ptr->next;
 		removeNode(tmp);
+		// tmp->father ? checkBalance(tmp->father) : 0;
 		linkLostPrevNext(ptr);
 		pushToLost(tmp);
 	}
 	if (ptr->prev && ptr->prev->free == 1 && ptr->pageSerie == ptr->prev->pageSerie)
 	{
-		// ft_printf("Link freed prev\n", ptr);		
+		ft_printf("Link freed prev\n", ptr);
 		tmp = ptr;
 		ptr = ptr->prev;
+		removeNode(ptr);
+		// ptr->father ? checkBalance(ptr->father) : 0;
 		linkLostPrevNext(ptr);
 		pushToLost(tmp);
 	}
-	else
-		addNode(&pgePointers.rootTiny, ptr);
+	addNode(&pgePointers.rootTiny, ptr);
 }
 
 void linkLostPrevNext(t_mem_ctrl* ptr)

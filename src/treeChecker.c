@@ -2,7 +2,7 @@
 
 void	findFreeBlock(t_mem_ctrl* node, size_t size)
 {
-	if (pgePointers.toReturn)
+	if (!node || pgePointers.toReturn)
 		return;
 	if (node->lchild && size < node->allocatedSize)
 		findFreeBlock(node->lchild, size);
@@ -14,6 +14,7 @@ void	findFreeBlock(t_mem_ctrl* node, size_t size)
 
 int   checkBalance(t_mem_ctrl* node)
 {
+	// ft_printf("CheckBalance\n");	
    int factor;
 
    factor = getHeight(node->lchild) - getHeight(node->rchild);
@@ -54,6 +55,7 @@ int	maxHeight(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB)
 
 void	checkHeight(t_mem_ctrl* node)
 {
+	ft_printf("CheckHeight\n");
 	if (!node)
 		return;
 	checkHeight(node->lchild);

@@ -3,17 +3,24 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/resource.h>
+#include <string.h>
+
 
 int main()
 {
-	struct rlimit test;
+	char* p1 = malloc(5);
 
-	getrlimit(RLIMIT_DATA, &test);
-	printf("soft: %llu hard: %llu\n", test.rlim_cur, test.rlim_max);
+	strncpy(p1, "toto\0", 5);
 
+	for (int i = 0; i < 5; ++i)
+		write(1, p1 + i, 1);
+	write(1, "\n", 1);
+	
+	char* p3 = realloc(p1, 1000);
+	for (int i = 0; i < 1000; ++i)
+		write(1, p3 + i, 1);
+	free(p3);
 	return (0);
-	// char* ptr1 = malloc(20);
-   // char* ptr2 = malloc(20);
    // char* ptr3 = malloc(20);
    // char* ptr4 = malloc(20);
    // char* ptr5 = malloc(20);

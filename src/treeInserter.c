@@ -2,7 +2,7 @@
 
 void	addNode(t_mem_ctrl** root, t_mem_ctrl* newNode)
 {
-	// ft_printf("Add Node\n");
+	ft_printf("Add Node(%p)\n", newNode);
 	if (!*root)
 	{
 		*root = newNode;
@@ -14,6 +14,8 @@ void	addNode(t_mem_ctrl** root, t_mem_ctrl* newNode)
 
 void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 {
+	ft_printf("RecursiveAdd\n");	
+	
 	if (newNode->allocatedSize <= node->allocatedSize)
 	{
 		if (node->lchild)
