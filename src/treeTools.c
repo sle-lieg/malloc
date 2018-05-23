@@ -3,11 +3,21 @@
 void	linkNodes(t_mem_ctrl* father, t_mem_ctrl* child)
 {
 	if (father && child && child->allocatedSize <= father->allocatedSize)
+	{
+		ft_printf(" LINK lchild");
 		father->lchild = child;
+	}
 	else if (father)
+	{
+		ft_printf(" LINK rchild");
+		
 		father->rchild = child;
-   if (child)
+	}
+	if (child)
+	{
+		ft_printf(" LINK lfath");
    	child->father = father;
+	}
 }
 
 void	swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)

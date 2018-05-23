@@ -74,7 +74,6 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 		ft_printf("Link freed next\n", ptr);
 		tmp = ptr->next;
 		removeNode(tmp);
-		// tmp->father ? checkBalance(tmp->father) : 0;
 		linkLostPrevNext(ptr);
 		pushToLost(tmp);
 	}
@@ -84,7 +83,6 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 		tmp = ptr;
 		ptr = ptr->prev;
 		removeNode(ptr);
-		// ptr->father ? checkBalance(ptr->father) : 0;
 		linkLostPrevNext(ptr);
 		pushToLost(tmp);
 	}

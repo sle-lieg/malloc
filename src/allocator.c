@@ -14,7 +14,7 @@ void*	getNewPage(t_mem_ctrl* pageMemCtrl, size_t size)
 	{
 		pageMemCtrl->pageAddr = tmp;
 		pageMemCtrl->allocatedSize = pgePointers.pageSize;
-		pageMemCtrl->free = TRUE;
+		// pageMemCtrl->free = TRUE;
 		pageMemCtrl->pageSerie = ++pgePointers.pageSerieCount;
 	}
 	return tmp;
@@ -36,7 +36,6 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 
 	if (!(newMemCtrl = popLostMemCtrl()))
 	{
-		// ft_printf("No pop lost MCTRL\n");
 		if (pgePointers.memCtrlSizeLeft < MEM_CTRL_SIZE)
 		{
 			pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;

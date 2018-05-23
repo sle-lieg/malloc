@@ -1,5 +1,14 @@
 #include "malloc.h"
 
+void	ft_swap(int* a, int* b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
 void  rotateLeft(t_mem_ctrl* node)
 {
 	ft_printf("Rotate left\n");
@@ -21,9 +30,8 @@ void  rotateLeft(t_mem_ctrl* node)
 	}
 	tmp ? tmp->father = node->father : 0;	
 	node->father = tmp;
-   // linkNodes(node, tmp->lchild);
-   // linkNodes(tmp, node->father);
-   // linkNodes(tmp, node);
+	if (tmp->height < node->height)
+		ft_swap(&(node->height), &(tmp->height));
 }
 
 void  rotateRight(t_mem_ctrl* node)
@@ -49,7 +57,8 @@ void  rotateRight(t_mem_ctrl* node)
 		// node->father->rchild = tmp;
 	tmp ? tmp->father = node->father : 0;	
 	node->father = tmp;
-
+	if (tmp->height < node->height)
+		ft_swap(&(node->height), &(tmp->height));
    // linkNodes(node, tmp->rchild);
    // linkNodes(tmp, node->father);
    // linkNodes(tmp, node);

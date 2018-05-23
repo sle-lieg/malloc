@@ -33,7 +33,7 @@ void	printTree2(t_mem_ctrl* root)
 {
 	if (!root)
 		return;
-	ft_printf("---	NODE[%d]{%lu}: addr=%p | page=%p | father:%p | lchild=%p | rchild=%p \n", checkDepth(root), root->allocatedSize, root, root->pageAddr, root->father, root->lchild, root->rchild);
+	ft_printf("---	N[%d][%d]{%lu}: addr=%p | page=%p | father:%p | lchild=%p | rchild=%p \n", checkDepth(root), root->height, root->allocatedSize, root, root->pageAddr, root->father, root->lchild, root->rchild);
 	printTree2(root->lchild);
 	printTree2(root->rchild);
 }
@@ -84,7 +84,7 @@ void	printAll()
 	{
 		if (++i % 3 == 0)
 			ft_printf("\n	");	
-		ft_printf("| MC%d=%p, PA=%p |->", tmp->free, tmp, tmp->pageAddr);
+		ft_printf("| [%d]{%lu}MC%d=%p, PA=%p |->",tmp->height, tmp->allocatedSize, tmp->free, tmp, tmp->pageAddr);
 		if (!tmp->next)
 			ft_printf("HEAP SIZE LEFT= %lu", tmp->allocatedSize);
 		tmp = tmp->next;

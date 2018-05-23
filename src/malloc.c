@@ -46,6 +46,7 @@ void	handleTiny(size_t size)
 	
 	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.
 	{
+		ft_printf("RESISING");
 		pgePointers.toReturn = createNewMemCtrl(pgePointers.lastTinyCtrl);
 		pgePointers.toReturn->free = FALSE;
 		getNewPage(pgePointers.toReturn, size);
@@ -61,7 +62,6 @@ void	handleTiny(size_t size)
 	}
 	if (size + 24 <= pgePointers.toReturn->allocatedSize)
 	{
-		// ft_printf("Spliting\n");		
 		addNode(&pgePointers.rootTiny, splitMemory(size));
 		// ft_printf("Out of add\n");
 	}
