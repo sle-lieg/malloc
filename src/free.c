@@ -99,6 +99,12 @@ void linkLostPrevNext(t_mem_ctrl* ptr)
 
 void	pushToLost(t_mem_ctrl* ptr)
 {
+	if (ptr == pgePointers.lastTinyCtrl)
+		pgePointers.lastTinyCtrl = pgePointers.lastTinyCtrl->prev;
+	// if (ptr == pgePointers.lastSmallCtrl)
+	// 	pgePointers.lastSmallCtrl -= MEM_CTRL_SIZE;
+	// if (ptr == pgePointers.lastLargeCtrl)
+	// 	pgePointers.lastLargeCtrl -= MEM_CTRL_SIZE;
 	ptr->pageAddr = NULL;
 	ptr->allocatedSize = 0;
 	ptr->requiredSize = 0;

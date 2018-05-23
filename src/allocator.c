@@ -34,10 +34,13 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 {
 	t_mem_ctrl* newMemCtrl;
 
+	ft_printf(" CTRL CREATE ");
 	if (!(newMemCtrl = popLostMemCtrl()))
 	{
+		ft_printf(" NO POP ");
 		if (pgePointers.memCtrlSizeLeft < MEM_CTRL_SIZE)
 		{
+			ft_printf(" NO MEM ");
 			pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
 			// if (!(pgePointers.lastTinyCtrl->next = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
 			if (!(newMemCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
@@ -47,9 +50,14 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 		}
 		else
 			newMemCtrl = (t_mem_ctrl*)((char*)pgePointers.lastTinyCtrl + MEM_CTRL_SIZE);
-		pgePointers.lastTinyCtrl = newMemCtrl;
+		// pgePointers.lastTinyCtrl = newMemCtrl;
 		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
 	}
+	else
+		ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
+
+	pgePointers.lastTinyCtrl = newMemCtrl;
+	
 	setMemCtrl(newMemCtrl, memCtrlSplited);
 	// pgePointers.toReturn = newMemCtrl;
 	

@@ -28,13 +28,14 @@ t_mem_ctrl*	getInOrderPredecessor(t_mem_ctrl* node)
 		// ft_printf("Predecessor 2\n");		
 		while (node->rchild)
 		{
-			if (node->lchild && node->lchild->height != node->height - 1)
+			if (!node->lchild || (node->lchild && node->lchild->height != node->height - 1))
 				node->height--;
 			node = node->rchild;
 		}
 		if (node->lchild)
 			linkNodes(node->father, node->lchild);
-		// node->father->rchild = NULL; // ???????????
+		else
+			node->father->rchild = NULL;
 	}
 	return node;
 }
@@ -50,7 +51,7 @@ t_mem_ctrl*	getInOrderSuccessor(t_mem_ctrl* node)
 	{
 		while (node->lchild)
 		{
-			if (node->rchild && node->rchild->height != node->height - 1)
+			if (!node->rchild || (node->rchild && node->rchild->height != node->height - 1))
 				node->height--;
 			node = node->lchild;
 		}
@@ -58,7 +59,8 @@ t_mem_ctrl*	getInOrderSuccessor(t_mem_ctrl* node)
 		
 		if (node->rchild)
 			linkNodes(node->father, node->rchild);
-		// node->father->lchild = NULL; // ???????????
+		else
+			node->father->lchild = NULL;
 	}
 	return node;
 }

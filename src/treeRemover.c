@@ -6,6 +6,7 @@ void	recursiveBalance(t_mem_ctrl* node)
 
 	if (!node)
 		return;
+	node->height = maxHeight(node->lchild, node->rchild) + 1;
    factor = getHeight(node->lchild) - getHeight(node->rchild);
 	if (factor > 1)
 	{
@@ -83,12 +84,16 @@ void	removeParentOfChildren(t_mem_ctrl* node)
 			swapNodes(tmp, node);
 			// ft_printf("After2: N=%p F=%p LC=%p RC=%p\n", node, node->father, node->lchild, node->rchild);
 		}
+		tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1;
 	}
 	else
 	{
 		tmp = getInOrderSuccessor(node->rchild);
 		if (node->rchild != tmp)
+		{
 			swapNodes(tmp, node);		
+		}
+		tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1;
 	}
 	if (node == pgePointers.rootTiny)
 	{

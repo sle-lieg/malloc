@@ -47,7 +47,11 @@ void	handleTiny(size_t size)
 	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.
 	{
 		ft_printf("RESISING");
-		pgePointers.toReturn = createNewMemCtrl(pgePointers.lastTinyCtrl);
+		if (!(pgePointers.toReturn = createNewMemCtrl(pgePointers.lastTinyCtrl)))
+		{
+			ft_printf("ERROR CREATE NMCTRL\n");
+			return;
+		}
 		pgePointers.toReturn->free = FALSE;
 		getNewPage(pgePointers.toReturn, size);
 		if (pgePointers.errors)
@@ -58,7 +62,7 @@ void	handleTiny(size_t size)
 	else
 	{
 		removeNode(pgePointers.toReturn);
-		checkHeight(pgePointers.rootTiny);
+		// checkHeight(pgePointers.rootTiny);
 	}
 	if (size + 24 <= pgePointers.toReturn->allocatedSize)
 	{
