@@ -99,8 +99,8 @@ void linkLostPrevNext(t_mem_ctrl* ptr)
 
 void	pushToLost(t_mem_ctrl* ptr)
 {
-	if (ptr == pgePointers.lastTinyCtrl)
-		pgePointers.lastTinyCtrl = pgePointers.lastTinyCtrl->prev;
+	// if (ptr == pgePointers.lastTinyCtrl)
+	// 	pgePointers.lastTinyCtrl = pgePointers.lastTinyCtrl->prev;
 	// if (ptr == pgePointers.lastSmallCtrl)
 	// 	pgePointers.lastSmallCtrl -= MEM_CTRL_SIZE;
 	// if (ptr == pgePointers.lastLargeCtrl)
@@ -112,7 +112,7 @@ void	pushToLost(t_mem_ctrl* ptr)
 	ptr->height = 0;
 	ptr->lchild = NULL;
 	ptr->rchild = NULL;
-	ptr->prev = NULL;
+	// ptr->prev = NULL;
 	ptr->next = pgePointers.lost_mem_ctrl;
 	pgePointers.lost_mem_ctrl = ptr;
 }
