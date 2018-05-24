@@ -14,8 +14,8 @@ void	free(void* ptr)
 	// 	checkSmall(ptr);
 	// if (ptr >= pgePointers.firstLargeCtrl && ptr <= pgePointers.lastLargeCtrl)
 	// 	checkLarge(ptr);
-	// printAll();
-	// printTree2(pgePointers.rootTiny);
+	printAll();
+	printTree2(pgePointers.rootTiny);
 }
 
 void	checkTiny(void* ptr)

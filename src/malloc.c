@@ -19,8 +19,8 @@ void*	malloc(size_t size)
 	// 	handleLarge(size);
 	if (pgePointers.errors)
 		return NULL;
-	// printAll();
-	// printTree2(pgePointers.rootTiny);
+	printAll();
+	printTree2(pgePointers.rootTiny);
 	// show_alloc_mem();
 	return pgePointers.toReturn->pageAddr;
 }
