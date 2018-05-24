@@ -13,7 +13,7 @@
 #define MEM_ALIGN_SHIFT 4
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN 16
-#define NB_PAGES 10
+#define NB_PAGES 1
 
 #define MMAP_BAD_ALLOC 0x1
 
@@ -124,6 +124,7 @@ void        rotateRight(t_mem_ctrl* node);
 void        linkNodes(t_mem_ctrl* father, t_mem_ctrl* child);
 void        swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node);
 void        replaceIfRoot(t_mem_ctrl* node);
+int			isLastMemCtrl(t_mem_ctrl* ptr);
 
 /**
  *      DEBUG.C
@@ -133,7 +134,6 @@ void			printTree2(t_mem_ctrl* root);
 void			printTree(t_mem_ctrl* root);
 void			printLevels(t_mem_ctrl* node, int i);
 void			printAll();
-
 
 /**
  *      FREE.C

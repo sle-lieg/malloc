@@ -34,7 +34,7 @@ void	recursiveBalance(t_mem_ctrl* node)
 
 void	removeNode(t_mem_ctrl* node)
 {
-	ft_printf("RemoveNode(%p)\n", node);	
+	// ft_printf("RemoveNode(%p)\n", node);	
 	if (!node->lchild && !node->rchild)
 		removeLeaf(node);
 	else if (node->lchild && node->rchild)
@@ -52,7 +52,7 @@ void	removeNode(t_mem_ctrl* node)
 
 void	removeLeaf(t_mem_ctrl* node)
 {
-	ft_printf("Remove leaf\n");
+	// ft_printf("Remove leaf\n");
 	if (node == pgePointers.rootTiny)
 		pgePointers.rootTiny = NULL;
 	else if (node == node->father->lchild)
@@ -73,7 +73,7 @@ void	removeLeaf(t_mem_ctrl* node)
 
 void	removeParentOfChildren(t_mem_ctrl* node)
 {
-	ft_printf("Remove childrens\n");
+	// ft_printf("Remove childrens\n");
 	t_mem_ctrl* tmp;
 
 	if (node->lchild->height >= node->rchild->height)
@@ -103,7 +103,7 @@ void	removeParentOfChildren(t_mem_ctrl* node)
 
 void	removeParentOfOrphan(t_mem_ctrl* node)
 {
-	ft_printf("Remove orphan\n");
+	// ft_printf("Remove orphan\n");
 	// printTree2(pgePointers.rootTiny);
 	if (node->lchild)
 		linkNodes(node->father, node->lchild);

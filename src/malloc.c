@@ -19,8 +19,9 @@ void*	malloc(size_t size)
 	// 	handleLarge(size);
 	if (pgePointers.errors)
 		return NULL;
-	printAll();
-	printTree2(pgePointers.rootTiny);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
+	// show_alloc_mem();
 	return pgePointers.toReturn->pageAddr;
 }
 
@@ -46,16 +47,16 @@ void	handleTiny(size_t size)
 	
 	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.
 	{
-		ft_printf("RESISING");
+		// ft_printf("RESISING");
 		if (!(pgePointers.toReturn = createNewMemCtrl(pgePointers.lastTinyCtrl)))
 		{
-			ft_printf("ERROR CREATE NMCTRL\n");
+			// ft_printf("ERROR CREATE NMCTRL\n");
 			return;
 		}
 		pgePointers.toReturn->free = FALSE;
 		getNewPage(pgePointers.toReturn, size);
 		if (pgePointers.errors)
-			return;
+			return;			
 		// pgePointers.toReturn = pgePointers.lastTinyCtrl;
 		// addNode(&pgePointers.rootTiny, pgePointers.toReturn);
 	}
@@ -64,12 +65,12 @@ void	handleTiny(size_t size)
 		removeNode(pgePointers.toReturn);
 		// checkHeight(pgePointers.rootTiny);
 	}
-	if (size + 24 <= pgePointers.toReturn->allocatedSize)
+	if (size + 32 <= pgePointers.toReturn->allocatedSize)
 	{
 		addNode(&pgePointers.rootTiny, splitMemory(size));
 		// ft_printf("Out of add\n");
 	}
-		// printTree2(pgePointers.rootTiny);	
+		// printTree2(pgePointers.rootTiny);
 }
 
 int	initRootTiny(size_t size)

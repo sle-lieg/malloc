@@ -51,7 +51,7 @@ void	checkSize(size_t size)
 		return;
 	}
 	ft_memmove(tmp, pgePointers.toReturn->pageAddr,
-		pgePointers.toReturn->requiredSize);
+		pgePointers.toReturn->allocatedSize);
 	free(pgePointers.toReturn->pageAddr);
 	pgePointers.toReturn = tmp;
 }

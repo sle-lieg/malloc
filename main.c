@@ -1,4 +1,4 @@
-// #include "malloc.h"
+// #include "inc/malloc.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -9,16 +9,11 @@
 int main()
 {
 	char* p1 = malloc(5);
-
-	strncpy(p1, "toto\0", 5);
-
-	for (int i = 0; i < 5; ++i)
-		write(1, p1 + i, 1);
-	write(1, "\n", 1);
+	char* p2 = malloc(31000);
+	char* p3 = malloc(1000);
 	
-	char* p3 = realloc(p1, 1000);
-	for (int i = 0; i < 1000; ++i)
-		write(1, p3 + i, 1);
+	free(p1);
+	free(p2);
 	free(p3);
 	return (0);
    // char* ptr3 = malloc(20);

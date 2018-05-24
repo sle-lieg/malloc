@@ -3,7 +3,10 @@
 void*	getNewPage(t_mem_ctrl* pageMemCtrl, size_t size)
 {
 	void* tmp;
+	size_t totPagesSize;
 
+	totPagesSize = (size % pgePointers.pageSize) ?
+		((size >> 12) << 12) + pgePointers.pageSize : size;
 	tmp = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (tmp == MAP_FAILED)
 	{
@@ -13,7 +16,7 @@ void*	getNewPage(t_mem_ctrl* pageMemCtrl, size_t size)
 	if (pageMemCtrl)
 	{
 		pageMemCtrl->pageAddr = tmp;
-		pageMemCtrl->allocatedSize = pgePointers.pageSize;
+		pageMemCtrl->allocatedSize = totPagesSize;
 		// pageMemCtrl->free = TRUE;
 		pageMemCtrl->pageSerie = ++pgePointers.pageSerieCount;
 	}
@@ -34,13 +37,14 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 {
 	t_mem_ctrl* newMemCtrl;
 
-	ft_printf(" CTRL CREATE ");
+	// ft_printf(" CTRL CREATE ");
 	if (!(newMemCtrl = popLostMemCtrl()))
 	{
-		ft_printf(" NO POP ");
+		// ft_printf(" NO POP ");
 		if (pgePointers.memCtrlSizeLeft < MEM_CTRL_SIZE)
 		{
-			ft_printf(" NO MEM ");
+			// ft_printf(" NO MEM ");
+			// show_alloc_mem();
 			pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
 			// if (!(pgePointers.lastTinyCtrl->next = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
 			if (!(newMemCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
@@ -53,9 +57,8 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 		pgePointers.lastTinyCtrl = newMemCtrl;
 		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
 	}
-	else
-		ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
-
+	// else
+		// ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
 	
 	setMemCtrl(newMemCtrl, memCtrlSplited);
 	// pgePointers.toReturn = newMemCtrl;

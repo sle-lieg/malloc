@@ -55,7 +55,7 @@ int	maxHeight(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB)
 
 void	checkHeight(t_mem_ctrl* node)
 {
-	ft_printf("CheckHeight\n");
+	// ft_printf("CheckHeight\n");
 	if (!node)
 		return;
 	checkHeight(node->lchild);

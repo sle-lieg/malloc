@@ -14,8 +14,8 @@ void	free(void* ptr)
 	// 	checkSmall(ptr);
 	// if (ptr >= pgePointers.firstLargeCtrl && ptr <= pgePointers.lastLargeCtrl)
 	// 	checkLarge(ptr);
-	printAll();
-	printTree2(pgePointers.rootTiny);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
 }
 
 void	checkTiny(void* ptr)
@@ -71,7 +71,7 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 	ptr->requiredSize = 0;
 	if (ptr->next && ptr->next->free == 1 && ptr->pageSerie == ptr->next->pageSerie)
 	{
-		ft_printf("Link freed next\n", ptr);
+		// ft_printf("Link freed next\n", ptr);
 		tmp = ptr->next;
 		removeNode(tmp);
 		linkLostPrevNext(ptr);
@@ -79,7 +79,7 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 	}
 	if (ptr->prev && ptr->prev->free == 1 && ptr->pageSerie == ptr->prev->pageSerie)
 	{
-		ft_printf("Link freed prev\n", ptr);
+		// ft_printf("Link freed prev\n", ptr);
 		tmp = ptr;
 		ptr = ptr->prev;
 		removeNode(ptr);
@@ -95,16 +95,12 @@ void linkLostPrevNext(t_mem_ctrl* ptr)
 	if (ptr->next->next)
 		ptr->next->next->prev = ptr;
 	ptr->next = ptr->next->next;
+	if (pgePointers.lastTinyCtrl == ptr)
+		pgePointers.lastTinyCtrl--;
 }
 
 void	pushToLost(t_mem_ctrl* ptr)
 {
-	// if (ptr == pgePointers.lastTinyCtrl)
-	// 	pgePointers.lastTinyCtrl = pgePointers.lastTinyCtrl->prev;
-	// if (ptr == pgePointers.lastSmallCtrl)
-	// 	pgePointers.lastSmallCtrl -= MEM_CTRL_SIZE;
-	// if (ptr == pgePointers.lastLargeCtrl)
-	// 	pgePointers.lastLargeCtrl -= MEM_CTRL_SIZE;
 	ptr->pageAddr = NULL;
 	ptr->allocatedSize = 0;
 	ptr->requiredSize = 0;
@@ -112,7 +108,7 @@ void	pushToLost(t_mem_ctrl* ptr)
 	ptr->height = 0;
 	ptr->lchild = NULL;
 	ptr->rchild = NULL;
-	// ptr->prev = NULL;
+	ptr->prev = NULL;
 	ptr->next = pgePointers.lost_mem_ctrl;
 	pgePointers.lost_mem_ctrl = ptr;
 }

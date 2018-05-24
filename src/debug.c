@@ -20,7 +20,7 @@ void	show_alloc_mem()
 		memAlloc: %d. memRequired: %d octets\n",\
 		tmp,\
 		tmp->pageAddr,\
-		tmp->pageAddr + tmp->requiredSize,\
+		tmp->pageAddr + tmp->allocatedSize,\
 		tmp->allocatedSize,\
 		tmp->requiredSize);
 

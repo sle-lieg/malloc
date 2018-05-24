@@ -1,6 +1,14 @@
 {
-    "files.associations": {
-        "stdio.h": "c",
-        "malloc.h": "c"
-    }
+	"files.associations": {
+		"stdio.h": "c",
+		"malloc.h": "c",
+		"__split_buffer": "c",
+		"deque": "c",
+		"initializer_list": "c",
+		"iterator": "c",
+		"memory": "c",
+		"queue": "c",
+		"utility": "c",
+		"vector": "c"
+	}
 }
