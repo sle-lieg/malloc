@@ -3,10 +3,12 @@
 void	recursiveBalance(t_mem_ctrl* node)
 {
 	int factor;
-	ft_printf(" Recursive Balance ");
 
 	if (!node)
 		return;
+	
+	ft_printf(" Recursive Balance ");
+
 	node->height = maxHeight(node->lchild, node->rchild) + 1;
    factor = getHeight(node->lchild) - getHeight(node->rchild);
 	if (factor > 1)
@@ -53,7 +55,7 @@ void	removeNode(t_mem_ctrl* node)
 
 void	removeLeaf(t_mem_ctrl* node)
 {
-	ft_printf("Remove leaf\n");
+	ft_printf("Remove : leaf %p, lchild %p, rchild %p, fath %p\n", node, node->lchild, node->rchild, node->father);
 	if (node == pgePointers.rootTiny)
 		pgePointers.rootTiny = NULL;
 	else if (node == node->father->lchild)

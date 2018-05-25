@@ -90,6 +90,8 @@ void	printAll()
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
+	ft_printf("*** Last Tiny: %p, lchild: %p, rchild: %p, fath: %p\n", pgePointers.lastTinyCtrl, pgePointers.lastTinyCtrl->lchild, pgePointers.lastTinyCtrl->rchild, pgePointers.lastTinyCtrl->father);
+	ft_printf("\n");	
 }
 
 // void 	printLevels(t_mem_ctrl* node, int i)

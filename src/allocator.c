@@ -53,12 +53,20 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 			// if (!newMemCtrl->next = getNewPage(NULL, )
 		}
 		else
-			newMemCtrl = (t_mem_ctrl*)((char*)pgePointers.lastTinyCtrl + MEM_CTRL_SIZE);
+		{
+			ft_printf("- Last Tiny %p ", pgePointers.lastTinyCtrl);
+			newMemCtrl = pgePointers.lastTinyCtrl + 1;
+			ft_printf("+ New Mem %p\n", pgePointers.lastTinyCtrl + 1);			
+		}
 		pgePointers.lastTinyCtrl = newMemCtrl;
 		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
 	}
-	// else
-		// ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
+	else
+	{
+		if (newMemCtrl == pgePointers.lastTinyCtrl + 1)
+			pgePointers.lastTinyCtrl++;
+		ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
+	}
 	
 	setMemCtrl(newMemCtrl, memCtrlSplited);
 	// pgePointers.toReturn = newMemCtrl;
@@ -80,7 +88,7 @@ t_mem_ctrl*	splitMemory(size_t size)
 	// pgePointers.toReturn->next = newMemCtrl;
 	pgePointers.toReturn->requiredSize = pgePointers.size;
 	pgePointers.toReturn->allocatedSize = size;
-	pgePointers.toReturn->father = NULL;
+	pgePointers.toReturn->father = NULL; //TODO: reseting to NULL ??
 	pgePointers.toReturn->lchild = NULL;
 	pgePointers.toReturn->rchild = NULL;
 	pgePointers.toReturn->free = FALSE;

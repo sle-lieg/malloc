@@ -110,6 +110,7 @@ void	pushToLost(t_mem_ctrl* ptr)
 	ptr->requiredSize = 0;
 	ptr->pageSerie = 0;
 	ptr->height = 0;
+	ptr->father = NULL;	
 	ptr->lchild = NULL;
 	ptr->rchild = NULL;
 	ptr->prev = NULL;
