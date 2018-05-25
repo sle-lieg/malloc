@@ -15,10 +15,10 @@ void *realloc(void *ptr, size_t size)
 
 		// ft_printf("(old = %lu)\n", pgePointers.toReturn->allocatedSize);
 
-		checkSize(size);
-		if (pgePointers.errors)
-			return NULL;
-		return (pgePointers.toReturn->pageAddr);		
+		return checkSize(size);
+		// if (pgePointers.errors)
+		// 	return NULL;
+		// return (pgePointers.toReturn->pageAddr);
 	}
 }
 // TODO: multi threads
@@ -36,22 +36,22 @@ t_mem_ctrl* getMemCtrl(void* ptr)
 	return NULL;
 }
 
-void	checkSize(size_t size)
+void*	checkSize(size_t size)
 {
-	void* tmp;
+	void*			tmp;
+	t_mem_ctrl* toFree;
 
-	if (size <= pgePointers.toReturn->allocatedSize)
+	toFree = pgePointers.toReturn;
+	if (size <= toFree->allocatedSize)
 	{
-		pgePointers.toReturn->requiredSize = size;
-		return;
+		toFree->requiredSize = size;
+		return toFree->pageAddr;
 	}
 	if (!(tmp = malloc(size)))
-	{
-		pgePointers.errors |= MMAP_BAD_ALLOC;
-		return;
-	}
-	ft_memmove(tmp, pgePointers.toReturn->pageAddr,
-		pgePointers.toReturn->allocatedSize);
-	free(pgePointers.toReturn->pageAddr);
-	pgePointers.toReturn = tmp;
+		return NULL;
+	ft_memmove(tmp, toFree->pageAddr,
+		toFree->requiredSize);
+	free(toFree->pageAddr);
+	return tmp;
+	// pgePointers.toReturn = tmp;
 }

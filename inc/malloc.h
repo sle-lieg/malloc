@@ -13,7 +13,7 @@
 #define MEM_ALIGN_SHIFT 4
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN 16
-#define NB_PAGES 1
+#define NB_PAGES 10
 
 #define MMAP_BAD_ALLOC 0x1
 
@@ -149,7 +149,7 @@ void			pushToLost(t_mem_ctrl* ptr);
  **/
 void*			realloc(void *ptr, size_t size);
 t_mem_ctrl* getMemCtrl(void* ptr);
-void			checkSize(size_t size);
+void*			checkSize(size_t size);
 
 /**
  *      REALLOCF.C

@@ -40,10 +40,10 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 	// ft_printf(" CTRL CREATE ");
 	if (!(newMemCtrl = popLostMemCtrl()))
 	{
-		// ft_printf(" NO POP ");
+		ft_printf(" NO POP ");
 		if (pgePointers.memCtrlSizeLeft < MEM_CTRL_SIZE)
 		{
-			// ft_printf(" NO MEM ");
+			ft_printf(" NO MEM ");
 			// show_alloc_mem();
 			pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
 			// if (!(pgePointers.lastTinyCtrl->next = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))

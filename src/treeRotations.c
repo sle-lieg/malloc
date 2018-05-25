@@ -11,7 +11,7 @@ void	ft_swap(int* a, int* b)
 
 void  rotateLeft(t_mem_ctrl* node)
 {
-	// ft_printf("Rotate left\n");
+	ft_printf("Rotate left\n");
    t_mem_ctrl* tmp;
 
    tmp = node->rchild;
@@ -25,8 +25,6 @@ void  rotateLeft(t_mem_ctrl* node)
 
 	if (node->father)
 	{
-		// if (node->allocatedSize <= node->father->allocatedSize)
-		// 	node->father->lchild = tmp;
 		if (node == node->father->lchild)
 			node->father->lchild = tmp;
 		else
@@ -36,15 +34,12 @@ void  rotateLeft(t_mem_ctrl* node)
 	node->father = tmp;
 	
 	node->height = maxHeight(node->lchild, node->rchild) + 1;
-	tmp ? tmp->height = maxHeight(node->lchild, node->rchild) + 1 : 0;
-	
-	// if (tmp->height < node->height)
-	// 	ft_swap(&(node->height), &(tmp->height));
+	tmp ? tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1 : 0;
 }
 
 void  rotateRight(t_mem_ctrl* node)
 {
-	// ft_printf("Rotate right\n");
+	ft_printf("Rotate right\n");
 	
    t_mem_ctrl* tmp;
 
@@ -69,7 +64,5 @@ void  rotateRight(t_mem_ctrl* node)
 	node->father = tmp;
 
 	node->height = maxHeight(node->lchild, node->rchild) + 1;
-	tmp ? tmp->height = maxHeight(node->lchild, node->rchild) + 1 : 0;
-	// if (tmp->height < node->height)
-	// 	ft_swap(&(node->height), &(tmp->height));
+	tmp ? tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1 : 0;
 }
