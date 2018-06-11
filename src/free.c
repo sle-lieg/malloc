@@ -95,12 +95,6 @@ void linkLostPrevNext(t_mem_ctrl* ptr)
 	if (ptr->next->next)
 		ptr->next->next->prev = ptr;
 	ptr->next = ptr->next->next;
-	if (pgePointers.lastTinyCtrl == ptr)
-	{
-		ft_printf(" DECR %p ", pgePointers.lastTinyCtrl);
-		pgePointers.lastTinyCtrl--;
-		ft_printf(" -> %p ", pgePointers.lastTinyCtrl);		
-	}
 }
 
 void	pushToLost(t_mem_ctrl* ptr)
@@ -116,6 +110,10 @@ void	pushToLost(t_mem_ctrl* ptr)
 	ptr->prev = NULL;
 	ptr->next = pgePointers.lost_mem_ctrl;
 	pgePointers.lost_mem_ctrl = ptr;
+	if (pgePointers.lastTinyCtrl == ptr)
+	{
+		pgePointers.lastTinyCtrl--;
+	}
 }
 
 // void	freeMemCtrl(t_mem_ctrl* ptr)

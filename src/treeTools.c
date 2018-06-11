@@ -2,6 +2,26 @@
 
 void	linkNodes(t_mem_ctrl* father, t_mem_ctrl* child)
 {
+	if (father && child && father->lchild == child->father)
+	{
+		// ft_printf(" LINK lchild");
+		father->lchild = child;
+	}
+	else if (father)
+	{
+		// ft_printf(" LINK rchild");
+		
+		father->rchild = child;
+	}
+	if (child)
+	{
+		// ft_printf(" LINK lfath");
+   	child->father = father;
+	}
+}
+
+void  addLinks(t_mem_ctrl* father, t_mem_ctrl* child)
+{
 	if (father && child && child->allocatedSize <= father->allocatedSize)
 	{
 		// ft_printf(" LINK lchild");
@@ -22,10 +42,10 @@ void	linkNodes(t_mem_ctrl* father, t_mem_ctrl* child)
 
 void	swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)
 {
-	if (predecessor->lchild)
-		linkNodes(predecessor->father, predecessor->lchild);
-	if (predecessor->rchild)
-		linkNodes(predecessor->father, predecessor->rchild);
+	// if (predecessor->lchild)
+	// 	linkNodes(predecessor->father, predecessor->lchild);
+	// if (predecessor->rchild)
+	// 	linkNodes(predecessor->father, predecessor->rchild);
 	predecessor->lchild = node->lchild;
 	predecessor->rchild = node->rchild;
 	predecessor->father = node->father;

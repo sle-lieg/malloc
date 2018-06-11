@@ -125,6 +125,7 @@ void        linkNodes(t_mem_ctrl* father, t_mem_ctrl* child);
 void        swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node);
 void        replaceIfRoot(t_mem_ctrl* node);
 int			isLastMemCtrl(t_mem_ctrl* ptr);
+void        addLinks(t_mem_ctrl* father, t_mem_ctrl* child);
 
 /**
  *      DEBUG.C

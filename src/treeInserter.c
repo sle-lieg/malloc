@@ -22,7 +22,7 @@ void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 			recursiveAdd(node->lchild, newNode);
 		else
 		{
-			linkNodes(node, newNode);
+			addLinks(node, newNode);
 			newNode->height = 1;
 			newNode->free = TRUE;			
 		}
@@ -33,7 +33,7 @@ void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 			recursiveAdd(node->rchild, newNode);
 		else
 		{
-			linkNodes(node, newNode);
+			addLinks(node, newNode);
 			newNode->height = 1;
 			newNode->free = TRUE;
 		}

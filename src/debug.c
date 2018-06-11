@@ -58,11 +58,11 @@ void	printTree(t_mem_ctrl* root)
 
 void 	printLevels(t_mem_ctrl* node, int i)
 {
-	int j;
+	// int j;
 
 	if (!node)
 		return;
-	j = 0;
+	// j = 0;
 	if (i == checkDepth(node))
 	{
 		ft_printf("	NODE[%d]: pageAddr=%p | addr=%p | lchild=%p | rchild=%p |", i, node->pageAddr, node, node->lchild, node->rchild);
