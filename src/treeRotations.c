@@ -40,7 +40,7 @@ void  rotateLeft(t_mem_ctrl* node)
 void  rotateRight(t_mem_ctrl* node)
 {
 	ft_printf("Rotate right\n");
-	
+
    t_mem_ctrl* tmp;
 
    tmp = node->lchild;

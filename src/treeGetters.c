@@ -25,7 +25,7 @@ t_mem_ctrl*	getInOrderPredecessor(t_mem_ctrl* node)
 	}
 	else
 	{
-		// ft_printf("Predecessor 2\n");		
+		// ft_printf("Predecessor 2\n");
 		while (node->rchild)
 		{
 			if (!node->lchild || (node->lchild && node->lchild->height != node->height - 1))

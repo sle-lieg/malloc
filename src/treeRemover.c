@@ -60,13 +60,13 @@ void	removeLeaf(t_mem_ctrl* node)
 		pgePointers.rootTiny = NULL;
 	else if (node == node->father->lchild)
 	{
-		ft_printf("Remove left leaf\n");		
+		// ft_printf("Remove left leaf\n");		
 		node->father->lchild = NULL;
 		node->father->height = node->father->rchild ? node->father->height : 1;
 	}
 	else if (node == node->father->rchild)
 	{
-		ft_printf("Remove right leaf\n");
+		// ft_printf("Remove right leaf\n");
 		node->father->rchild = NULL;
 		node->father->height = node->father->lchild ? node->father->height : 1;		
 	}

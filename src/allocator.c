@@ -37,7 +37,11 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 {
 	t_mem_ctrl* newMemCtrl;
 
-	// ft_printf(" CTRL CREATE ");
+	ft_printf(" CTRL CREATE ");
+
+	printLosts();
+	ft_printf("- Last Tiny %p \n", pgePointers.lastTinyCtrl);
+
 	if (!(newMemCtrl = popLostMemCtrl()))
 	{
 		ft_printf(" NO POP ");
@@ -54,9 +58,9 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 		}
 		else
 		{
-			ft_printf("- Last Tiny %p ", pgePointers.lastTinyCtrl);
+			// ft_printf("- Last Tiny %p ", pgePointers.lastTinyCtrl);
 			newMemCtrl = pgePointers.lastTinyCtrl + 1;
-			ft_printf("+ New Mem %p\n", pgePointers.lastTinyCtrl + 1);			
+			// ft_printf("+ New Mem %p\n", pgePointers.lastTinyCtrl + 1);
 		}
 		pgePointers.lastTinyCtrl = newMemCtrl;
 		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
@@ -67,10 +71,10 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 			pgePointers.lastTinyCtrl++;
 		ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
 	}
-	
+
 	setMemCtrl(newMemCtrl, memCtrlSplited);
 	// pgePointers.toReturn = newMemCtrl;
-	
+
 	return newMemCtrl;
 }
 
@@ -97,13 +101,22 @@ t_mem_ctrl*	splitMemory(size_t size)
 
 void	setMemCtrl(t_mem_ctrl* newMemCtrl, t_mem_ctrl* memCtrlSplited)
 {
-	newMemCtrl->prev = memCtrlSplited;
-	newMemCtrl->next = memCtrlSplited->next;
-	memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
-	memCtrlSplited->next = newMemCtrl;
-	// pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
-	newMemCtrl->free = TRUE;
-	newMemCtrl->pageSerie = memCtrlSplited->pageSerie;	
+	// if (newMemCtrl == memCtrlSplited)
+	// {
+	// 	newMemCtrl->prev = getLastMemCtrl();
+	// 	newMemCtrl->next = NULL;
+	// 	newMemCtrl->prev->next = newMemCtrl;
+	// }
+	// else
+	// {
+		newMemCtrl->prev = memCtrlSplited;
+		newMemCtrl->next = memCtrlSplited->next;
+		memCtrlSplited->next ? memCtrlSplited->next->prev = newMemCtrl : 0;
+		memCtrlSplited->next = newMemCtrl;
+		// pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
+		newMemCtrl->free = TRUE;
+		newMemCtrl->pageSerie = memCtrlSplited->pageSerie;
+	// }
 }
 
 t_mem_ctrl* popLostMemCtrl()

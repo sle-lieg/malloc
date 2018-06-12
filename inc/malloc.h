@@ -135,6 +135,7 @@ void			printTree2(t_mem_ctrl* root);
 void			printTree(t_mem_ctrl* root);
 void			printLevels(t_mem_ctrl* node, int i);
 void			printAll();
+void			printLosts();
 
 /**
  *      FREE.C

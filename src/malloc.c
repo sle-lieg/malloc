@@ -50,7 +50,7 @@ void	handleTiny(size_t size)
 		// ft_printf("RESISING");
 		if (!(pgePointers.toReturn = createNewMemCtrl(pgePointers.lastTinyCtrl)))
 		{
-			// ft_printf("ERROR CREATE NMCTRL\n");
+			ft_printf("ERROR CREATE NMCTRL\n");
 			return;
 		}
 		pgePointers.toReturn->free = FALSE;

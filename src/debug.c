@@ -94,6 +94,22 @@ void	printAll()
 	ft_printf("\n");	
 }
 
+void 	printLosts()
+{
+	t_mem_ctrl* tmp;
+	ft_printf("LOSTS: ");
+
+	tmp = pgePointers.lost_mem_ctrl;
+	while (tmp)
+	{
+		ft_printf("%p -> ",tmp);
+		// ft_printf("| [%d]{%lu}MC%d=%p, PA=%p |->",tmp->height, tmp->allocatedSize, tmp->free, tmp, tmp->pageAddr);
+		tmp = tmp->next;		
+	}
+	ft_printf("\n");
+	
+}
+
 // void 	printLevels(t_mem_ctrl* node, int i)
 // {
 // 	int j;

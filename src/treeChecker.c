@@ -14,7 +14,7 @@ void	findFreeBlock(t_mem_ctrl* node, size_t size)
 
 int   checkBalance(t_mem_ctrl* node)
 {
-	ft_printf("CheckBalance\n");	
+	// ft_printf("CheckBalance\n");	
    int factor;
 
    factor = getHeight(node->lchild) - getHeight(node->rchild);
