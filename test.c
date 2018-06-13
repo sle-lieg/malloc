@@ -1,18 +1,34 @@
-#include <stdio.h>
-#include <sys/mman.h>
-#include <stdlib.h>
-
+// #include <stdio.h>
+// #include <sys/mman.h>
+// #include <stdlib.h>
+#include "malloc.h"
 
 int main()
 {
-   //  char* p = mmap(NULL, 1, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-    // void* p2 = mmap(NULL, 1, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-    // void* p3 = mmap(NULL, 1, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-   void* p4;
-
-	free(p4);
-    // printf("%p\n", p2);
-    // printf("%p\n", p3);
-    // printf("%p\n", p4);
-    return (0);
+	char* p1 = malloc(30);
+	char* p2 = malloc(30);
+	char* p3 = malloc(30);
+	char* p4= malloc(30);
+	char* p5 = malloc(30);
+	char* p6 = malloc(30);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
+	ft_printf("***************************\n");
+	free(p5);
+	free(p6);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
+	ft_printf("***************************\n");
+	
+	p5 = malloc(4050);
+	p6 = malloc(30);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
+	ft_printf("***************************\n");
+	
+	char* p7 = malloc(30);
+	char* p8 = malloc(30);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
+	return (0);
 }

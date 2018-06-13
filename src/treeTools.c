@@ -51,7 +51,9 @@ void	swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)
 	predecessor->father = node->father;
 	node->lchild->father = predecessor;
 	node->rchild->father = predecessor;
-	if (node->father && node->allocatedSize <= node->father->allocatedSize)
+	// if (node->father && node->allocatedSize <= node->father->allocatedSize)
+	// 	node->father->lchild = predecessor;
+	if (node->father && node->father->lchild == node)
 		node->father->lchild = predecessor;
 	else if (node->father)
 		node->father->rchild = predecessor;

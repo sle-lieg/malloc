@@ -4,8 +4,7 @@
 
 void *realloc(void *ptr, size_t size)
 {
-	ft_printf("REALLOC(%p, %lu)", ptr, size);
-	// ft_printf("Realloc(%p, %lu)", ptr, size);
+	// ft_printf("REALLOC(%p, %lu)", ptr, size);
 	if (!ptr)
 		return (malloc(size));
 	else

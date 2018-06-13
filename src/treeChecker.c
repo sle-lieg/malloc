@@ -14,13 +14,13 @@ void	findFreeBlock(t_mem_ctrl* node, size_t size)
 
 int   checkBalance(t_mem_ctrl* node)
 {
-	// ft_printf("CheckBalance\n");	
+	// ft_printf("CheckBalance\n");
    int factor;
 
    factor = getHeight(node->lchild) - getHeight(node->rchild);
 	if (factor > 1)
 	{
-		if (checkBalance(node->lchild) > 0)
+		if (checkBalance(node->lchild) >= 0)
 			rotateRight(node);
 		else
 		{
@@ -30,7 +30,7 @@ int   checkBalance(t_mem_ctrl* node)
 	}
 	else if (factor < -1)
 	{
-		if (checkBalance(node->rchild) < 0)
+		if (checkBalance(node->rchild) <= 0)
 			rotateLeft(node);
 		else
 		{

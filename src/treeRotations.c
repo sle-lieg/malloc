@@ -11,7 +11,7 @@ void	ft_swap(int* a, int* b)
 
 void  rotateLeft(t_mem_ctrl* node)
 {
-	ft_printf("Rotate left\n");
+	// ft_printf("Rotate left\n");
    t_mem_ctrl* tmp;
 
    tmp = node->rchild;
@@ -39,7 +39,7 @@ void  rotateLeft(t_mem_ctrl* node)
 
 void  rotateRight(t_mem_ctrl* node)
 {
-	ft_printf("Rotate right\n");
+	// ft_printf("Rotate right\n");
 
    t_mem_ctrl* tmp;
 
@@ -57,7 +57,7 @@ void  rotateRight(t_mem_ctrl* node)
 		if (node == node->father->lchild)
 			node->father->lchild = tmp;
 		else
-			node->father->rchild = tmp;		
+			node->father->rchild = tmp;
 	}
 
 	tmp ? tmp->father = node->father : 0;

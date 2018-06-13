@@ -4,7 +4,7 @@
 
 void *reallocf(void *ptr, size_t size)
 {
-	ft_printf("REALLOC F (%p, %lu)", ptr, size);
+	// ft_printf("REALLOC F (%p, %lu)", ptr, size);
 	void* tmp;
 
 	if (!(tmp = realloc(ptr, size)))

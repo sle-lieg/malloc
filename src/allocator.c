@@ -37,17 +37,17 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 {
 	t_mem_ctrl* newMemCtrl;
 
-	ft_printf(" CTRL CREATE ");
+	// ft_printf(" CTRL CREATE ");
 
-	printLosts();
-	ft_printf("- Last Tiny %p \n", pgePointers.lastTinyCtrl);
+	// printLosts();
+	// ft_printf("- Last Tiny %p \n", pgePointers.lastTinyCtrl);
 
 	if (!(newMemCtrl = popLostMemCtrl()))
 	{
-		ft_printf(" NO POP ");
+		// ft_printf(" NO POP ");
 		if (pgePointers.memCtrlSizeLeft < MEM_CTRL_SIZE)
 		{
-			ft_printf(" NO MEM ");
+			// ft_printf(" NO MEM ");
 			// show_alloc_mem();
 			pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
 			// if (!(pgePointers.lastTinyCtrl->next = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
@@ -67,9 +67,9 @@ t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
 	}
 	else
 	{
-		if (newMemCtrl == pgePointers.lastTinyCtrl + 1)
-			pgePointers.lastTinyCtrl++;
-		ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
+		// if (newMemCtrl == pgePointers.lastTinyCtrl + 1)
+		// 	pgePointers.lastTinyCtrl++;
+		// ft_printf(" POPPING: newMemC=%p, memCtrlSpl=%p ", newMemCtrl, memCtrlSplited);
 	}
 
 	setMemCtrl(newMemCtrl, memCtrlSplited);
@@ -82,7 +82,6 @@ t_mem_ctrl*	splitMemory(size_t size)
 {
 	t_mem_ctrl* newMemCtrl;
 
-	// if (!(newMemCtrl = popLostMemCtrl(pgePointers.toReturn)))
 	if (!(newMemCtrl = createNewMemCtrl(pgePointers.toReturn)))
 		return NULL;
 	// newMemCtrl->prev = pgePointers.toReturn;
@@ -99,6 +98,16 @@ t_mem_ctrl*	splitMemory(size_t size)
 	return newMemCtrl;
 }
 
+// t_mem_ctrl*	getLastMemCtrl()
+// {
+// 	t_mem_ctrl* tmp;
+
+// 	tmp = pgePointers.rootTiny;
+// 	while (tmp->next)
+// 		tmp = tmp->next;
+// 	return tmp;
+// }
+
 void	setMemCtrl(t_mem_ctrl* newMemCtrl, t_mem_ctrl* memCtrlSplited)
 {
 	// if (newMemCtrl == memCtrlSplited)
@@ -106,6 +115,8 @@ void	setMemCtrl(t_mem_ctrl* newMemCtrl, t_mem_ctrl* memCtrlSplited)
 	// 	newMemCtrl->prev = getLastMemCtrl();
 	// 	newMemCtrl->next = NULL;
 	// 	newMemCtrl->prev->next = newMemCtrl;
+	// 	newMemCtrl->free = TRUE;
+	// 	newMemCtrl->pageSerie = memCtrlSplited->pageSerie;	
 	// }
 	// else
 	// {

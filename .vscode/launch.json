@@ -13,13 +13,12 @@
          "stopAtEntry": true,
          "cwd": ".",
          "environment": [
-				// {"name": "DYLD_LIBRARY_PATH", "value":"."},
-				// {"name": "DYLD_INSERT_LIBRARIES", "value":"libft_malloc.so"},
-				// {"name": "DYLD_FORCE_FLAT_NAMESPACE", "value":"1"}
+				{"name": "DYLD_LIBRARY_PATH", "value":"."},
+				{"name": "DYLD_INSERT_LIBRARIES", "value":"libft_malloc.so"},
+				{"name": "DYLD_FORCE_FLAT_NAMESPACE", "value":"1"}
 			],
          "externalConsole": true,
-			"MIMode": "lldb",
-			
+			"MIMode": "lldb"
 		},
 		{
          "name": "realloc",

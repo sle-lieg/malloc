@@ -2,7 +2,7 @@
 
 void*	malloc(size_t size)
 {
-	ft_printf("MALLOC(%lu)\n", size);
+	// ft_printf("MALLOC(%lu)\n", size);
 	// ft_printf("Malloc(%lu): MEM_CTRL_SIZE=%lu\n", size, pgePointers.memCtrlSizeLeft);
 	if (!checkLimit(size))
 		return NULL;
@@ -19,10 +19,21 @@ void*	malloc(size_t size)
 	// 	handleLarge(size);
 	if (pgePointers.errors)
 		return NULL;
-	printAll();
-	printTree2(pgePointers.rootTiny);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
 	// show_alloc_mem();
 	return pgePointers.toReturn->pageAddr;
+}
+
+// TODO: remove or clean it
+t_mem_ctrl*	getLastTinyLink()
+{
+	t_mem_ctrl* tmp;
+
+	tmp = pgePointers.rootTiny;
+	while (tmp->next)
+		tmp = tmp->next;
+	return tmp;
 }
 
 /**
@@ -48,15 +59,16 @@ void	handleTiny(size_t size)
 	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.
 	{
 		// ft_printf("RESISING");
-		if (!(pgePointers.toReturn = createNewMemCtrl(pgePointers.lastTinyCtrl)))
+		// if (!(pgePointers.toReturn = createNewMemCtrl(pgePointers.lastTinyCtrl)))
+		if (!(pgePointers.toReturn = createNewMemCtrl(getLastTinyLink())))
 		{
-			ft_printf("ERROR CREATE NMCTRL\n");
+			// ft_printf("ERROR CREATE NMCTRL\n");
 			return;
 		}
 		pgePointers.toReturn->free = FALSE;
 		getNewPage(pgePointers.toReturn, size);
 		if (pgePointers.errors)
-			return;			
+			return;
 		// pgePointers.toReturn = pgePointers.lastTinyCtrl;
 		// addNode(&pgePointers.rootTiny, pgePointers.toReturn);
 	}
