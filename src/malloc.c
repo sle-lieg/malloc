@@ -2,13 +2,14 @@
 
 void*	malloc(size_t size)
 {
-	ft_printf("MALLOC(%lu)\n", size);
+	// ft_printf("MALLOC(%lu)\n", size);
 	// ft_printf("Malloc(%lu): MEM_CTRL_SIZE=%lu\n", size, pgePointers.memCtrlSizeLeft);
 	if (!checkLimit(size))
 		return NULL;
 	pgePointers.toReturn = NULL;
 	pgePointers.pageSize = getpagesize();
 	pgePointers.size = size;
+	// TODO: malloc(0) ???
 	size = (size % MEM_ALIGN) ?
 		((size >> MEM_ALIGN_SHIFT) << MEM_ALIGN_SHIFT) + MEM_ALIGN : size;
 	if (size <= TINY_MAX)
@@ -19,8 +20,8 @@ void*	malloc(size_t size)
 	// 	handleLarge(size);
 	if (pgePointers.errors)
 		return NULL;
-	printAll();
-	printTree2(pgePointers.rootTiny);
+	// printAll();
+	// printTree2(pgePointers.rootTiny);
 	// show_alloc_mem();
 	return pgePointers.toReturn->pageAddr;
 }
@@ -54,6 +55,7 @@ void	handleTiny(size_t size)
 	if (!pgePointers.firstTinyCtrl)
 		if (!initRootTiny(size))
 			return;
+	checkFree();
 	findFreeBlock(pgePointers.rootTiny, size);
 	
 	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.

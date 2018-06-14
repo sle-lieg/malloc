@@ -43,6 +43,8 @@ struct  s_pagesPointers
     char        errors;
     
     t_mem_ctrl* lost_mem_ctrl; // PROTOTYPE list of lost t_mem_ctrl after blocks-fusion
+
+	size_t count;
 };
 
 struct s_memory_ctrl
@@ -71,8 +73,6 @@ void        handleTiny(size_t size);
 // void        handleLarge(size_t size);
 int			initRootTiny(size_t size);
 int			checkLimit(size_t size);
-
-
 
 /**
  *      ALLOCATOR.C
@@ -136,6 +136,8 @@ void			printTree(t_mem_ctrl* root);
 void			printLevels(t_mem_ctrl* node, int i);
 void			printAll();
 void			printLosts();
+void			checkFree();
+
 
 /**
  *      FREE.C

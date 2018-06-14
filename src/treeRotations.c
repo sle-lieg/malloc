@@ -11,7 +11,8 @@ void	ft_swap(int* a, int* b)
 
 void  rotateLeft(t_mem_ctrl* node)
 {
-	ft_printf("Rotate left\n");
+	// if (pgePointers.count > 410000 && pgePointers.count < 420000)
+		// ft_printf("Rotate left\n");
    t_mem_ctrl* tmp;
 
    tmp = node->rchild;
@@ -39,7 +40,8 @@ void  rotateLeft(t_mem_ctrl* node)
 
 void  rotateRight(t_mem_ctrl* node)
 {
-	ft_printf("Rotate right\n");
+	// if (pgePointers.count > 410000 && pgePointers.count < 420000)
+		// ft_printf("Rotate right\n");
 
    t_mem_ctrl* tmp;
 

@@ -2,7 +2,7 @@
 
 void	addNode(t_mem_ctrl** root, t_mem_ctrl* newNode)
 {
-	ft_printf("Add Node(%p)\n", newNode);
+	// ft_printf("Add Node(%p)\n", newNode);
 	if (!*root)
 	{
 		*root = newNode;

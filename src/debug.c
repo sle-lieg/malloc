@@ -110,28 +110,19 @@ void 	printLosts()
 	
 }
 
-// void 	printLevels(t_mem_ctrl* node, int i)
-// {
-// 	int j;
+void	checkFree()
+{
+	t_mem_ctrl* tmp;
 
-// 	if (!node)
-// 		return;
-// 	j = 0;
-// 	if (i == checkDepth(node))
-// 	{
-// 		if (node->father && !node->father->lchild)
-// 			// while (j++ < maxHeight(node->lchild, node->rchild) + 1)
-// 			while (j++ < node->height + 1)
-// 				ft_printf("    ");
-// 		j = 0;			
-// 		// while (j++ < maxHeight(node->lchild, node->rchild) + 1)
-// 		while (j++ < node->height + 1)
-// 			ft_printf("    ");
-// 		ft_printf("%d", node->allocatedSize);
-// 		// while (j--)
-// 		// 	ft_printf("    ");
-// 		return;
-// 	}
-// 	printLevels(node->lchild, i);
-// 	printLevels(node->rchild, i);
-// }
+	tmp = pgePointers.firstTinyCtrl;
+	while (tmp->next)
+	{
+		if (tmp->free && tmp->next->free && tmp->pageSerie == tmp->next->pageSerie)
+		{
+			ft_printf("FREEEEEEEEEEEE\n");	
+			printAll();
+			printTree2(pgePointers.rootTiny);
+		}
+		tmp = tmp->next;
+	}
+}
