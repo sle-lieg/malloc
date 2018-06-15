@@ -6,7 +6,7 @@ void	recursiveBalance(t_mem_ctrl* node)
 
 	if (!node)
 		return;
-	
+
 	// ft_printf(" Recursive Balance ");
 
 	node->height = maxHeight(node->lchild, node->rchild) + 1;
@@ -37,8 +37,8 @@ void	recursiveBalance(t_mem_ctrl* node)
 
 void	removeNode(t_mem_ctrl* node)
 {
-	// if (pgePointers.count > 410000 && pgePointers.count < 420000)
-		// ft_printf("RemoveNode(%p)\n", node);
+	// if (!pgePointers.count)
+	// 	ft_printf("RemoveNode(%p)\n", node);
 	if (!node->lchild && !node->rchild)
 		removeLeaf(node);
 	else if (node->lchild && node->rchild)
@@ -56,29 +56,21 @@ void	removeNode(t_mem_ctrl* node)
 
 void	removeLeaf(t_mem_ctrl* node)
 {
-	// DEBUG
-	if (!node->father && node != pgePointers.rootTiny)
-	{
-		printAll();
-		printTree2(pgePointers.rootTiny);
-	}
-	// if (pgePointers.count > 410000 && pgePointers.count < 420000)
+	// if (!pgePointers.count)
 		// ft_printf("Remove : leaf %p, lchild %p, rchild %p, fath %p\n", node, node->lchild, node->rchild, node->father);
 	if (node == pgePointers.rootTiny)
 		pgePointers.rootTiny = NULL;
-	
-
 	else if (node == node->father->lchild)
 	{
-		// if (pgePointers.count > 410000 && pgePointers.count < 420000)	
-			// ft_printf("Remove left leaf\n");		
+	// if (!pgePointers.count)
+	// 		ft_printf("Remove left leaf\n");
 		node->father->lchild = NULL;
 		node->father->height = node->father->rchild ? node->father->height : 1;
 	}
 	else if (node == node->father->rchild)
 	{
-		// if (pgePointers.count > 410000 && pgePointers.count < 420000)
-			// ft_printf("Remove right leaf\n");
+		// if (!pgePointers.count)
+		// 	ft_printf("Remove right leaf\n");
 		node->father->rchild = NULL;
 		node->father->height = node->father->lchild ? node->father->height : 1;		
 	}
@@ -86,26 +78,25 @@ void	removeLeaf(t_mem_ctrl* node)
 
 void	removeParentOfChildren(t_mem_ctrl* node)
 {
-	// if (pgePointers.count > 410000 && pgePointers.count < 420000)
-		// ft_printf("Remove childrens\n");
+	// if (!pgePointers.count)
+	// 	ft_printf("Remove childrens\n");
 	t_mem_ctrl* tmp;
 
 	if (node->lchild->height >= node->rchild->height)
 	{
-		tmp = getInOrderPredecessor(node->lchild);
+		tmp = getInOrderPredecessor(node, node->lchild);
 		if (node->lchild != tmp)
 		{
 			swapNodes(tmp, node);
-			// ft_printf("After2: N=%p F=%p LC=%p RC=%p\n", node, node->father, node->lchild, node->rchild);
 		}
 		tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1;
 	}
 	else
 	{
-		tmp = getInOrderSuccessor(node->rchild);
+		tmp = getInOrderSuccessor(node, node->rchild);
 		if (node->rchild != tmp)
 		{
-			swapNodes(tmp, node);		
+			swapNodes(tmp, node);
 		}
 		tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1;
 	}
@@ -117,14 +108,12 @@ void	removeParentOfChildren(t_mem_ctrl* node)
 
 void	removeParentOfOrphan(t_mem_ctrl* node)
 {
-	// if (pgePointers.count > 410000 && pgePointers.count < 420000)
-		// ft_printf("Remove orphan\n");
-	// printTree2(pgePointers.rootTiny);
+	// if (!pgePointers.count)
+	// 	ft_printf("Remove orphan\n");
 	if (node->lchild)
 		linkNodes(node->father, node->lchild);
 	else
 		linkNodes(node->father, node->rchild);
 	if (node == pgePointers.rootTiny)
 		pgePointers.rootTiny = node->lchild ? node->lchild : node->rchild;
-		// printTree2(pgePointers.rootTiny);		
 }

@@ -4,22 +4,19 @@
 
 void *realloc(void *ptr, size_t size)
 {
-	// ft_printf("REALLOC(%p, %lu)", ptr, size);
+ 	// if (!pgePointers.count)
+	// 	ft_printf("REALLOC(%p, %lu)", ptr, size);
 	if (!ptr)
 		return (malloc(size));
 	else
 	{
-		if (!checkLimit(size) || !(pgePointers.toReturn = getMemCtrl(ptr)))
+		if (!(pgePointers.toReturn = getMemCtrl(ptr)))
+		// if (!checkLimit(size) || !(pgePointers.toReturn = getMemCtrl(ptr)))
 			return NULL;
-
-		// ft_printf("(old = %lu)\n", pgePointers.toReturn->allocatedSize);
-
-		return checkSize(size);
-		// if (pgePointers.errors)
-		// 	return NULL;
-		// return (pgePointers.toReturn->pageAddr);
 	}
+	return checkSize(size);
 }
+
 // TODO: multi threads
 t_mem_ctrl* getMemCtrl(void* ptr)
 {
@@ -52,5 +49,4 @@ void*	checkSize(size_t size)
 		toFree->requiredSize);
 	free(toFree->pageAddr);
 	return tmp;
-	// pgePointers.toReturn = tmp;
 }

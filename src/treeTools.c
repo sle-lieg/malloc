@@ -10,7 +10,6 @@ void	linkNodes(t_mem_ctrl* father, t_mem_ctrl* child)
 	else if (father)
 	{
 		// ft_printf(" LINK rchild");
-		
 		father->rchild = child;
 	}
 	if (child)
@@ -30,7 +29,6 @@ void  addLinks(t_mem_ctrl* father, t_mem_ctrl* child)
 	else if (father)
 	{
 		// ft_printf(" LINK rchild");
-		
 		father->rchild = child;
 	}
 	if (child)
@@ -42,21 +40,16 @@ void  addLinks(t_mem_ctrl* father, t_mem_ctrl* child)
 
 void	swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)
 {
-	// if (predecessor->lchild)
-	// 	linkNodes(predecessor->father, predecessor->lchild);
-	// if (predecessor->rchild)
-	// 	linkNodes(predecessor->father, predecessor->rchild);
 	predecessor->lchild = node->lchild;
 	predecessor->rchild = node->rchild;
 	predecessor->father = node->father;
 	node->lchild->father = predecessor;
 	node->rchild->father = predecessor;
-	// if (node->father && node->allocatedSize <= node->father->allocatedSize)
-	// 	node->father->lchild = predecessor;
 	if (node->father && node->father->lchild == node)
 		node->father->lchild = predecessor;
 	else if (node->father)
 		node->father->rchild = predecessor;
+	node->father = predecessor->father; //TODO: WHY ??
 }
 
 void  replaceIfRoot(t_mem_ctrl* node)

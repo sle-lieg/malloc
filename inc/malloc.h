@@ -8,7 +8,8 @@
 #include "ft_printf.h"
 #include <sys/resource.h>
 
-#define TINY_MAX 2147483648
+#define TINY_MAX UINTMAX_MAX
+// #define TINY_MAX 2147483648
 #define SMALL_MAX 245
 #define MEM_ALIGN_SHIFT 4
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
@@ -44,7 +45,7 @@ struct  s_pagesPointers
     
     t_mem_ctrl* lost_mem_ctrl; // PROTOTYPE list of lost t_mem_ctrl after blocks-fusion
 
-	size_t count;
+	// size_t count;
 };
 
 struct s_memory_ctrl
@@ -94,8 +95,10 @@ void        checkHeight(t_mem_ctrl* node);
 /**
  *      TREE_GETTERS.C
  **/
-t_mem_ctrl* getInOrderPredecessor(t_mem_ctrl* node);
-t_mem_ctrl* getInOrderSuccessor(t_mem_ctrl* node);
+t_mem_ctrl* getInOrderPredecessor(t_mem_ctrl* toReplace, t_mem_ctrl* node);
+t_mem_ctrl* getInOrderSuccessor(t_mem_ctrl* toReplace, t_mem_ctrl* node);
+// t_mem_ctrl* getInOrderPredecessor(t_mem_ctrl* node);
+// t_mem_ctrl* getInOrderSuccessor(t_mem_ctrl* node);
 int         getHeight(t_mem_ctrl* node);
 
 /**
@@ -111,6 +114,7 @@ void        removeNode(t_mem_ctrl* node);
 void        removeLeaf(t_mem_ctrl* node);
 void        removeParentOfChildren(t_mem_ctrl* node);
 void        removeParentOfOrphan(t_mem_ctrl* node);
+void			recursiveBalance(t_mem_ctrl* node);
 
 /**
  *      TREE_ROTATIONS.C
@@ -137,6 +141,7 @@ void			printLevels(t_mem_ctrl* node, int i);
 void			printAll();
 void			printLosts();
 void			checkFree();
+void			checkGoodHeight(t_mem_ctrl* node);
 
 
 /**

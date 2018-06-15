@@ -5,7 +5,8 @@ void*	calloc(size_t count, size_t size)
 	void* tmp;
 	int	totSize;
 
-	// ft_printf("CALLOC(%lu, %lu)\n", count, size);
+ 	// if (!pgePointers.count)
+	// 	ft_printf("CALLOC(%lu, %lu)\n", count, size);
 	totSize = count * size;
 
 	if (!(tmp = malloc(totSize)))

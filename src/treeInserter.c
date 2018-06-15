@@ -2,7 +2,8 @@
 
 void	addNode(t_mem_ctrl** root, t_mem_ctrl* newNode)
 {
-	// ft_printf("Add Node(%p)\n", newNode);
+	// if (!pgePointers.count)
+	// 	ft_printf("Add Node(%p)\n", newNode);
 	if (!*root)
 	{
 		*root = newNode;
@@ -14,8 +15,7 @@ void	addNode(t_mem_ctrl** root, t_mem_ctrl* newNode)
 
 void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 {
-	// ft_printf("RecursiveAdd\n");
-	
+	// ft_printf("RecursiveAdd ");
 	if (newNode->allocatedSize <= node->allocatedSize)
 	{
 		if (node->lchild)
@@ -38,8 +38,6 @@ void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
 			newNode->free = TRUE;
 		}
 	}
-	// printTree2(pgePointers.rootTiny);
-	// ft_printf("\n");
 	checkBalance(node);
 	node->height = maxHeight(node->lchild, node->rchild) + 1;
 }

@@ -78,7 +78,7 @@ void	printAll()
 	int i;
 
 	i = 0;
-	ft_printf("ALL ALLOCATIONS:\n	");
+	// ft_printf("ALL ALLOCATIONS: count = %zu\n	", pgePointers.count);
 	tmp = pgePointers.firstTinyCtrl;
 	while (tmp)
 	{
@@ -124,5 +124,39 @@ void	checkFree()
 			printTree2(pgePointers.rootTiny);
 		}
 		tmp = tmp->next;
+	}
+}
+
+void	checkGoodHeight(t_mem_ctrl* node)
+{
+	if (node)
+	{
+		if (node->lchild && node->rchild)
+		{
+			// if (node->height != node->lchild->height + 1 && node->height != node->rchild->height + 1)
+			if (node->height != maxHeight(node->lchild, node->rchild) + 1)
+			{
+				ft_printf("TREE ERROR !!!\n");			
+				exit(0);
+			}
+		}
+		else if (node->lchild)
+		{
+			if (node->height != node->lchild->height + 1)
+			{
+				ft_printf("TREE ERROR !!!\n");
+				exit(0);
+			}
+		}
+		else if (node->rchild)
+		{
+			if (node->height != node->rchild->height + 1)
+			{
+				ft_printf("TREE ERROR !!!\n");			
+				exit(0);
+			}
+		}
+		checkGoodHeight(node->lchild);
+		checkGoodHeight(node->rchild);
 	}
 }
