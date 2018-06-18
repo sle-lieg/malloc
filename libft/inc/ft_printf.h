@@ -3,22 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 00:39:12 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/29 19:51:27 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/18 09:30:39 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <unistd.h>
 # include <stdarg.h>
-# include <stdlib.h>
 # include "libft.h"
 
-# define BUF_SIZE 8192
+# define BUF_SIZE 32768
 # define FLAGS "#0- +"
 # define MODIF "hljz"
 # define TYPE "sSpdDioOuUxXcCb"
@@ -38,6 +36,7 @@ typedef struct	s_env
 	void	(*type_select[15])(struct s_env*);
 	char	buff[BUF_SIZE];
 	char	*pos;
+	char	*last_valid_pos;
 	int		flags[5];
 	int		modif[4];
 	int		width;

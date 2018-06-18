@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wstr_len.c                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 00:08:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/10 01:43:24 by sle-lieg         ###   ########.fr       */
+/*   Created: 2016/11/04 18:49:40 by sle-lieg          #+#    #+#             */
+/*   Updated: 2017/02/18 22:53:26 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wstr_len(uint32_t *str)
+void	ft_bzero(void *s, size_t n)
 {
-	int len;
+	char *tmp;
 
-	len = 0;
-	if (!str)
-		return (0);
-	while (*str)
-	{
-		if (*str & FOUR)
-			len += 4;
-		else if (*str & THREE)
-			len += 3;
-		else if (*str & TWO)
-			len += 2;
-		else
-			len++;
-		str++;
-	}
-	return (len);
+	tmp = s;
+	while (tmp < (char *)s + n)
+		*tmp++ = '\0';
 }

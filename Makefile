@@ -36,7 +36,7 @@ $(LIBFT):
 	@make -C $(LIB_DIR)
 
 $(EXEC): $(OBJ)
-	$(CC) -shared -o $@ $^ $(LIBFT)
+	$(CC) -shared -fsanitize=address -o $@ $^ $(LIBFT)
 	@ln -s $(EXEC) $(SLINK)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c

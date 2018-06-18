@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 00:13:44 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/12 16:16:02 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/17 14:37:00 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_parse(t_env *e, const char *format, int *i)
 			ft_print_buff(e);
 		e->type_select[j](e);
 		++(*i);
+		if (!e->error)
+			e->last_valid_pos = e->pos;
 	}
 	else
 		ft_fill_error(e, format, i);
@@ -55,6 +57,7 @@ void	ft_fill_error(t_env *e, const char *format, int *i)
 		}
 		*e->pos++ = format[(*i)++];
 	}
+	e->last_valid_pos = e->pos;
 }
 
 int		ft_get_flags(t_env *e, char flag)

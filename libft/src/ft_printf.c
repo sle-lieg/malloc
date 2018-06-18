@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 00:08:29 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/10 01:08:30 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/18 08:24:30 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,23 @@ int		ft_printf(const char *format, ...)
 {
 	t_env		e;
 	va_list		ap_1;
-	static int	err_bool = FALSE;
 
 	va_start(ap_1, format);
 	ft_init(&e);
 	va_copy(e.ap, ap_1);
 	ft_read(&e, format);
-	if (e.error)
-		err_bool = 1;
 	ft_print_buff(&e);
 	va_end(ap_1);
 	va_end(e.ap);
-	if (err_bool)
+	if (e.error)
 		return (-1);
 	return (e.ret);
 }
 
 void	ft_print_buff(t_env *e)
 {
+	if (e->error)
+		e->pos = e->last_valid_pos;
 	*e->pos = '\0';
 	e->ret += write(1, e->buff, e->pos - e->buff);
 	e->pos = e->buff;
@@ -84,6 +83,7 @@ void	ft_reset_options(t_env *e)
 void	ft_init(t_env *e)
 {
 	e->pos = e->buff;
+	e->last_valid_pos = e->buff;
 	e->ret = 0;
 	e->error = FALSE;
 	ft_reset_options(e);

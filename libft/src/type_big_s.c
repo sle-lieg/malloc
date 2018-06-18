@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_big_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 01:36:37 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/10 01:37:37 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/18 08:22:48 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	ft_type_big_s(t_env *e)
 	else if (!e->accu_bool)
 		e->accu = ft_wstr_len(arg);
 	else
-	{
 		ft_get_accu(e, arg);
-	}
 	e->width -= e->accu;
 	if (e->flags[MIN])
 		ft_post_indent_big_s(e, arg);
@@ -55,16 +53,22 @@ void	ft_fill_wstring(t_env *e, uint32_t *arg)
 {
 	while (e->accu > 0)
 	{
+		if ((MB_CUR_MAX == 1 && *arg > 255) || *arg > 0x10FFFF ||
+		(*arg >= 0xD800 && *arg <= 0xDFFF))
+		{
+			e->error = 1;
+			return ;
+		}
 		*(int *)e->pos = 0;
 		if (*arg & FOUR)
 			e->accu -= ft_four_octet(e, *arg);
 		else if (*arg & THREE)
 			e->accu -= ft_three_octet(e, *arg);
-		else if (*arg & TWO)
+		else if (*arg & TWO && MB_CUR_MAX > 1)
 			e->accu -= ft_two_octet(e, *arg);
 		else if (*arg)
 		{
-			*e->pos++ = *arg;
+			*e->pos++ = (char)*arg;
 			e->accu--;
 		}
 		arg++;

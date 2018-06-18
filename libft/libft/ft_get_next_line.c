@@ -6,12 +6,11 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:48:32 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/29 17:59:55 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/01/15 05:47:07 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static t_lst	*ft_creanew(t_lst *elem, const int fd)
 {

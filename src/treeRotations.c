@@ -26,7 +26,7 @@ void  rotateLeft(t_mem_ctrl* node)
 	tmp ? tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1 : 0;
 }
 
-void  rotateRight(t_mem_ctrl* node)
+void	rotateRight(t_mem_ctrl* node)
 {
 	// if (!pgePointers.count)
 	// 	ft_printf("Rotate right\n");

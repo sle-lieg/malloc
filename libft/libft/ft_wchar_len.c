@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_int_size.c                                   :+:      :+:    :+:   */
+/*   ft_wchar_len.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/16 13:46:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/28 18:47:51 by sle-lieg         ###   ########.fr       */
+/*   Created: 2017/03/09 02:48:42 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/06/18 08:22:10 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_is_int_size(char *arg)
+int	ft_wchar_len(uint32_t car)
 {
-	long int	tmp;
-	int			i;
-
-	i = 0;
-	if (*arg == '-' || *arg == '+')
-		i++;
-	while (arg[i] == '0')
-		i++;
-	tmp = ft_atoil(arg);
-	if (ft_strlen(arg + i) > 20 || tmp < -2147483648 || tmp > 2147483647)
-		return (0);
-	return (1);
+	if (car & FOUR)
+		return (4);
+	else if (car & THREE)
+		return (3);
+	else if (car & TWO && MB_CUR_MAX > 1)
+		return (2);
+	else if (car)
+		return (1);
+	return (0);
 }

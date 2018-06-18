@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_digit_str.c                                  :+:      :+:    :+:   */
+/*   ft_wstr_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/16 13:21:42 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/28 18:46:40 by sle-lieg         ###   ########.fr       */
+/*   Created: 2017/03/09 00:08:22 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/06/18 08:21:53 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_is_digit_str(char *str)
+int	ft_wstr_len(uint32_t *str)
 {
+	int len;
+
+	len = 0;
 	if (!str)
 		return (0);
-	if (*str == '-' || *str == '+')
-		str++;
-	if (!*str)
-		return (0);
 	while (*str)
-		if (!ft_isdigit(*str++))
-			return (0);
-	return (1);
+	{
+		if (*str & FOUR)
+			len += 4;
+		else if (*str & THREE)
+			len += 3;
+		else if (*str & TWO && MB_CUR_MAX > 1)
+			len += 2;
+		else
+			len++;
+		str++;
+	}
+	return (len);
 }

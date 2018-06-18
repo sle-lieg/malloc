@@ -31,7 +31,8 @@ void	recursiveBalance(t_mem_ctrl* node)
 			rotateLeft(node);
 		}
 	}
-   (factor < -1 || factor > 1) ? replaceIfRoot(node) : 0;
+	if (factor < -1 || factor > 1)
+		replaceIfRoot(node);
 	recursiveBalance(node->father);
 }
 

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoil.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/16 13:40:39 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/28 18:45:12 by sle-lieg         ###   ########.fr       */
+/*   Created: 2016/11/06 21:38:41 by sle-lieg          #+#    #+#             */
+/*   Updated: 2016/12/27 08:38:36 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "stdlib.h"
 
-long		ft_atoil(const char *str)
+int		ft_atoi(const char *str)
 {
-	int		i;
-	int		neg;
-	long	nbr;
+	int i;
+	int nbr;
+	int neg;
 
 	i = 0;
 	neg = 1;

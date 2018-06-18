@@ -12,7 +12,7 @@ void	findFreeBlock(t_mem_ctrl* node, size_t size)
 		findFreeBlock(node->rchild, size);
 }
 
-int   checkBalance(t_mem_ctrl* node)
+int	checkBalance(t_mem_ctrl* node)
 {
 	// if (!pgePointers.count)
 	// 	ft_printf("CheckBalance\n");
@@ -39,7 +39,8 @@ int   checkBalance(t_mem_ctrl* node)
 			rotateLeft(node);
 		}
 	}
-   (factor < -1 || factor > 1) ? replaceIfRoot(node) : 0;
+	if (factor < -1 || factor > 1)
+		replaceIfRoot(node);
    return factor;
 }
 

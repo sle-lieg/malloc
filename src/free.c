@@ -44,7 +44,6 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 {
 	t_mem_ctrl* tmp;
 
-
 	ptr->free = TRUE;
 	ptr->requiredSize = 0;
 	while (ptr->next && ptr->next->free == 1 && ptr->pageSerie == ptr->next->pageSerie)

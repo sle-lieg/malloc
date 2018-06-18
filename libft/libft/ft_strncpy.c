@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wchar_len.c                                     :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 02:48:42 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/03/10 01:42:54 by sle-lieg         ###   ########.fr       */
+/*   Created: 2016/11/05 22:33:47 by sle-lieg          #+#    #+#             */
+/*   Updated: 2017/03/03 20:50:33 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wchar_len(uint32_t car)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	if (car & FOUR)
-		return (4);
-	else if (car & THREE)
-		return (3);
-	else if (car & TWO)
-		return (2);
-	else if (car)
-		return (1);
-	return (0);
+	size_t i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (!src[i])
+		{
+			while (i < len)
+				dst[i++] = '\0';
+		}
+		else
+		{
+			dst[i] = src[i];
+			i++;
+		}
+	}
+	return (dst);
 }

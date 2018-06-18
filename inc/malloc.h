@@ -147,7 +147,7 @@ void			checkGoodHeight(t_mem_ctrl* node);
 /**
  *      FREE.C
  **/
-void			free(void* ptr);;
+void			free(void* ptr);
 void			checkTiny(void* ptr);
 void			freeMemCtrl(t_mem_ctrl* ptr);
 void 			linkLostPrevNext(t_mem_ctrl* ptr);
