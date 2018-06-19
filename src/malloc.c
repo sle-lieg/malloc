@@ -4,14 +4,14 @@ void*	malloc(size_t size)
 {
 	// pgePointers.count++;
  	// if (!pgePointers.count)
-		ft_printf("MALLOC(%lu)\n", size);
+		// ft_printf("MALLOC(%lu)\n", size);
 	// ft_printf("Malloc(%lu): MEM_CTRL_SIZE=%lu\n", size, pgePointers.memCtrlSizeLeft);
 	// if (!checkLimit(size))
 	// 	return NULL;
 	pgePointers.toReturn = NULL;
 	pgePointers.pageSize = getpagesize();
 	pgePointers.size = size;
-	// TODO: malloc(0) ???
+	size = size ? size : 16;
 	size = (size % MEM_ALIGN) ?
 		((size >> MEM_ALIGN_SHIFT) << MEM_ALIGN_SHIFT) + MEM_ALIGN : size;
 	if (size <= TINY_MAX)

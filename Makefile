@@ -1,5 +1,5 @@
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -g
 RM		= rm -rf
 
 SRC_DIR = src/
@@ -28,7 +28,6 @@ SLINK	= libft_malloc.so
 all: createDir $(LIBFT) $(EXEC)
 
 createDir:
-	@test -d $(SRC_DIR) || mkdir $(SRC_DIR)
 	@test -d $(OBJ_DIR) || mkdir $(OBJ_DIR)
 
 $(LIBFT):
@@ -36,7 +35,7 @@ $(LIBFT):
 	@make -C $(LIB_DIR)
 
 $(EXEC): $(OBJ)
-	$(CC) -shared -fsanitize=address -o $@ $^ $(LIBFT)
+	$(CC) -shared -o $@ $^ $(LIBFT)
 	@ln -s $(EXEC) $(SLINK)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c

@@ -1,6 +1,6 @@
 NAME	= libftprintf.a
 CC	= gcc
-FLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror
 
 SRC_FILES_PRINTF = \
 	ft_printf.c\
@@ -57,7 +57,7 @@ createDir:
 
 $(NAME) : $(OBJ)
 	@echo "\033[1;32m◊ +++++ CREATING $(NAME)	: √\033[0m"
-	@echo "ar rc $(NAME)"	
+	@echo "ar rc $(NAME)"
 	@ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
