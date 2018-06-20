@@ -40,7 +40,7 @@ int	checkBalance(t_mem_ctrl* node)
 		}
 	}
 	if (factor < -1 || factor > 1)
-		replaceIfRoot(node);
+		replaceIfRoot(node, node->father);
    return factor;
 }
 

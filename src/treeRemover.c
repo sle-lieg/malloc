@@ -32,7 +32,7 @@ void	recursiveBalance(t_mem_ctrl* node)
 		}
 	}
 	if (factor < -1 || factor > 1)
-		replaceIfRoot(node);
+		replaceIfRoot(node, node->father);
 	recursiveBalance(node->father);
 }
 
@@ -59,8 +59,8 @@ void	removeLeaf(t_mem_ctrl* node)
 {
 	// if (!pgePointers.count)
 		// ft_printf("Remove : leaf %p, lchild %p, rchild %p, fath %p\n", node, node->lchild, node->rchild, node->father);
-	if (node == pgePointers.rootTiny)
-		pgePointers.rootTiny = NULL;
+	if (replaceIfRoot(node, node->father))
+		return;
 	else if (node == node->father->lchild)
 	{
 	// if (!pgePointers.count)
@@ -73,7 +73,7 @@ void	removeLeaf(t_mem_ctrl* node)
 		// if (!pgePointers.count)
 		// 	ft_printf("Remove right leaf\n");
 		node->father->rchild = NULL;
-		node->father->height = node->father->lchild ? node->father->height : 1;		
+		node->father->height = node->father->lchild ? node->father->height : 1;
 	}
 }
 
@@ -101,10 +101,7 @@ void	removeParentOfChildren(t_mem_ctrl* node)
 		}
 		tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1;
 	}
-	if (node == pgePointers.rootTiny)
-	{
-		pgePointers.rootTiny = tmp;
-	}
+	replaceIfRoot(node, tmp);
 }
 
 void	removeParentOfOrphan(t_mem_ctrl* node)
@@ -115,6 +112,7 @@ void	removeParentOfOrphan(t_mem_ctrl* node)
 		linkNodes(node->father, node->lchild);
 	else
 		linkNodes(node->father, node->rchild);
-	if (node == pgePointers.rootTiny)
-		pgePointers.rootTiny = node->lchild ? node->lchild : node->rchild;
+	replaceIfRoot(node, (node->lchild ? node->lchild : node->rchild));
+	// if (node == pgePointers.rootTiny)
+	// 	pgePointers.rootTiny = node->lchild ? node->lchild : node->rchild;
 }

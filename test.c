@@ -1,59 +1,55 @@
-#include <stdio.h>
+// #include <stdio.h>
 // #include <sys/mman.h>
-#include <stdlib.h>
-#include <string.h>
-// #include "malloc.h"
+// #include <stdlib.h>
+// #include <string.h>
+#include "malloc.h"
+#include <sys/types.h>
+#include <pwd.h>
+#include <uuid/uuid.h>
+#include <sys/resource.h>
 
 int main()
 {
-	char* p1 = malloc(0);
-	char* p2 = malloc(0);
-	char* p3 = malloc(0);
+	struct rlimit l;
 
-	struct rlimit limit;
-
-	getrlimit(RLIMIT_DATA, &limit);
-	printf("MAX= %llu\n", limit.rlim_max);
-
-	// strcpy(p1, "aaaaaaaaaaaaaaa\0");
-	// strcpy(p2, "bbbbbbbbbbbbbbb\0");
-	// strcpy(p3, "ccccccccccccccc\0");
-	printf("%p: %s\n", p1, p1);
-	printf("%p: %s\n", p2, p2);
-	printf("%p: %s\n", p3, p3);
-	// *(p1 + 4096) = 'X';
-	// *(p1 + 4098) = 'X';
-	// *(p1 + 16) = 'X';
-	// printf("%p: %s\n", p1, p1);
-	// printf("%p: %s\n", p2, p2);
+	getrlimit(RLIMIT_DATA, &l);
+	ft_printf("%lu\n", l.rlim_cur);
+	ft_printf("%lu\n", l.rlim_max);
 	
-	free(p1);
-	free(p2);
-	free(p3);
-	// char* p1 = malloc(30);
-	// char* p2 = malloc(30);
-	// char* p3 = malloc(30);
-	// char* p4= malloc(30);
-	// char* p5 = malloc(30);
-	// char* p6 = malloc(30);
-	// // printAll();
-	// // printTree2(pgePointers.rootTiny);
-	// ft_printf("***************************\n");
+
+	// char* p1 = malloc(1);
+	// char* p2 = malloc(128);
+	// char* p3 = malloc(129);
+	// char* p4 = malloc(4096);
+	// char* p5 = malloc(4097);
+	// char* p6 = malloc(50000);
+
+	// char* p7 = malloc(50);
+	// char* p8 = malloc(1280);
+	// char* p9 = malloc(120);
+	// char* p10 = malloc(4096);
+	// char* p11 = malloc(8192);
+	// char* p12 = malloc(3);
+
+	// // ft_printf("p1->%p\n", p1);
+	// // ft_printf("p2->%p\n", p2);
+	// // ft_printf("p3->%p\n", p3);
+	// // ft_printf("p4->%p\n", p4);
+	// // ft_printf("p5->%p\n", p5);
+	// // ft_printf("p6->%p\n", p6);
+	// show_alloc_mem();
+
+	// free(p1);
+	// free(p2);
+	// free(p3);
+	// free(p4);
 	// free(p5);
 	// free(p6);
-	// // printAll();
-	// // printTree2(pgePointers.rootTiny);
-	// ft_printf("***************************\n");
-	
-	// p5 = malloc(4050);
-	// p6 = malloc(30);
-	// // printAll();
-	// // printTree2(pgePointers.rootTiny);
-	// ft_printf("***************************\n");
-	
-	// char* p7 = malloc(30);
-	// char* p8 = malloc(30);
-	// printAll();
-	// printTree2(pgePointers.rootTiny);
+	// free(p7);
+	// free(p8);
+	// free(p9);
+	// free(p10);
+	// free(p11);
+	// free(p12);
 	return (0);
 }

@@ -5,39 +5,59 @@
 void	free(void* ptr)
 {
 	// if (!pgePointers.count)
-	// 	ft_printf("Free(%p)\n", ptr);
+		ft_printf("Free(%p)\n", ptr);
 	if (!ptr)
 		return;
-	// if (pgePointers.firstTinyCtrl && (char*)ptr >= pgePointers.firstTinyCtrl->pageAddr
-	// 										&& (char*)ptr <= pgePointers.lastTinyCtrl->pageAddr)
-	checkTiny(ptr);
-	// if (ptr >= pgePointers.firstSmallCtrl && ptr <= pgePointers.lastSmallCtrl)
-	// 	checkSmall(ptr);
-	// if (ptr >= pgePointers.firstLargeCtrl && ptr <= pgePointers.lastLargeCtrl)
-	// 	checkLarge(ptr);
+	if (!findMemCtrl(pgePointers.firstTinyCtrl, ptr))
+		if (!findMemCtrl(pgePointers.firstSmallCtrl, ptr))
+			if (!findLargeMemCtrl(pgePointers.firstLargeCtrl, ptr))
+				return;
+	// show_alloc_mem();
 	// pgePointers.count++;
 	// if (!pgePointers.count)
 	// {
-	// 	printAll();
+		// printAll();
 	// 	printTree2(pgePointers.rootTiny);
 	// }
 	// checkGoodHeight(pgePointers.rootTiny);
 }
 
-void	checkTiny(void* ptr)
+int	findMemCtrl(t_mem_ctrl* tmp, void* ptr)
 {
-	t_mem_ctrl* tmp;
-
-	tmp = pgePointers.firstTinyCtrl;
+	if (!tmp)
+		return (0);
 	while (tmp)
 	{
 		if (tmp->pageAddr == ptr && !tmp->free)
 		{
 			freeMemCtrl(tmp);
-			return;
+			return (1);
 		}
 		tmp = tmp->next;
 	}
+	return (0);
+}
+
+int	findLargeMemCtrl(t_mem_ctrl* tmp, void* ptr)
+{
+	if (!tmp)
+		return (0);
+	while (tmp)
+	{
+		if (tmp->pageAddr == ptr && !tmp->free)
+		{
+			if (pgePointers.firstLargeCtrl == tmp)
+				pgePointers.firstLargeCtrl = tmp->next;
+			else
+				tmp->prev->next = tmp->next;
+			munmap(tmp->pageAddr, tmp->allocatedSize);
+			pushToLost(tmp);
+			// freeMemCtrl(tmp);
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
 void	freeMemCtrl(t_mem_ctrl* ptr)

@@ -7,7 +7,7 @@ OBJ_DIR = obj/
 LIB_DIR = libft/
 INC_DIR = inc/
 
-SRC_F	=	malloc.c allocator.c treeChecker.c treeGetters.c treeInserter.c\
+SRC_F	=	malloc.c init.c allocator.c treeChecker.c treeGetters.c treeInserter.c\
 			treeRemover.c treeRotations.c treeTools.c free.c realloc.c calloc.c\
 			reallocf.c debug.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_F))

@@ -52,14 +52,24 @@ void	swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)
 	node->father = predecessor->father; //TODO: WHY ??
 }
 
-void  replaceIfRoot(t_mem_ctrl* node)
+int	replaceIfRoot(t_mem_ctrl* node, t_mem_ctrl* newRoot)
 {
-   if (pgePointers.rootTiny == node)
-      pgePointers.rootTiny = node->father;
-   if (pgePointers.rootSmall == node)
-      pgePointers.rootSmall = node->father;
-   if (pgePointers.rootLarge == node)
-      pgePointers.rootLarge = node->father;
+	if (pgePointers.rootTiny == node)
+	{
+		pgePointers.rootTiny = newRoot;
+		return (1);
+	}
+	if (pgePointers.rootSmall == node)
+	{
+		pgePointers.rootSmall = newRoot;
+		return (1);
+	}
+	// if (pgePointers.rootLarge == node)
+	// {
+	// 	pgePointers.rootLarge = newRoot;
+	// 	return (1);
+	// }
+	return (0);
 }
 
 int	isLastMemCtrl(t_mem_ctrl* ptr)

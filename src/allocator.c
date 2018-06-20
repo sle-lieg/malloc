@@ -32,36 +32,121 @@ void*	getNewPage(t_mem_ctrl* pageMemCtrl, size_t size)
  ** @param  memCtrlSplited: 
  ** @retval	t_mem_ctrl*
  **/
-t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
+t_mem_ctrl*	createNewTinyMemCtrl(t_mem_ctrl* memCtrlSplited)
 {
 	t_mem_ctrl* newMemCtrl;
 
 	if (!(newMemCtrl = popLostMemCtrl()))
 	{
 		// ft_printf(" NO POP ");
-		if (pgePointers.memCtrlSizeLeft < MEM_CTRL_SIZE)
+		if (pgePointers.tinyCtrlSizeLeft < MEM_CTRL_SIZE)
 		{
 			// ft_printf(" NO MEM ");
-			pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
-			if (!(newMemCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)))
+			pgePointers.tinyCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
+			if (!(newMemCtrl = getNewPage(NULL, pgePointers.tinyCtrlSizeLeft)))
 				return NULL;
 		}
 		else
 			newMemCtrl = pgePointers.lastTinyCtrl + 1;
 		pgePointers.lastTinyCtrl = newMemCtrl;
-		pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
+		pgePointers.tinyCtrlSizeLeft -= MEM_CTRL_SIZE;
 	}
 	setMemCtrl(newMemCtrl, memCtrlSplited);
 
 	return newMemCtrl;
 }
 
+t_mem_ctrl*	createNewSmallMemCtrl(t_mem_ctrl* memCtrlSplited)
+{
+	t_mem_ctrl* newMemCtrl;
+
+	if (!(newMemCtrl = popLostMemCtrl()))
+	{
+		// ft_printf(" NO POP ");
+		if (pgePointers.smallCtrlSizeLeft < MEM_CTRL_SIZE)
+		{
+			// ft_printf(" NO MEM ");
+			pgePointers.smallCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
+			if (!(newMemCtrl = getNewPage(NULL, pgePointers.smallCtrlSizeLeft)))
+				return NULL;
+		}
+		else
+			newMemCtrl = pgePointers.lastSmallCtrl + 1;
+		pgePointers.lastSmallCtrl = newMemCtrl;
+		pgePointers.smallCtrlSizeLeft -= MEM_CTRL_SIZE;
+	}
+	setMemCtrl(newMemCtrl, memCtrlSplited);
+
+	return newMemCtrl;
+}
+
+t_mem_ctrl*	createNewLargeMemCtrl(t_mem_ctrl* memCtrlSplited)
+{
+	t_mem_ctrl* newMemCtrl;
+
+	if (!(newMemCtrl = popLostMemCtrl()))
+	{
+		// ft_printf(" NO POP ");
+		if (pgePointers.largeCtrlSizeLeft < MEM_CTRL_SIZE)
+		{
+			// ft_printf(" NO MEM ");
+			pgePointers.largeCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
+			if (!(newMemCtrl = getNewPage(NULL, pgePointers.largeCtrlSizeLeft)))
+				return NULL;
+		}
+		else
+		{
+			if (pgePointers.firstLargeCtrl->next)
+				newMemCtrl = pgePointers.lastLargeCtrl + 1;
+			else
+				newMemCtrl = pgePointers.firstLargeCtrl;
+		}
+		pgePointers.lastLargeCtrl = newMemCtrl;
+		pgePointers.largeCtrlSizeLeft -= MEM_CTRL_SIZE;
+	}
+	if (newMemCtrl != memCtrlSplited)
+		setMemCtrl(newMemCtrl, memCtrlSplited);
+
+	return newMemCtrl;
+}
+// t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited)
+// {
+// 	t_mem_ctrl* newMemCtrl;
+
+// 	if (!(newMemCtrl = popLostMemCtrl()))
+// 	{
+// 		// ft_printf(" NO POP ");
+// 		if (pgePointers.tinyCtrlSizeLeft < MEM_CTRL_SIZE)
+// 		{
+// 			// ft_printf(" NO MEM ");
+// 			pgePointers.tinyCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
+// 			if (!(newMemCtrl = getNewPage(NULL, pgePointers.tinyCtrlSizeLeft)))
+// 				return NULL;
+// 		}
+// 		else
+// 			newMemCtrl = pgePointers.lastTinyCtrl + 1;
+// 		pgePointers.lastTinyCtrl = newMemCtrl;
+// 		pgePointers.tinyCtrlSizeLeft -= MEM_CTRL_SIZE;
+// 	}
+// 	setMemCtrl(newMemCtrl, memCtrlSplited);
+
+// 	return newMemCtrl;
+// }
+
 t_mem_ctrl*	splitMemory(size_t size)
 {
 	t_mem_ctrl* newMemCtrl;
 
-	if (!(newMemCtrl = createNewMemCtrl(pgePointers.toReturn)))
-		return NULL;
+	if (size <= TINY_MAX)
+	{
+		if (!(newMemCtrl = createNewTinyMemCtrl(pgePointers.toReturn)))
+			return NULL;
+	}
+	else
+	{
+		if (!(newMemCtrl = createNewSmallMemCtrl(pgePointers.toReturn)))
+			return NULL;
+	}
 	newMemCtrl->allocatedSize = pgePointers.toReturn->allocatedSize - size;
 	newMemCtrl->pageAddr = pgePointers.toReturn->pageAddr + size;
 	pgePointers.toReturn->requiredSize = pgePointers.size;

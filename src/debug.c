@@ -26,7 +26,44 @@ void	show_alloc_mem()
 
 		tmp = tmp->next;
 	}
-	ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pgePointers.lastTinyCtrl, pgePointers.lastTinyCtrl->pageAddr, pgePointers.lastTinyCtrl->pageAddr + pgePointers.lastTinyCtrl->allocatedSize, pgePointers.lastTinyCtrl->allocatedSize);
+	// ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pgePointers.lastTinyCtrl, pgePointers.lastTinyCtrl->pageAddr, pgePointers.lastTinyCtrl->pageAddr + pgePointers.lastTinyCtrl->allocatedSize, pgePointers.lastTinyCtrl->allocatedSize);
+	
+	ft_printf("***********************************************\n");
+	tmp = pgePointers.firstSmallCtrl;
+	if (tmp)
+		ft_printf("SMALL\n");
+	while (tmp)
+	{
+		ft_printf("Header: %#5X: %#5X - %#5X :\
+		memAlloc: %d. memRequired: %d octets\n",\
+		tmp,\
+		tmp->pageAddr,\
+		tmp->pageAddr + tmp->allocatedSize,\
+		tmp->allocatedSize,\
+		tmp->requiredSize);
+
+		tmp = tmp->next;
+	}
+	// ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pgePointers.lastSmallCtrl, pgePointers.lastSmallCtrl->pageAddr, pgePointers.lastSmallCtrl->pageAddr + pgePointers.lastSmallCtrl->allocatedSize, pgePointers.lastSmallCtrl->allocatedSize);
+	
+	ft_printf("***********************************************\n");
+	tmp = pgePointers.firstLargeCtrl;
+	if (tmp)
+		ft_printf("LARGE\n");
+	while (tmp)
+	{
+		ft_printf("Header: %#5X: %#5X - %#5X :\
+		memAlloc: %d. memRequired: %d octets\n",\
+		tmp,\
+		tmp->pageAddr,\
+		tmp->pageAddr + tmp->allocatedSize,\
+		tmp->allocatedSize,\
+		tmp->requiredSize);
+
+		tmp = tmp->next;
+	}
+	// ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pgePointers.lastLargeCtrl, pgePointers.lastLargeCtrl->pageAddr, pgePointers.lastLargeCtrl->pageAddr + pgePointers.lastLargeCtrl->allocatedSize, pgePointers.lastLargeCtrl->allocatedSize);
+
 }
 
 void	printTree2(t_mem_ctrl* root)
