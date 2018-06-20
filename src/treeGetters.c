@@ -31,8 +31,8 @@ t_mem_ctrl*	getInOrderPredecessor(t_mem_ctrl* toReplace, t_mem_ctrl* node)
 		if (node->rchild)
 		{
 			toReturn = getInOrderPredecessor(toReplace, node->rchild);
-			node->height = maxHeight(node->lchild, node->rchild) + 1;
-			checkBalance(node);
+			node->height = max_height(node->lchild, node->rchild) + 1;
+			check_balance(node);
 			return toReturn;
 		}
 		if (node->lchild)
@@ -60,8 +60,8 @@ t_mem_ctrl*	getInOrderSuccessor(t_mem_ctrl* toReplace, t_mem_ctrl* node)
 		if (node->lchild)
 		{
 			toReturn = getInOrderSuccessor(toReplace, node->lchild);
-			node->height = maxHeight(node->lchild, node->rchild) + 1;
-			checkBalance(node);
+			node->height = max_height(node->lchild, node->rchild) + 1;
+			check_balance(node);
 			return toReturn;
 		}
 		if (node->rchild)
@@ -72,7 +72,7 @@ t_mem_ctrl*	getInOrderSuccessor(t_mem_ctrl* toReplace, t_mem_ctrl* node)
 	return toReturn;
 }
 
-int getHeight(t_mem_ctrl* node)
+int get_height(t_mem_ctrl* node)
 {
 	return node ? node->height : 0;
 }

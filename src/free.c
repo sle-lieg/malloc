@@ -4,22 +4,22 @@
 //			implement it with multithreading
 void	free(void* ptr)
 {
-	// if (!pgePointers.count)
+	// if (!pges_ctrl.count)
 		ft_printf("Free(%p)\n", ptr);
 	if (!ptr)
 		return;
-	if (!findMemCtrl(pgePointers.firstTinyCtrl, ptr))
-		if (!findMemCtrl(pgePointers.firstSmallCtrl, ptr))
-			if (!findLargeMemCtrl(pgePointers.firstLargeCtrl, ptr))
+	if (!findMemCtrl(pges_ctrl.fst_tiny, ptr))
+		if (!findMemCtrl(pges_ctrl.firstSmallCtrl, ptr))
+			if (!findLargeMemCtrl(pges_ctrl.firstLargeCtrl, ptr))
 				return;
 	// show_alloc_mem();
-	// pgePointers.count++;
-	// if (!pgePointers.count)
+	// pges_ctrl.count++;
+	// if (!pges_ctrl.count)
 	// {
 		// printAll();
-	// 	printTree2(pgePointers.rootTiny);
+	// 	printTree2(pges_ctrl.rootTiny);
 	// }
-	// checkGoodHeight(pgePointers.rootTiny);
+	// checkGoodHeight(pges_ctrl.rootTiny);
 }
 
 int	findMemCtrl(t_mem_ctrl* tmp, void* ptr)
@@ -46,8 +46,8 @@ int	findLargeMemCtrl(t_mem_ctrl* tmp, void* ptr)
 	{
 		if (tmp->pageAddr == ptr && !tmp->free)
 		{
-			if (pgePointers.firstLargeCtrl == tmp)
-				pgePointers.firstLargeCtrl = tmp->next;
+			if (pges_ctrl.firstLargeCtrl == tmp)
+				pges_ctrl.firstLargeCtrl = tmp->next;
 			else
 				tmp->prev->next = tmp->next;
 			munmap(tmp->pageAddr, tmp->allocatedSize);
@@ -68,7 +68,7 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 	ptr->requiredSize = 0;
 	while (ptr->next && ptr->next->free == 1 && ptr->pageSerie == ptr->next->pageSerie)
 	{
-		// if (!pgePointers.count)
+		// if (!pges_ctrl.count)
 		// 	ft_printf("\nLink freed next\n", ptr);
 		tmp = ptr->next;
 		removeNode(tmp);
@@ -77,7 +77,7 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 	}
 	while (ptr->prev && ptr->prev->free == 1 && ptr->pageSerie == ptr->prev->pageSerie)
 	{
-		// if (!pgePointers.count)
+		// if (!pges_ctrl.count)
 		// 	ft_printf("Link freed prev\n", ptr);
 		tmp = ptr;
 		ptr = ptr->prev;
@@ -85,7 +85,7 @@ void	freeMemCtrl(t_mem_ctrl* ptr)
 		linkLostPrevNext(ptr);
 		pushToLost(tmp);
 	}
-	addNode(&pgePointers.rootTiny, ptr);
+	addNode(&pges_ctrl.rootTiny, ptr);
 }
 
 void linkLostPrevNext(t_mem_ctrl* ptr)
@@ -107,6 +107,6 @@ void	pushToLost(t_mem_ctrl* ptr)
 	ptr->lchild = NULL;
 	ptr->rchild = NULL;
 	ptr->prev = NULL;
-	ptr->next = pgePointers.lost_mem_ctrl;
-	pgePointers.lost_mem_ctrl = ptr;
+	ptr->next = pges_ctrl.lost_mem_ctrl;
+	pges_ctrl.lost_mem_ctrl = ptr;
 }

@@ -19,9 +19,9 @@ void	linkNodes(t_mem_ctrl* father, t_mem_ctrl* child)
 	}
 }
 
-void  addLinks(t_mem_ctrl* father, t_mem_ctrl* child)
+void  add_links(t_mem_ctrl* father, t_mem_ctrl* child)
 {
-	if (father && child && child->allocatedSize <= father->allocatedSize)
+	if (father && child && child->addr <= father->addr)
 	{
 		// ft_printf(" LINK lchild");
 		father->lchild = child;
@@ -54,28 +54,18 @@ void	swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)
 
 int	replaceIfRoot(t_mem_ctrl* node, t_mem_ctrl* newRoot)
 {
-	if (pgePointers.rootTiny == node)
+	if (pges_ctrl.root == node)
 	{
-		pgePointers.rootTiny = newRoot;
+		pges_ctrl.root = newRoot;
 		return (1);
 	}
-	if (pgePointers.rootSmall == node)
-	{
-		pgePointers.rootSmall = newRoot;
-		return (1);
-	}
-	// if (pgePointers.rootLarge == node)
-	// {
-	// 	pgePointers.rootLarge = newRoot;
-	// 	return (1);
-	// }
 	return (0);
 }
 
-int	isLastMemCtrl(t_mem_ctrl* ptr)
-{
-	if (ptr == pgePointers.lastTinyCtrl || ptr == pgePointers.lastSmallCtrl ||
-		ptr == pgePointers.lastLargeCtrl)
-		return 1;
-	return 0;
-}
+// int	isLastMemCtrl(t_mem_ctrl* ptr)
+// {
+// 	if (ptr == pges_ctrl.lastTinyCtrl || ptr == pges_ctrl.lastSmallCtrl ||
+// 		ptr == pges_ctrl.lastLargeCtrl)
+// 		return 1;
+// 	return 0;
+// }

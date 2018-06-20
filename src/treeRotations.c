@@ -2,7 +2,7 @@
 
 void  rotateLeft(t_mem_ctrl* node)
 {
-	// if (!pgePointers.count)
+	// if (!pges_ctrl.count)
 	// 	ft_printf("Rotate left\n");
    t_mem_ctrl* tmp;
 
@@ -22,13 +22,13 @@ void  rotateLeft(t_mem_ctrl* node)
 	}
 	tmp ? tmp->father = node->father : 0;	
 	node->father = tmp;
-	node->height = maxHeight(node->lchild, node->rchild) + 1;
-	tmp ? tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1 : 0;
+	node->height = max_height(node->lchild, node->rchild) + 1;
+	tmp ? tmp->height = max_height(tmp->lchild, tmp->rchild) + 1 : 0;
 }
 
 void	rotateRight(t_mem_ctrl* node)
 {
-	// if (!pgePointers.count)
+	// if (!pges_ctrl.count)
 	// 	ft_printf("Rotate right\n");
    t_mem_ctrl* tmp;
 
@@ -48,6 +48,6 @@ void	rotateRight(t_mem_ctrl* node)
 	}
 	tmp ? tmp->father = node->father : 0;
 	node->father = tmp;
-	node->height = maxHeight(node->lchild, node->rchild) + 1;
-	tmp ? tmp->height = maxHeight(tmp->lchild, tmp->rchild) + 1 : 0;
+	node->height = max_height(node->lchild, node->rchild) + 1;
+	tmp ? tmp->height = max_height(tmp->lchild, tmp->rchild) + 1 : 0;
 }

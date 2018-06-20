@@ -1,43 +1,41 @@
 #include "malloc.h"
 
-void	addNode(t_mem_ctrl** root, t_mem_ctrl* newNode)
+void	add_node(t_mem_ctrl* new_node)
 {
-	// if (!pgePointers.count)
-	// 	ft_printf("Add Node(%p)\n", newNode);
-	if (!*root)
+	if (!pges_ctrl.root)
 	{
-		*root = newNode;
-		newNode->height = 1;
+		pges_ctrl.root = new_node;
+		new_node->height = 1;
 	}
 	else
-		recursiveAdd(*root, newNode);
+		recursive_add(pges_ctrl.root, new_node);
 }
 
-void	recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode)
+void	recursive_add(t_mem_ctrl* node, t_mem_ctrl* new_node)
 {
-	// ft_printf("RecursiveAdd ");
-	if (newNode->allocatedSize <= node->allocatedSize)
+	assert(node != new_node);
+	if (new_node->addr <= node->addr)
 	{
 		if (node->lchild)
-			recursiveAdd(node->lchild, newNode);
+			recursive_add(node->lchild, new_node);
 		else
 		{
-			addLinks(node, newNode);
-			newNode->height = 1;
-			newNode->free = TRUE;			
+			add_links(node, new_node);
+			new_node->height = 1;
+			// new_node->free = TRUE;
 		}
 	}
 	else
 	{
 		if (node->rchild)
-			recursiveAdd(node->rchild, newNode);
+			recursive_add(node->rchild, new_node);
 		else
 		{
-			addLinks(node, newNode);
-			newNode->height = 1;
-			newNode->free = TRUE;
+			add_links(node, new_node);
+			new_node->height = 1;
+			// new_node->free = TRUE;
 		}
 	}
-	checkBalance(node);
-	node->height = maxHeight(node->lchild, node->rchild) + 1;
+	check_balance(node);
+	node->height = max_height(node->lchild, node->rchild) + 1;
 }

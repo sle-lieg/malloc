@@ -1,27 +1,15 @@
 #include "malloc.h"
 
-void	findFreeBlock(t_mem_ctrl* node, size_t size)
+int	check_balance(t_mem_ctrl* node)
 {
-	if (!node || pgePointers.toReturn)
-		return;
-	if (node->lchild && size < node->allocatedSize)
-		findFreeBlock(node->lchild, size);
-	if (size <= node->allocatedSize && !pgePointers.toReturn)
-		pgePointers.toReturn = node;
-	else if (node->rchild && !pgePointers.toReturn)
-		findFreeBlock(node->rchild, size);
-}
-
-int	checkBalance(t_mem_ctrl* node)
-{
-	// if (!pgePointers.count)
+	// if (!pges_ctrl.count)
 	// 	ft_printf("CheckBalance\n");
    int factor;
 
-   factor = getHeight(node->lchild) - getHeight(node->rchild);
+   factor = get_height(node->lchild) - get_height(node->rchild);
 	if (factor > 1)
 	{
-		if (checkBalance(node->lchild) >= 0)
+		if (check_balance(node->lchild) >= 0)
 			rotateRight(node);
 		else
 		{
@@ -31,7 +19,7 @@ int	checkBalance(t_mem_ctrl* node)
 	}
 	else if (factor < -1)
 	{
-		if (checkBalance(node->rchild) <= 0)
+		if (check_balance(node->rchild) <= 0)
 			rotateLeft(node);
 		else
 		{
@@ -41,10 +29,10 @@ int	checkBalance(t_mem_ctrl* node)
 	}
 	if (factor < -1 || factor > 1)
 		replaceIfRoot(node, node->father);
-   return factor;
+	return factor;
 }
 
-int	maxHeight(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB)
+int	max_height(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB)
 {
 	if (!nodeA && !nodeB)
 		return 0;
@@ -55,12 +43,12 @@ int	maxHeight(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB)
 	return nodeA->height > nodeB->height ? nodeA->height : nodeB->height;
 }
 
-void	checkHeight(t_mem_ctrl* node)
+void	check_height(t_mem_ctrl* node)
 {
 	// ft_printf("CheckHeight\n");
 	if (!node)
 		return;
-	checkHeight(node->lchild);
-	checkHeight(node->rchild);
-	node->height = maxHeight(node->lchild, node->rchild) + 1;
+	check_height(node->lchild);
+	check_height(node->rchild);
+	node->height = max_height(node->lchild, node->rchild) + 1;
 }

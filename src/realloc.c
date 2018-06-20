@@ -4,14 +4,14 @@
 
 void *realloc(void *ptr, size_t size)
 {
- 	// if (!pgePointers.count)
+ 	// if (!pges_ctrl.count)
 		ft_printf("REALLOC(%p, %lu)", ptr, size);
 	if (!ptr)
 		return (malloc(size));
 	else
 	{
-		if (!(pgePointers.toReturn = getMemCtrl(ptr)))
-		// if (!checkLimit(size) || !(pgePointers.toReturn = getMemCtrl(ptr)))
+		if (!(pges_ctrl.toReturn = getMemCtrl(ptr)))
+		// if (!checkLimit(size) || !(pges_ctrl.toReturn = getMemCtrl(ptr)))
 			return NULL;
 	}
 	return checkSize(size);
@@ -22,7 +22,7 @@ t_mem_ctrl* getMemCtrl(void* ptr)
 {
 	t_mem_ctrl* tmp;
 
-	tmp = pgePointers.firstTinyCtrl;
+	tmp = pges_ctrl.fst_tiny;
 	while (tmp)
 	{
 		if (tmp->pageAddr == ptr)
@@ -37,7 +37,7 @@ void*	checkSize(size_t size)
 	void*			tmp;
 	t_mem_ctrl* toFree;
 
-	toFree = pgePointers.toReturn;
+	toFree = pges_ctrl.toReturn;
 	if (size <= toFree->allocatedSize)
 	{
 		toFree->requiredSize = size;

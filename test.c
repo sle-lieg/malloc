@@ -1,26 +1,11 @@
-// #include <stdio.h>
-// #include <sys/mman.h>
-// #include <stdlib.h>
-// #include <string.h>
 #include "malloc.h"
-#include <sys/types.h>
-#include <pwd.h>
-#include <uuid/uuid.h>
-#include <sys/resource.h>
 
 int main()
-{
-	struct rlimit l;
-
-	getrlimit(RLIMIT_DATA, &l);
-	ft_printf("%lu\n", l.rlim_cur);
-	ft_printf("%lu\n", l.rlim_max);
-	
-
-	// char* p1 = malloc(1);
-	// char* p2 = malloc(128);
-	// char* p3 = malloc(129);
-	// char* p4 = malloc(4096);
+{	
+	char* p1 = malloc(1);
+	char* p2 = malloc(128);
+	char* p3 = malloc(129);
+	char* p4 = malloc(4096);
 	// char* p5 = malloc(4097);
 	// char* p6 = malloc(50000);
 
@@ -31,10 +16,10 @@ int main()
 	// char* p11 = malloc(8192);
 	// char* p12 = malloc(3);
 
-	// // ft_printf("p1->%p\n", p1);
-	// // ft_printf("p2->%p\n", p2);
-	// // ft_printf("p3->%p\n", p3);
-	// // ft_printf("p4->%p\n", p4);
+	ft_printf("p1->%p\n", p1);
+	ft_printf("p2->%p\n", p2);
+	ft_printf("p3->%p\n", p3);
+	ft_printf("p4->%p\n", p4);
 	// // ft_printf("p5->%p\n", p5);
 	// // ft_printf("p6->%p\n", p6);
 	// show_alloc_mem();

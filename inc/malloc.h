@@ -8,88 +8,93 @@
 #include "ft_printf.h"
 #include <sys/resource.h>
 
-// #define TINY_MAX UINTMAX_MAX
-#define TINY_MAX 128
-#define TINY_ZONE (TINY_MAX * 100)
-#define SMALL_MAX 4096
-#define SMALL_ZONE (SMALL_MAX * 100)
-#define MEM_ALIGN_SHIFT 4
+#include <assert.h>
+
+#define TINY_MAX ( 128 )
+#define SMALL_MAX ( 4096 )
+#define MEM_ALIGN_SHIFT ( 4 )
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
-#define MEM_ALIGN 16
-#define NB_PAGES 2
+#define MEM_ALIGN ( 16 )
+#define NB_PAGES ( 2 )
 
-#define MMAP_BAD_ALLOC 0x1
+#define MMAP_BAD_ALLOC ( 0x1 )
 
-typedef struct s_memory_ctrl    t_mem_ctrl;
-typedef struct s_pagesPointers  t_pagesPointers;
+typedef struct s_memory_ctrl		t_mem_ctrl;
+typedef struct s_pages_control	t_pge_ctrl;
 
 #define MEM_CTRL_SIZE sizeof(t_mem_ctrl)
 
-struct  s_pagesPointers
+struct	s_pages_control
 {
-    t_mem_ctrl* rootTiny;       // contains the root with average size available
-    t_mem_ctrl* rootSmall;      // to sort by size
-   //  t_mem_ctrl* rootLarge;
-    t_mem_ctrl* firstTinyCtrl;   // contains the first memCtrl created
-    t_mem_ctrl* firstSmallCtrl;
-    t_mem_ctrl* firstLargeCtrl;
-    t_mem_ctrl* lastTinyCtrl;   // phisically last memCtrl on the heap (used to create new mem_ctrl from its address + mem_ctrl size)
-    t_mem_ctrl* lastSmallCtrl;
-    t_mem_ctrl* lastLargeCtrl;
-    size_t      tinyCtrlSizeLeft;
-    size_t      smallCtrlSizeLeft;
-    size_t      largeCtrlSizeLeft;
-   //  size_t      size; // TODO: need to keep real size ?
-    int         pageSize;
-    int         pageSerieCount;
+	t_mem_ctrl* header_pge; 	// contains the address of the last created header
+	t_mem_ctrl* header_pge_limit; 	// contains the address of the last created header
+	
+	t_mem_ctrl* root;	// contains the root header of all headers created
+	t_mem_ctrl* lost_headers;	// list of headers lost after blocks fusion
 
-    t_mem_ctrl* toReturn;
+	t_mem_ctrl* fst_tiny;		// contains the first header of	tiny
+	t_mem_ctrl* lst_tiny;		// contains the last header of	tiny
+	t_mem_ctrl* free_tiny;		// head of the list of free tiny's
+	
+	t_mem_ctrl* fst_small;		// 		"								small
+	t_mem_ctrl* lst_small;		// 		"								small
+	t_mem_ctrl* free_small;		// 		"								smalls
 
-    char        errors;
-    
-    t_mem_ctrl* lost_mem_ctrl; // PROTOTYPE list of lost t_mem_ctrl after blocks-fusion
+	t_mem_ctrl* ret;				// header that contains the address to return
+	int			pages_id;		// to give an id to the header of the same pages
 
-	// size_t count;
+	size_t		tiny_zone;		// size to contains minimum 100 tiny
+	size_t		small_zone;		// size to contains minimum 100 small
+
+	char			errors;
+
+	// // size_t count;
 };
 
 struct s_memory_ctrl
 {
-    t_mem_ctrl* father; // tree links for the research by free space
-    t_mem_ctrl* lchild;
-    t_mem_ctrl* rchild;
-    t_mem_ctrl* prev; // list links for the order of the memory blocks, to
-    t_mem_ctrl* next; // merge blocks together if they are free
-    char*       pageAddr;   // point to the address to return to caller
-    size_t      allocatedSize;
-    size_t      requiredSize;
-    int         height; // height in the tree for balance factor
-    int         free;
-    int         pageSerie; // allow fusion if eguals to other memCtrl
+	t_mem_ctrl* father;		// tree links for the research by address
+	t_mem_ctrl* lchild;
+	t_mem_ctrl* rchild;
+	t_mem_ctrl* prev;			// list links for the order of the memory blocks, to
+	t_mem_ctrl* next;			// merge blocks together if they are free
+	t_mem_ctrl* next_free; 	// link to the next free header, to speed up search
+	char*			addr;			// point to the address to return from malloc
+	size_t		size;
+	int			height;		// height in the tree for balance factor
+	char			free;			// booleen, is free: TRUE, else FALSE
+	int			pge_id;		// allow fusion if eguals to other memCtrl
 };
 
-t_pagesPointers   pgePointers;
+t_pge_ctrl	pges_ctrl;
 
 /**
  *			MALLOC.C
  **/
 void*			malloc(size_t size);
-void			handleTiny(size_t size);
-void			handleSmall(size_t size);
-void			handleLarge(size_t size);
+void			handle_tiny(size_t size);
+void			handle_small(size_t size);
+void			handle_large(size_t size);
 int			checkLimit(size_t size);
+size_t		align_memory(size_t size);
+t_mem_ctrl*	split_memory(size_t size);
+void			find_free_block(t_mem_ctrl* block, size_t size);
+void			add_to_free(t_mem_ctrl** free_head, t_mem_ctrl* new_header);
+void			remove_from_free(t_mem_ctrl* block);
+int			extend_heap(t_mem_ctrl* last_mctrl);
 
 /**
  *			INIT.C
  **/
-int			initRootTiny();
-int			initRootSmall();
-int			initRootLarge();
-t_mem_ctrl*	getLastLink(t_mem_ctrl* ctrl);
+int			extend_header_pge();
+int			init_tiny();
+int			init_small();
+// int			initRootLarge();
 
 /**
  *      ALLOCATOR.C
  **/
-void*       getNewPage(t_mem_ctrl* pageMemCtrl, size_t size);
+void*	create_new_page(size_t size);
 // t_mem_ctrl*	createNewMemCtrl(t_mem_ctrl* memCtrlSplited);
 t_mem_ctrl*	createNewTinyMemCtrl(t_mem_ctrl* memCtrlSplited);
 t_mem_ctrl*	createNewSmallMemCtrl(t_mem_ctrl* memCtrlSplited);
@@ -102,10 +107,9 @@ t_mem_ctrl* popLostMemCtrl();
 /**
  *      TREE_CHECKER.C
  **/
-void        findFreeBlock(t_mem_ctrl* node, size_t size);
-int         checkBalance(t_mem_ctrl* node);
-int         maxHeight(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB);
-void        checkHeight(t_mem_ctrl* node);
+int         check_balance(t_mem_ctrl* node);
+int         max_height(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB);
+void        check_height(t_mem_ctrl* node);
 
 /**
  *      TREE_GETTERS.C
@@ -114,13 +118,13 @@ t_mem_ctrl* getInOrderPredecessor(t_mem_ctrl* toReplace, t_mem_ctrl* node);
 t_mem_ctrl* getInOrderSuccessor(t_mem_ctrl* toReplace, t_mem_ctrl* node);
 // t_mem_ctrl* getInOrderPredecessor(t_mem_ctrl* node);
 // t_mem_ctrl* getInOrderSuccessor(t_mem_ctrl* node);
-int         getHeight(t_mem_ctrl* node);
+int         get_height(t_mem_ctrl* node);
 
 /**
  *      TREE_INSERTERS.C
  **/
-void        addNode(t_mem_ctrl** root, t_mem_ctrl* newNode);
-void        recursiveAdd(t_mem_ctrl* node, t_mem_ctrl* newNode);
+void        add_node(t_mem_ctrl* newNode);
+void        recursive_add(t_mem_ctrl* node, t_mem_ctrl* newNode);
 
 /**
  *      TREE_REMOVER.C
@@ -144,7 +148,7 @@ void			linkNodes(t_mem_ctrl* father, t_mem_ctrl* child);
 void			swapNodes(t_mem_ctrl* predecessor, t_mem_ctrl* node);
 int			replaceIfRoot(t_mem_ctrl* node, t_mem_ctrl* newRoot);
 int			isLastMemCtrl(t_mem_ctrl* ptr);
-void			addLinks(t_mem_ctrl* father, t_mem_ctrl* child);
+void			add_links(t_mem_ctrl* father, t_mem_ctrl* child);
 
 /**
  *      DEBUG.C
