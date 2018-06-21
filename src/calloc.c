@@ -2,15 +2,12 @@
 
 void*	calloc(size_t count, size_t size)
 {
-	void* tmp;
-	int	totSize;
+	void*	tmp;
 
- 	// if (!pges_ctrl.count)
-		ft_printf("CALLOC(%lu, %lu)\n", count, size);
-	totSize = count * size;
+	size = align_memory(count * size);
 
-	if (!(tmp = malloc(totSize)))
+	if (!(tmp = malloc(size)))
 		return NULL;
-	ft_bzero(tmp, totSize);
+	ft_bzero(tmp, size);
 	return tmp;
 }

@@ -10,20 +10,18 @@ int checkDepth(t_mem_ctrl* node)
 void	show_alloc_mem()
 {
 	t_mem_ctrl* tmp;
+	t_mem_ctrl* tmp_prev;
 
 	tmp = pges_ctrl.fst_tiny;
 	if (tmp)
 		ft_printf("TINY\n");
 	while (tmp)
 	{
-		ft_printf("Header: %#5X: %#5X - %#5X :\
-		memAlloc: %d.\n",\
-		tmp,\
-		tmp->addr,\
-		tmp->addr + tmp->size,\
-		tmp->size);
-
+		ft_printf("Hdr: %#5X - addr: %#5X - size: %d.\n",\
+		tmp, tmp->addr, tmp->size);
+		tmp_prev = tmp;
 		tmp = tmp->next;
+		assert(tmp->prev == tmp_prev);
 	}
 	// ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pges_ctrl.lst_tiny, pges_ctrl.lst_tiny->addr, pges_ctrl.lst_tiny->addr + pges_ctrl.lst_tiny->size, pges_ctrl.lst_tiny->size);
 	
@@ -33,13 +31,8 @@ void	show_alloc_mem()
 		ft_printf("SMALL\n");
 	while (tmp)
 	{
-		ft_printf("Header: %#5X: %#5X - %#5X :\
-		memAlloc: %d.\n",\
-		tmp,\
-		tmp->addr,\
-		tmp->addr + tmp->size,\
-		tmp->size);
-
+		ft_printf("Hdr: %#5X - addr: {green}%#5X{eoc} - size: %d.\n",\
+		tmp, tmp->addr, tmp->size);
 		tmp = tmp->next;
 	}
 	// ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pges_ctrl.lastSmallCtrl, pges_ctrl.lastSmallCtrl->addr, pges_ctrl.lastSmallCtrl->addr + pges_ctrl.lastSmallCtrl->size, pges_ctrl.lastSmallCtrl->size);
@@ -49,7 +42,16 @@ void	printTree2(t_mem_ctrl* root)
 {
 	if (!root)
 		return;
-	ft_printf("---	N[%d][%d]{%lu}: addr=%p | page=%p | father:%p | lchild=%p | rchild=%p \n", checkDepth(root), root->height, root->size, root, root->addr, root->father, root->lchild, root->rchild);
+	ft_printf("---	N[%d][%d]{%lu}: addr={green}%p{eoc} | hdr=%p | father: H->%p ", checkDepth(root), root->height, root->size, root->addr, root, root->father);
+	if (root->father)
+		ft_printf("Ad->{green}%p{eoc} ", root->father->addr);
+	ft_printf("| lchild: H->%p ", root->lchild);
+	if (root->lchild)
+		ft_printf("Ad->{green}%p{eoc} ", root->lchild->addr);
+	ft_printf("| rchild: H->%p ", root->rchild);
+	if (root->rchild)
+		ft_printf("Ad->{green}%p{eoc} ", root->rchild->addr);
+	ft_printf("\n");
 	printTree2(root->lchild);
 	printTree2(root->rchild);
 }

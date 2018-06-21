@@ -22,7 +22,6 @@ void	recursive_add(t_mem_ctrl* node, t_mem_ctrl* new_node)
 		{
 			add_links(node, new_node);
 			new_node->height = 1;
-			// new_node->free = TRUE;
 		}
 	}
 	else
@@ -33,7 +32,6 @@ void	recursive_add(t_mem_ctrl* node, t_mem_ctrl* new_node)
 		{
 			add_links(node, new_node);
 			new_node->height = 1;
-			// new_node->free = TRUE;
 		}
 	}
 	check_balance(node);

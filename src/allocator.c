@@ -1,17 +1,6 @@
 #include "malloc.h"
 
-void*	create_new_page(size_t size)
-{
-	void* tmp;
 
-	tmp = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-	if (tmp == MAP_FAILED)
-	{
-		pges_ctrl.errors |= MMAP_BAD_ALLOC;
-		return NULL;
-	}
-	return tmp;
-}
 
 // void*	getNewPage(t_mem_ctrl* pageMemCtrl, size_t size)
 // {
@@ -179,16 +168,4 @@ void*	create_new_page(size_t size)
 // 	memCtrlSplited->next = newMemCtrl;
 // 	newMemCtrl->free = TRUE;
 // 	newMemCtrl->pageSerie = memCtrlSplited->pageSerie;
-// }
-
-// t_mem_ctrl* popLostMemCtrl()
-// {
-// 	t_mem_ctrl* newMemCtrl;
-
-// 	if (!pges_ctrl.lost_mem_ctrl)
-// 		return NULL;
-// 	newMemCtrl = pges_ctrl.lost_mem_ctrl;
-// 	pges_ctrl.lost_mem_ctrl = pges_ctrl.lost_mem_ctrl->next;
-// 	newMemCtrl->next = NULL;
-// 	return newMemCtrl;
 // }

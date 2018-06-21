@@ -24,10 +24,10 @@ int main()
 	// // ft_printf("p6->%p\n", p6);
 	// show_alloc_mem();
 
-	// free(p1);
-	// free(p2);
-	// free(p3);
-	// free(p4);
+	free(p1);
+	free(p2);
+	free(p3);
+	free(p4);
 	// free(p5);
 	// free(p6);
 	// free(p7);

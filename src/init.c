@@ -6,27 +6,23 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 09:06:08 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/20 17:25:53 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/21 15:54:31 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-int	extend_header_pge()
-{
-	pges_ctrl.header_pge = mmap(NULL, getpagesize() * NB_PAGES, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-	if (pges_ctrl.header_pge == MAP_FAILED)
-		return (0);
-	pges_ctrl.header_pge_limit = pges_ctrl.header_pge + (getpagesize() * NB_PAGES);
-	assert((pges_ctrl.header_pge_limit - pges_ctrl.header_pge) == (getpagesize() * NB_PAGES));
-	// ft_printf("Header zone: %p - %p len= %lu\n", pges_ctrl.header_pge, pges_ctrl.header_pge_limit, pges_ctrl.header_pge_limit - pges_ctrl.header_pge );
-	return (1);
-}
-
 int	init_tiny()
 {
 	pges_ctrl.fst_tiny = pges_ctrl.header_pge++;
 	assert((char*)pges_ctrl.fst_tiny == (char*)(pges_ctrl.header_pge) - sizeof(t_mem_ctrl));
+	assert(pges_ctrl.fst_tiny->prev == NULL);
+	assert(pges_ctrl.fst_tiny->next == NULL);
+	assert(pges_ctrl.fst_tiny->next_free == NULL);
+	assert(pges_ctrl.fst_tiny->father == NULL);
+	assert(pges_ctrl.fst_tiny->lchild == NULL);
+	assert(pges_ctrl.fst_tiny->rchild == NULL);
+	
 	if (!(pges_ctrl.fst_tiny->addr = create_new_page(pges_ctrl.tiny_zone)))
 		return (0);
 	pges_ctrl.fst_tiny->free = TRUE;
