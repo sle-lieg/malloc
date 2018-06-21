@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:24:48 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/21 17:26:35 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/21 17:41:47 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ t_mem_ctrl*	split_memory(size_t size)
 	new_header->next = pges_ctrl.ret->next;
 	new_header->pge_id = pges_ctrl.ret->pge_id;
 	pges_ctrl.ret->size = size;
-	pges_ctrl.ret->next = new_header;
 	if (pges_ctrl.ret->next)
 		pges_ctrl.ret->next->prev = new_header;
+	pges_ctrl.ret->next = new_header;
 	add_node(new_header);
 	return NULL; // TODO: useless
 }
