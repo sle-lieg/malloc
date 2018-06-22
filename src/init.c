@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 09:06:08 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/22 10:32:00 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:24:30 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_tiny()
 {
-	ft_printf("INIT TINY\n");
+	// ft_printf("INIT TINY\n");
 	pges_ctrl.fst_tiny = pges_ctrl.header_pge++;
 	assert((char*)pges_ctrl.fst_tiny == (char*)(pges_ctrl.header_pge) - sizeof(t_mem_ctrl));
 	assert(pges_ctrl.fst_tiny->prev == NULL);
@@ -39,7 +39,7 @@ int	init_tiny()
 
 int	init_small()
 {
-	ft_printf("INIT SMALL\n");
+	// ft_printf("INIT SMALL\n");
 	
 	pges_ctrl.fst_small = pges_ctrl.header_pge++;
 	if (!(pges_ctrl.fst_small->addr = create_new_page(pges_ctrl.small_zone)))

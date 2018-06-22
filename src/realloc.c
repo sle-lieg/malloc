@@ -2,7 +2,8 @@
 
 void *realloc(void *ptr, size_t size)
 {
-	ft_printf("REALLOC(%p, %lu)", ptr, size);
+	if (pges_ctrl.debug)
+		ft_printf("REALLOC(%p, %lu)", ptr, size);
 	t_mem_ctrl* to_realloc;
 
 	if (!ptr)

@@ -18,7 +18,7 @@ static void	link_left_child(t_mem_ctrl* father, t_mem_ctrl* child)
 
 t_mem_ctrl*	get_predecessor(t_mem_ctrl* to_replace, t_mem_ctrl* node)
 {
-	ft_printf("PREDECESSOR\n");
+	// ft_printf("PREDECESSOR\n");
 	t_mem_ctrl* to_return;
 
 	to_return = node;
@@ -48,7 +48,7 @@ t_mem_ctrl*	get_predecessor(t_mem_ctrl* to_replace, t_mem_ctrl* node)
 
 t_mem_ctrl*	get_successor(t_mem_ctrl* to_replace, t_mem_ctrl* node)
 {
-	ft_printf("SUCCESSOR\n");	
+	// ft_printf("SUCCESSOR\n");
 	t_mem_ctrl* to_return;
 
 	to_return = node;

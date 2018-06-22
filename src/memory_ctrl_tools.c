@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:24:48 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/22 16:30:05 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/22 20:40:04 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	find_free_block(t_mem_ctrl* block, size_t size)
 	{
 		if (block->size >= size)
 		{
-			ft_printf("FREE BLOCK FOUND: %p\n", block);
+			if (pges_ctrl.debug)
+				ft_printf("FREE BLOCK FOUND: %p\n", block);
+			assert(block->free == 1);
 			pges_ctrl.ret = block;
 			if (size <= TINY_MAX)
 				remove_from_free(pges_ctrl.free_tiny, block);
@@ -43,8 +45,10 @@ t_mem_ctrl*	split_memory(size_t size)
 		assert(new_header == pges_ctrl.header_pge - 1);
 	}
 	else
-		ft_printf("POP HEADER %p | ", new_header);
-	ft_printf("HEADER: f=%p lc=%p rc=%p\n", new_header->father, new_header->lchild, new_header->rchild);
+		if (pges_ctrl.debug)
+			ft_printf("POP HEADER %p | ", new_header);
+	if (pges_ctrl.debug)
+		ft_printf("HEADER: f=%p lc=%p rc=%p\n", new_header->father, new_header->lchild, new_header->rchild);
 	assert(new_header->father == NULL);
 	assert(new_header->lchild == NULL);
 	assert(new_header->rchild == NULL);

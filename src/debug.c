@@ -21,8 +21,8 @@ void	show_alloc_mem()
 			ft_printf("[F]");
 		else
 			ft_printf("[N]");
-		ft_printf("Hdr: %p - addr: %p - size: %d.\n",\
-		tmp, tmp->addr, tmp->size);
+		ft_printf("{page: %d}Hdr: %p - addr: %p - size: %d.\n",\
+		tmp->pge_id, tmp, tmp->addr, tmp->size);
 		tmp_prev = tmp;
 		tmp = tmp->next;
 		if (tmp)
@@ -36,8 +36,12 @@ void	show_alloc_mem()
 		ft_printf("SMALL\n");
 	while (tmp)
 	{
-		ft_printf("Hdr: %p - addr: %p - size: %d.\n",\
-		tmp, tmp->addr, tmp->size);
+		if (tmp->free)
+			ft_printf("[F]");
+		else
+			ft_printf("[N]");
+		ft_printf("{page: %d}Hdr: %p - addr: %p - size: %d.\n",\
+		tmp->pge_id, tmp, tmp->addr, tmp->size);
 		tmp = tmp->next;
 	}
 	// ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pges_ctrl.lastSmallCtrl, pges_ctrl.lastSmallCtrl->addr, pges_ctrl.lastSmallCtrl->addr + pges_ctrl.lastSmallCtrl->size, pges_ctrl.lastSmallCtrl->size);

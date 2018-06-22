@@ -2,7 +2,7 @@
 
 void	remove_node(t_mem_ctrl* node)
 {
-	ft_printf("REMOVE NODE %p\n", node);
+	// ft_printf("REMOVE NODE %p\n", node);
 	if (!node->lchild && !node->rchild)
 		remove_leaf(node);
 	else if (node->lchild && node->rchild)
@@ -75,7 +75,7 @@ void	remove_orphan(t_mem_ctrl* node)
 
 void	recursive_balance(t_mem_ctrl* node)
 {
-	ft_printf("REC BALANCE %p\n", node);
+	// ft_printf("REC BALANCE %p\n", node);
 	if (!node)
 		return;
 	node->height = max_height(node->lchild, node->rchild) + 1;

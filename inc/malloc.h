@@ -49,6 +49,7 @@ struct	s_pages_control
 	char			errors;
 
 	// // size_t count;
+	int debug;
 };
 
 struct s_memory_ctrl

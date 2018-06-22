@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:55:03 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/22 09:01:15 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:25:37 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void  rotate_left(t_mem_ctrl* node)
 {
-	ft_printf("ROT LEFT\n");
+	// ft_printf("ROT LEFT\n");
 	t_mem_ctrl* tmp;
 
 	tmp = node->rchild;
@@ -39,7 +39,7 @@ void  rotate_left(t_mem_ctrl* node)
 
 void	rotate_right(t_mem_ctrl* node)
 {
-	ft_printf("ROT RIGHT\n");	
+	// ft_printf("ROT RIGHT\n");
 	t_mem_ctrl* tmp;
 
 	tmp = node->lchild;

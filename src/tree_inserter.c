@@ -2,7 +2,7 @@
 
 void	add_node(t_mem_ctrl* new_node)
 {
-	ft_printf("ADD NODE %p\n", new_node->addr);
+	// ft_printf("ADD NODE %p\n", new_node->addr);
 	assert(new_node->father == NULL);
 	assert(new_node->lchild == NULL);
 	assert(new_node->rchild == NULL);
