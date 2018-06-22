@@ -17,7 +17,11 @@ void	show_alloc_mem()
 		ft_printf("TINY\n");
 	while (tmp)
 	{
-		ft_printf("Hdr: %#5X - addr: %#5X - size: %d.\n",\
+		if (tmp->free)
+			ft_printf("[F]");
+		else
+			ft_printf("[N]");
+		ft_printf("Hdr: %p - addr: %p - size: %d.\n",\
 		tmp, tmp->addr, tmp->size);
 		tmp_prev = tmp;
 		tmp = tmp->next;
@@ -32,7 +36,7 @@ void	show_alloc_mem()
 		ft_printf("SMALL\n");
 	while (tmp)
 	{
-		ft_printf("Hdr: %#5X - addr: {green}%#5X{eoc} - size: %d.\n",\
+		ft_printf("Hdr: %p - addr: %p - size: %d.\n",\
 		tmp, tmp->addr, tmp->size);
 		tmp = tmp->next;
 	}
@@ -43,18 +47,46 @@ void	printTree2(t_mem_ctrl* root)
 {
 	if (!root)
 		return;
-	ft_printf("---	N[%d][%d]{%lu}: addr={green}%p{eoc} | hdr=%p | father: H->%p ", checkDepth(root), root->height, root->size, root->addr, root, root->father);
+	if (root->free)
+		ft_printf("---	F");
+	else
+		ft_printf("---	N");
+	ft_printf("[%d][%d]{%lu}: addr=%p | hdr=%p | father: H->%p ", checkDepth(root), root->height, root->size, root->addr, root, root->father);
 	if (root->father)
-		ft_printf("Ad->{green}%p{eoc} ", root->father->addr);
+		ft_printf("Ad->%p ", root->father->addr);
 	ft_printf("| lchild: H->%p ", root->lchild);
 	if (root->lchild)
-		ft_printf("Ad->{green}%p{eoc} ", root->lchild->addr);
+		ft_printf("Ad->%p ", root->lchild->addr);
 	ft_printf("| rchild: H->%p ", root->rchild);
 	if (root->rchild)
-		ft_printf("Ad->{green}%p{eoc} ", root->rchild->addr);
+		ft_printf("Ad->%p ", root->rchild->addr);
 	ft_printf("\n");
 	printTree2(root->lchild);
 	printTree2(root->rchild);
+}
+
+void	print_empty()
+{
+	t_mem_ctrl* tmp;
+
+	tmp = pges_ctrl.free_tiny;
+	ft_printf("++ Empty TINY:\n");
+	while (tmp)
+	{
+		ft_printf("	[%d]H:%p A:%p ", tmp->free, tmp, tmp->addr);
+		assert(tmp->free == 1);
+		tmp = tmp->next_free;
+	}
+	ft_printf("\n");	
+	tmp = pges_ctrl.free_small;
+	ft_printf("++ Empty SMALL:\n");
+	while (tmp)
+	{
+		ft_printf("	[%d]H:%p A:%p", tmp->free, tmp, tmp->addr);
+		assert(tmp->free == 1);	
+		tmp = tmp->next_free;
+	}
+	ft_printf("\n");
 }
 
 // void	printTree(t_mem_ctrl* root)

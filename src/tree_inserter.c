@@ -2,6 +2,10 @@
 
 void	add_node(t_mem_ctrl* new_node)
 {
+	ft_printf("ADD NODE %p\n", new_node->addr);
+	assert(new_node->father == NULL);
+	assert(new_node->lchild == NULL);
+	assert(new_node->rchild == NULL);
 	if (!pges_ctrl.root)
 	{
 		pges_ctrl.root = new_node;
@@ -14,7 +18,7 @@ void	add_node(t_mem_ctrl* new_node)
 void	recursive_add(t_mem_ctrl* node, t_mem_ctrl* new_node)
 {
 	assert(node != new_node);
-	if (new_node->addr <= node->addr)
+	if (new_node->addr < node->addr)
 	{
 		if (node->lchild)
 			recursive_add(node->lchild, new_node);

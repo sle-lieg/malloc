@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:24:48 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/21 17:41:47 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/22 16:30:05 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@ void	find_free_block(t_mem_ctrl* block, size_t size)
 	{
 		if (block->size >= size)
 		{
+			ft_printf("FREE BLOCK FOUND: %p\n", block);
 			pges_ctrl.ret = block;
-			remove_from_free(block);
+			if (size <= TINY_MAX)
+				remove_from_free(pges_ctrl.free_tiny, block);
+			else
+				remove_from_free(pges_ctrl.free_small, block);
 			break;
 		}
 		block = block->next_free;
@@ -31,8 +35,19 @@ t_mem_ctrl*	split_memory(size_t size)
 	t_mem_ctrl* new_header;
 
 	if (!(new_header = pop_lost_mem_ctrl()))
+	{
+		if (pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
+			if (!(extend_header_pge()))
+				return (NULL);
 		new_header = pges_ctrl.header_pge++;
-	assert(new_header == pges_ctrl.header_pge - 1);
+		assert(new_header == pges_ctrl.header_pge - 1);
+	}
+	else
+		ft_printf("POP HEADER %p | ", new_header);
+	ft_printf("HEADER: f=%p lc=%p rc=%p\n", new_header->father, new_header->lchild, new_header->rchild);
+	assert(new_header->father == NULL);
+	assert(new_header->lchild == NULL);
+	assert(new_header->rchild == NULL);
 	new_header->addr = pges_ctrl.ret->addr + size;
 	new_header->size = pges_ctrl.ret->size - size;
 	new_header->prev = pges_ctrl.ret;
@@ -52,7 +67,7 @@ void	add_to_free(t_mem_ctrl** free_head, t_mem_ctrl* new_header)
 	t_mem_ctrl* tmp;
 
 	tmp = *free_head;
-	if (!tmp || new_header->size <= tmp->size)
+	if (!tmp || (new_header->size <= tmp->size))
 	{
 		new_header->next_free = *free_head;
 		*free_head = new_header;
@@ -71,11 +86,8 @@ void	add_to_free(t_mem_ctrl** free_head, t_mem_ctrl* new_header)
 	new_header->free = TRUE;
 }
 
-void	remove_from_free(t_mem_ctrl* block)
+void	remove_from_free(t_mem_ctrl* tmp, t_mem_ctrl* block)
 {
-	t_mem_ctrl* tmp;
-
-	tmp = block;
 	if (pges_ctrl.free_tiny == block)
 		pges_ctrl.free_tiny = block->next_free;
 	else if (pges_ctrl.free_small == block)
@@ -92,8 +104,7 @@ void	remove_from_free(t_mem_ctrl* block)
 			tmp = tmp->next_free;
 		}
 	}
-	tmp->free = FALSE;
-	tmp->next_free = NULL;
+	block->free = FALSE;
 }
 
 t_mem_ctrl* pop_lost_mem_ctrl()

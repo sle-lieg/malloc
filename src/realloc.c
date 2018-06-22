@@ -16,7 +16,7 @@ void *realloc(void *ptr, size_t size)
 	assert(to_realloc != NULL);
 	if (to_realloc->size >= size)
 		return (to_realloc->addr);
-	if (!(pges_ctrl.ret = malloc(size)))
+	if (!(malloc(size)))
 		return (NULL);
 	ft_memmove(pges_ctrl.ret->addr, ptr, to_realloc->size);
 	free(ptr);

@@ -10,6 +10,7 @@ void	free(void* ptr)
 	to_free = find_mem_ctrl(pges_ctrl.root, ptr);
 	if (to_free)
 	{
+		ft_printf(" FOUND ", ptr);
 		if (to_free->size <= SMALL_MAX)
 			free_mem_ctrl(to_free);
 		else
@@ -21,29 +22,43 @@ void	free(void* ptr)
 	assert(pges_ctrl.fst_tiny->prev == NULL);
 
 	show_alloc_mem();
-	// printTree2(pges_ctrl.root);
+	printTree2(pges_ctrl.root);
+	print_empty();
 }
 
 void	free_mem_ctrl(t_mem_ctrl* to_free)
 {
+	int size;
+
+	size = to_free->size;
 	to_free->free = TRUE;
+	if (to_free->prev && (!to_free->prev->free ||
+		to_free->prev->pge_id != to_free->pge_id))
+	{
+		if (to_free->size <= TINY_MAX)
+			add_to_free(&pges_ctrl.free_tiny, to_free);
+		else
+			add_to_free(&pges_ctrl.free_small, to_free);
+	}
 	while (to_free->prev && to_free->prev->free &&
 			to_free->prev->pge_id == to_free->pge_id)
-	{
 		to_free = to_free->prev;
-	}
 	while (to_free->next && to_free->next->free &&
 		to_free->next->pge_id == to_free->pge_id)
 	{
 		to_free->size += to_free->next->size;
 		remove_node(to_free->next);
-		remove_from_free(to_free->next);
+		if (size <= TINY_MAX)
+			remove_from_free(pges_ctrl.free_tiny, to_free->next);
+		else
+			remove_from_free(pges_ctrl.free_small, to_free->next);		
 		push_to_lost(to_free->next);
 	}
 }
 
 void	push_to_lost(t_mem_ctrl* ptr)
 {
+	ft_printf("LOST %p ", ptr);	
 	ptr->addr = NULL;
 	ptr->size = 0;
 	ptr->pge_id = 0;
@@ -60,6 +75,62 @@ void	push_to_lost(t_mem_ctrl* ptr)
 	ptr->next = pges_ctrl.lost_mem_ctrl;
 	pges_ctrl.lost_mem_ctrl = ptr;
 }
+
+// void	free_mem_ctrl(t_mem_ctrl* to_free)
+// {
+// 	to_free->free = TRUE;
+// 	if (to_free->prev && (!to_free->prev->free ||
+// 		to_free->prev->pge_id != to_free->pge_id))
+// 	{
+// 		ft_printf("prev not free so add ! ");
+// 		if (to_free->size <= TINY_MAX)
+// 			add_to_free(&pges_ctrl.free_tiny, to_free);
+// 		else
+// 			add_to_free(&pges_ctrl.free_small, to_free);
+// 	}
+// 	if (to_free->size <= TINY_MAX)
+// 		free_tiny(to_free);
+// 	else
+// 		free_small(to_free);
+// }
+
+// void	free_tiny(t_mem_ctrl* to_free)
+// {
+// 	while (to_free->prev && to_free->prev->free &&
+// 			to_free->prev->pge_id == to_free->pge_id)
+// 	{
+// 		ft_printf(" BACK ! ");
+// 		to_free = to_free->prev;
+// 	}
+// 	while (to_free->next && to_free->next->free &&
+// 		to_free->next->pge_id == to_free->pge_id)
+// 	{
+// 		ft_printf(" MERGING ! ");
+// 		to_free->size += to_free->next->size;
+// 		remove_node(to_free->next);
+// 		remove_from_free(pges_ctrl.free_tiny, to_free->next);
+// 		push_to_lost(to_free->next);
+// 	}
+// }
+
+// void	free_small(t_mem_ctrl* to_free)
+// {
+// 	while (to_free->prev && to_free->prev->free &&
+// 			to_free->prev->pge_id == to_free->pge_id)
+// 	{
+// 		ft_printf(" BACK ! ");
+// 		to_free = to_free->prev;
+// 	}
+// 	while (to_free->next && to_free->next->free &&
+// 		to_free->next->pge_id == to_free->pge_id)
+// 	{
+// 		ft_printf(" MERGING ! ");
+// 		to_free->size += to_free->next->size;
+// 		remove_node(to_free->next);
+// 		remove_from_free(pges_ctrl.free_small, to_free->next);
+// 		push_to_lost(to_free->next);
+// 	}
+// }
 
 // int	findMemCtrl(t_mem_ctrl* tmp, void* ptr)
 // {

@@ -82,7 +82,7 @@ void			handle_large(size_t size);
 void			find_free_block(t_mem_ctrl* block, size_t size);
 t_mem_ctrl*	split_memory(size_t size);
 void			add_to_free(t_mem_ctrl** free_head, t_mem_ctrl* new_header);
-void			remove_from_free(t_mem_ctrl* block);
+void			remove_from_free(t_mem_ctrl* tmp, t_mem_ctrl* block);
 t_mem_ctrl*	pop_lost_mem_ctrl();
 
 /**
@@ -149,6 +149,8 @@ t_mem_ctrl*	find_mem_ctrl(t_mem_ctrl* tmp, char* ptr);
 void			free(void* ptr);
 void			free_mem_ctrl(t_mem_ctrl* ptr);
 void			push_to_lost(t_mem_ctrl* ptr);
+// void			free_tiny(t_mem_ctrl* to_free);
+// void			free_small(t_mem_ctrl* to_free);
 
 /**
  *			REALLOC.C
@@ -191,6 +193,7 @@ void			printAll();
 void			printLosts();
 void			checkFree();
 void			checkGoodHeight(t_mem_ctrl* node);
+void			print_empty();
 
 #endif
 

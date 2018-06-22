@@ -10,17 +10,18 @@ void*	malloc(size_t size)
 	pges_ctrl.ret = NULL;
 	size = align_memory(size);
 	assert(pges_ctrl.tiny_zone == 16384);
-	if (!pges_ctrl.header_pge || pges_ctrl.header_pge == pges_ctrl.header_pge_limit)
+	if (!pges_ctrl.header_pge || pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
 		if (!(extend_header_pge()))
 			return NULL;
 	if (size <= TINY_MAX)
 		handle_tiny(size);
 	else if (size <= SMALL_MAX)
 		handle_small(size);
-	// else
-	// 	handleLarge(size);
+	else
+		handle_large(size);
 	show_alloc_mem();
-	// printTree2(pges_ctrl.root);
+	printTree2(pges_ctrl.root);
+	print_empty();
 	assert(pges_ctrl.fst_tiny->prev == NULL);
 
 	if (pges_ctrl.errors)
@@ -42,6 +43,7 @@ void	handle_tiny(size_t size)
 	}
 	if (pges_ctrl.ret->size - size >= 16)
 	{
+		ft_printf("SPLIT TINY\n");
 		split_memory(size);
 		add_to_free(&pges_ctrl.free_tiny, pges_ctrl.ret->next);
 		if (pges_ctrl.ret == pges_ctrl.lst_tiny)
@@ -63,6 +65,7 @@ void	handle_small(size_t size)
 	}
 	if (pges_ctrl.ret->size - size >= TINY_MAX)
 	{
+		ft_printf("SPLIT SMALL\n");
 		split_memory(size);
 		add_to_free(&pges_ctrl.free_small, pges_ctrl.ret->next);
 		if (pges_ctrl.ret == pges_ctrl.lst_small)
@@ -72,9 +75,10 @@ void	handle_small(size_t size)
 
 void	handle_large(size_t size)
 {
-	t_mem_ctrl* new_large;
-
-	if (!(new_large = create_new_page(size)))
+	if (!(pges_ctrl.ret = pop_lost_mem_ctrl()))
+		pges_ctrl.ret = pges_ctrl.header_pge++;
+	if (!(pges_ctrl.ret->addr = create_new_page(size)))
 		return;
-	add_node(new_large);
+	pges_ctrl.ret->size = size;
+	add_node(pges_ctrl.ret);
 }
