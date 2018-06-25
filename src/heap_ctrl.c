@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:28:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/22 20:40:01 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/25 09:38:54 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	extend_header_pge()
 {
-	if (pges_ctrl.debug)
+	if (pges_ctrl.debug > 0)
 		ft_printf(" EXTEND HEADER HEAP ");
 	pges_ctrl.header_pge = mmap(NULL, getpagesize() * NB_PAGES, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (pges_ctrl.header_pge == MAP_FAILED)
@@ -42,7 +42,7 @@ void*	create_new_page(size_t size)
 
 int	extend_heap(t_mem_ctrl* last_mctrl)
 {
-	if (pges_ctrl.debug)
+	if (pges_ctrl.debug > 0)
 		ft_printf(" EXTEND HEAP ");
 	if (!(pges_ctrl.ret = pop_lost_mem_ctrl()))
 	{
@@ -51,6 +51,9 @@ int	extend_heap(t_mem_ctrl* last_mctrl)
 				return (0);
 		pges_ctrl.ret = pges_ctrl.header_pge++;
 	}
+	else
+		if (pges_ctrl.debug > 0)
+			ft_printf("POP HEADER %p | ", pges_ctrl.ret);
 	assert(pges_ctrl.ret->father == NULL);
 	assert(pges_ctrl.ret->lchild == NULL);
 	assert(pges_ctrl.ret->rchild == NULL);

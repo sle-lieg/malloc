@@ -2,7 +2,7 @@
 
 void	free(void* ptr)
 {
-	if (pges_ctrl.debug)
+	if (pges_ctrl.debug > 0)
 		ft_printf("FREE(%p)", ptr);
 	t_mem_ctrl* to_free;
 
@@ -11,7 +11,7 @@ void	free(void* ptr)
 	to_free = find_mem_ctrl(pges_ctrl.root, ptr);
 	if (to_free)
 	{
-		if (pges_ctrl.debug)
+		if (pges_ctrl.debug > 0)
 			ft_printf(" FOUND ", ptr);
 		if (to_free->size <= SMALL_MAX)
 			free_mem_ctrl(to_free);
@@ -22,7 +22,7 @@ void	free(void* ptr)
 		}
 	}
 	assert(pges_ctrl.fst_tiny->prev == NULL);
-	if (pges_ctrl.debug)
+	if (pges_ctrl.debug > 0)
 	{
 		show_alloc_mem();
 		printTree2(pges_ctrl.root);
@@ -36,8 +36,8 @@ void	free_mem_ctrl(t_mem_ctrl* to_free)
 
 	size = to_free->size;
 	to_free->free = TRUE;
-	if (!to_free->prev || (to_free->prev && (!to_free->prev->free ||
-		to_free->prev->pge_id != to_free->pge_id)))
+	if (!to_free->prev || (to_free->prev &&
+	(!to_free->prev->free || to_free->prev->pge_id != to_free->pge_id)))
 	{
 		if (to_free->size <= TINY_MAX)
 			add_to_free(&pges_ctrl.free_tiny, to_free);
@@ -62,7 +62,7 @@ void	free_mem_ctrl(t_mem_ctrl* to_free)
 
 void	push_to_lost(t_mem_ctrl* ptr)
 {
-	if (pges_ctrl.debug)
+	if (pges_ctrl.debug > 0)
 		ft_printf("LOST %p ", ptr);
 	ptr->addr = NULL;
 	ptr->size = 0;
@@ -72,7 +72,13 @@ void	push_to_lost(t_mem_ctrl* ptr)
 	ptr->lchild = NULL;
 	ptr->rchild = NULL;
 	if (ptr->prev)
+	{
+		if (ptr == pges_ctrl.lst_tiny)
+			pges_ctrl.lst_tiny = pges_ctrl.lst_tiny->prev;
+		if (ptr == pges_ctrl.lst_small)
+			pges_ctrl.lst_small = pges_ctrl.lst_small->prev;
 		ptr->prev->next = ptr->next;
+	}
 	if (ptr->next)
 		ptr->next->prev = ptr->prev;
 	ptr->next = pges_ctrl.lost_mem_ctrl;

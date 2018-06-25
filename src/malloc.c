@@ -2,8 +2,8 @@
 
 void*	malloc(size_t size)
 {
-	pges_ctrl.debug = 0;
-	if (pges_ctrl.debug)
+	pges_ctrl.debug++;
+	if (pges_ctrl.debug > 0)
 		ft_printf("MALLOC(%lu)", size);
 	if (!checkLimit(size))
 		return NULL;
@@ -21,7 +21,7 @@ void*	malloc(size_t size)
 		handle_small(size);
 	else
 		handle_large(size);
-	if (pges_ctrl.debug)
+	if (pges_ctrl.debug > 0)
 	{
 		show_alloc_mem();
 		printTree2(pges_ctrl.root);
@@ -48,7 +48,7 @@ void	handle_tiny(size_t size)
 	}
 	if (pges_ctrl.ret->size - size >= 16)
 	{
-		if (pges_ctrl.debug)
+		if (pges_ctrl.debug > 0)
 			ft_printf(" SPLIT TINY ");
 		split_memory(size);
 		add_to_free(&pges_ctrl.free_tiny, pges_ctrl.ret->next);
@@ -71,7 +71,7 @@ void	handle_small(size_t size)
 	}
 	if (pges_ctrl.ret->size - size >= TINY_MAX)
 	{
-		if (pges_ctrl.debug)
+		if (pges_ctrl.debug > 0)
 			ft_printf("SPLIT SMALL\n");
 		split_memory(size);
 		add_to_free(&pges_ctrl.free_small, pges_ctrl.ret->next);

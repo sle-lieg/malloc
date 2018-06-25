@@ -2,7 +2,7 @@
 
 void*	calloc(size_t count, size_t size)
 {
-	if (pges_ctrl.debug)
+	if (pges_ctrl.debug > 0)
 		ft_printf("CALLOC(%lu, %lu) = ", count, size);
 	void*	tmp;
 	
