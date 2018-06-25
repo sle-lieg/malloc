@@ -7,9 +7,10 @@ OBJ_DIR = obj/
 LIB_DIR = libft/
 INC_DIR = inc/
 
+
 SRC_F	=	malloc.c memory_ctrl_tools.c heap_ctrl.c init.c tree_inserter.c\
 			tree_tools.c tree_checker.c tree_rotations.c tree_remover.c\
-			tree_getters.c free.c realloc.c reallocf.c calloc.c debug.c
+			tree_getters.c free.c realloc.c calloc.c debug.c reallocf.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_F))
 OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

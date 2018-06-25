@@ -2,8 +2,8 @@
 
 void	add_links(t_mem_ctrl* father, t_mem_ctrl* child)
 {
-	assert(father != NULL);
-	assert(child != NULL);
+	// assert(father != NULL);
+	// assert(child != NULL);
 	// if (father && child && child->addr <= father->addr)
 	if (child->addr <= father->addr)
 	{

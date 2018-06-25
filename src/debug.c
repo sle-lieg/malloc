@@ -25,8 +25,8 @@ void	show_alloc_mem()
 		tmp->pge_id, tmp, tmp->addr, tmp->size);
 		tmp_prev = tmp;
 		tmp = tmp->next;
-		if (tmp)
-			assert(tmp->prev == tmp_prev);
+		// if (tmp)
+			// assert(tmp->prev == tmp_prev);
 	}
 	// ft_printf("LAST: %#5X: %#5X - %#5X : %d octets\n", pges_ctrl.lst_tiny, pges_ctrl.lst_tiny->addr, pges_ctrl.lst_tiny->addr + pges_ctrl.lst_tiny->size, pges_ctrl.lst_tiny->size);
 	
@@ -78,7 +78,7 @@ void	print_empty()
 	while (tmp)
 	{
 		ft_printf("	[%d]H:%p A:%p ", tmp->free, tmp, tmp->addr);
-		assert(tmp->free == 1);
+		// assert(tmp->free == 1);
 		tmp = tmp->next_free;
 	}
 	ft_printf("\n");	
@@ -87,7 +87,7 @@ void	print_empty()
 	while (tmp)
 	{
 		ft_printf("	[%d]H:%p A:%p", tmp->free, tmp, tmp->addr);
-		assert(tmp->free == 1);	
+		// assert(tmp->free == 1);	
 		tmp = tmp->next_free;
 	}
 	ft_printf("\n");

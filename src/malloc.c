@@ -2,16 +2,18 @@
 
 void*	malloc(size_t size)
 {
-	pges_ctrl.debug++;
-	if (pges_ctrl.debug > 0)
-		ft_printf("MALLOC(%lu)", size);
+	// char *e = getenv("TERM");
+	// (void)e;
+	// pges_ctrl.debug++;
+	// if (pges_ctrl.debug == 0)
+	// ft_printf("MALLOC(%lu)", size);
 	if (!checkLimit(size))
 		return NULL;
 	pges_ctrl.tiny_zone = (((TINY_MAX * 100) >> 12) << 12) + getpagesize();
 	pges_ctrl.small_zone = (((SMALL_MAX * 100) >> 12) << 12) + getpagesize();
 	pges_ctrl.ret = NULL;
 	size = align_memory(size);
-	assert(pges_ctrl.tiny_zone == 16384);
+	// assert(pges_ctrl.tiny_zone == 16384);
 	if (!pges_ctrl.header_pge || pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
 		if (!(extend_header_pge()))
 			return NULL;
@@ -21,13 +23,13 @@ void*	malloc(size_t size)
 		handle_small(size);
 	else
 		handle_large(size);
-	if (pges_ctrl.debug > 0)
-	{
-		show_alloc_mem();
-		printTree2(pges_ctrl.root);
-		print_empty();
-	}
-	assert(pges_ctrl.fst_tiny->prev == NULL);
+	// if (pges_ctrl.debug == 0)
+	// {
+	// 	show_alloc_mem();
+	// 	printTree2(pges_ctrl.root);
+	// 	print_empty();
+	// }
+	// assert(pges_ctrl.fst_tiny->prev == NULL);
 
 	if (pges_ctrl.errors)
 		return NULL;
@@ -48,8 +50,8 @@ void	handle_tiny(size_t size)
 	}
 	if (pges_ctrl.ret->size - size >= 16)
 	{
-		if (pges_ctrl.debug > 0)
-			ft_printf(" SPLIT TINY ");
+		// if (pges_ctrl.debug == 0)
+		// 	ft_printf(" SPLIT TINY ");
 		split_memory(size);
 		add_to_free(&pges_ctrl.free_tiny, pges_ctrl.ret->next);
 		if (pges_ctrl.ret == pges_ctrl.lst_tiny)
@@ -71,8 +73,8 @@ void	handle_small(size_t size)
 	}
 	if (pges_ctrl.ret->size - size >= TINY_MAX)
 	{
-		if (pges_ctrl.debug > 0)
-			ft_printf("SPLIT SMALL\n");
+		// if (pges_ctrl.debug == 0)
+		// 	ft_printf("SPLIT SMALL\n");
 		split_memory(size);
 		add_to_free(&pges_ctrl.free_small, pges_ctrl.ret->next);
 		if (pges_ctrl.ret == pges_ctrl.lst_small)
