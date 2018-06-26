@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:28:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/25 10:41:52 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/26 15:50:01 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,11 @@ int	extend_heap(t_mem_ctrl* last_mctrl)
 	if (!(pges_ctrl.ret->addr = create_new_page(pges_ctrl.tiny_zone)))
 		return (0);
 	pges_ctrl.ret->size = pges_ctrl.tiny_zone;
-	pges_ctrl.ret->free = FALSE;
-	pges_ctrl.ret->pge_id = ++pges_ctrl.pages_id;
+	// pges_ctrl.ret->free = FALSE;
+	pges_ctrl.ret->mem_flags &= NOT_FREE_M; // free flag
+	
+	// pges_ctrl.ret->pge_id = ++pges_ctrl.pages_id;
+	pges_ctrl.ret->mem_flags |= ++pges_ctrl.pages_id << 16;
 	return (1);
 }
 

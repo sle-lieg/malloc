@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:55:03 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/22 18:25:37 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/26 16:12:25 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void  rotate_left(t_mem_ctrl* node)
 	}
 	tmp ? tmp->father = node->father : 0;
 	node->father = tmp;
-	node->height = max_height(node->lchild, node->rchild) + 1;
-	tmp ? tmp->height = max_height(tmp->lchild, tmp->rchild) + 1 : 0;
+	// node->height = max_height(node->lchild, node->rchild) + 1;
+	// tmp ? tmp->height = max_height(tmp->lchild, tmp->rchild) + 1 : 0;
+	node->mem_flags &= 0xFFFF0000 + max_height(node->lchild, node->rchild) + 1;	
+	tmp ? (node->mem_flags &= 0xFFFF0000 + max_height(node->lchild, node->rchild) + 1) : 0;
 }
 
 void	rotate_right(t_mem_ctrl* node)
@@ -58,6 +60,8 @@ void	rotate_right(t_mem_ctrl* node)
 	}
 	tmp ? tmp->father = node->father : 0;
 	node->father = tmp;
-	node->height = max_height(node->lchild, node->rchild) + 1;
-	tmp ? tmp->height = max_height(tmp->lchild, tmp->rchild) + 1 : 0;
+	// node->height = max_height(node->lchild, node->rchild) + 1;
+	// tmp ? tmp->height = max_height(tmp->lchild, tmp->rchild) + 1 : 0;
+	node->mem_flags &= 0xFFFF0000 + max_height(node->lchild, node->rchild) + 1;
+	tmp ? (node->mem_flags &= 0xFFFF0000 + max_height(node->lchild, node->rchild) + 1) : 0;
 }

@@ -9,7 +9,8 @@ void	add_node(t_mem_ctrl* new_node)
 	if (!pges_ctrl.root)
 	{
 		pges_ctrl.root = new_node;
-		new_node->height = 1;
+		new_node->mem_flags &= 0xFFFF0000 + 1;
+		// new_node->flags = 1;
 	}
 	else
 		recursive_add(pges_ctrl.root, new_node);
@@ -25,7 +26,8 @@ void	recursive_add(t_mem_ctrl* node, t_mem_ctrl* new_node)
 		else
 		{
 			add_links(node, new_node);
-			new_node->height = 1;
+			new_node->mem_flags &= 0xFFFF0000 + 1;
+			// new_node->height = 1;
 		}
 	}
 	else
@@ -35,9 +37,11 @@ void	recursive_add(t_mem_ctrl* node, t_mem_ctrl* new_node)
 		else
 		{
 			add_links(node, new_node);
-			new_node->height = 1;
+			new_node->mem_flags &= 0xFFFF0000 + 1;
+			// new_node->height = 1;
 		}
 	}
 	check_balance(node);
-	node->height = max_height(node->lchild, node->rchild) + 1;
+	// node->height = max_height(node->lchild, node->rchild) + 1;
+	new_node->mem_flags &= 0xFFFF0000 + max_height(node->lchild, node->rchild) + 1;
 }

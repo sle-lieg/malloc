@@ -6,18 +6,25 @@
 #include <sys/mman.h>
 #include "libft.h"
 #include "ft_printf.h"
-#include <sys/resource.h>
+// #include <sys/resource.h>
 
-#include <assert.h>
+// #include <assert.h>
 
+#define TRUE ( 1 )
+#define FALSE ( 0 )
 #define TINY_MAX ( 128 )
-#define SMALL_MAX ( 4096 )
+#define SMALL_MAX ( 2048 )
 #define MEM_ALIGN_SHIFT ( 4 )
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN ( 16 )
 #define NB_PAGES ( 2 )
 
 #define MMAP_BAD_ALLOC ( 0x1 )
+
+#define FREE_M ( 0x80000000 )
+#define NOT_FREE_M ( 0x7FFFFFFF )
+#define HEIGHT_M ( 0x7FFF )
+#define PGE_ID_M ( 0x7FFF0000 )
 
 typedef struct s_memory_ctrl		t_mem_ctrl;
 typedef struct s_pages_control	t_pge_ctrl;
@@ -54,17 +61,18 @@ struct	s_pages_control
 
 struct s_memory_ctrl
 {
-	t_mem_ctrl* father;		// tree links for the research by address
-	t_mem_ctrl* lchild;
-	t_mem_ctrl* rchild;
-	t_mem_ctrl* prev;			// list links for the order of the memory blocks, to
-	t_mem_ctrl* next;			// merge blocks together if they are free
-	t_mem_ctrl* next_free; 	// link to the next free header, to speed up search
-	char*			addr;			// point to the address to return from malloc
-	size_t		size;
-	int			height;		// height in the tree for balance factor
-	char			free;			// booleen, is free: TRUE, else FALSE
-	int			pge_id;		// allow fusion if eguals to other memCtrl
+	t_mem_ctrl* 	father;		// tree links for the research by address
+	t_mem_ctrl* 	lchild;
+	t_mem_ctrl* 	rchild;
+	t_mem_ctrl* 	prev;			// list links for the order of the memory blocks, to
+	t_mem_ctrl* 	next;			// merge blocks together if they are free
+	t_mem_ctrl* 	next_free; 	// link to the next free header, to speed up search
+	char*				addr;			// point to the address to return from malloc
+	size_t			size;
+	int				mem_flags;	// 31st bit = free | 30->16 bit = pge_id | 15->0 = height 
+	// int				height;		// height in the tree for balance factor
+	// char				free;			// booleen, is free: TRUE, else FALSE
+	// unsigned char	pge_id;		// allow fusion if eguals to other memCtrl
 };
 
 t_pge_ctrl	pges_ctrl;
@@ -166,7 +174,10 @@ void*			reallocf(void *ptr, size_t size);
 /**
  *			CALLOC.C
  **/
-void*	calloc(size_t count, size_t size);
+void*			calloc(size_t count, size_t size);
+
+void			ft_bzero(void *s, size_t n);
+void			*ft_memmove(void *dst, const void *src, size_t n);
 
 // *****************************************************************************
 

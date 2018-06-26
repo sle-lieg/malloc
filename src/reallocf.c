@@ -17,7 +17,7 @@ void *reallocf(void *ptr, size_t size)
 		return (malloc(16));
 	}
 	to_realloc = find_mem_ctrl(pges_ctrl.root, ptr);
-	assert(to_realloc != NULL);
+	// assert(to_realloc != NULL);
 	// if ((to_return = malloc(size)))
 	// ft_printf("REALLOCF (%p, %lu)\n", ptr, size);
 	// assert(to_realloc != NULL);

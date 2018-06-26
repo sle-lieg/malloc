@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:55:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/21 11:53:18 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/26 16:09:42 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,22 @@ int	max_height(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB)
 	if (!nodeA && !nodeB)
 		return 0;
 	if (!nodeB)
-		return nodeA->height;
+		return nodeA->mem_flags & HEIGHT_M;
 	if (!nodeA)
-		return nodeB->height;
-	return nodeA->height > nodeB->height ? nodeA->height : nodeB->height;
+		return nodeB->mem_flags & HEIGHT_M;
+	return (nodeA->mem_flags & HEIGHT_M) > (nodeB->mem_flags & HEIGHT_M) ? (nodeA->mem_flags & HEIGHT_M) : (nodeB->mem_flags & HEIGHT_M);
 }
+
+// int	max_height(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB)
+// {
+// 	if (!nodeA && !nodeB)
+// 		return 0;
+// 	if (!nodeB)
+// 		return nodeA->height;
+// 	if (!nodeA)
+// 		return nodeB->height;
+// 	return nodeA->height > nodeB->height ? nodeA->height : nodeB->height;
+// }
 
 // void	check_height(t_mem_ctrl* node)
 // {

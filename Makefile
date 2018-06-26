@@ -1,5 +1,5 @@
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -g
+FLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 
 SRC_DIR = src/
@@ -7,15 +7,15 @@ OBJ_DIR = obj/
 LIB_DIR = libft/
 INC_DIR = inc/
 
-
 SRC_F	=	malloc.c memory_ctrl_tools.c heap_ctrl.c init.c tree_inserter.c\
 			tree_tools.c tree_checker.c tree_rotations.c tree_remover.c\
-			tree_getters.c free.c realloc.c calloc.c debug.c reallocf.c
+			tree_getters.c free.c realloc.c calloc.c reallocf.c\
+			debug.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_F))
 OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 INC		= -I $(INC_DIR)
-INC_LIB = -I $(LIB_DIR)$(INC_DIR)
+INC_LIB	= -I $(LIB_DIR)$(INC_DIR)
 LIB		= -L$(LIB_DIR) -lftprintf
 LIBFT	= $(LIB_DIR)libftprintf.a
 
@@ -33,7 +33,7 @@ createDir:
 
 $(LIBFT):
 	@echo "Creating $@..."
-	@make -C $(LIB_DIR)
+	make -C $(LIB_DIR)
 
 $(EXEC): $(OBJ)
 	$(CC) -shared -o $@ $^ $(LIBFT)

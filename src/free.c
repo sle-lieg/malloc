@@ -21,6 +21,7 @@ void	free(void* ptr)
 		{
 			remove_node(to_free);
 			push_to_lost(to_free);
+			munmap(ptr, to_free->size);
 		}
 	}
 	// assert(pges_ctrl.fst_tiny->prev == NULL);

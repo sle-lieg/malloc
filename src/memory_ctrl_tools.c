@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:24:48 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/25 10:41:52 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/26 15:11:14 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_mem_ctrl*	split_memory(size_t size)
 	new_header->size = pges_ctrl.ret->size - size;
 	new_header->prev = pges_ctrl.ret;
 	new_header->next = pges_ctrl.ret->next;
-	new_header->pge_id = pges_ctrl.ret->pge_id;
+	new_header->mem_flags = pges_ctrl.ret->mem_flags | PGE_ID_M; //pge id
 	pges_ctrl.ret->size = size;
 	if (pges_ctrl.ret->next)
 		pges_ctrl.ret->next->prev = new_header;
@@ -64,6 +64,39 @@ t_mem_ctrl*	split_memory(size_t size)
 	add_node(new_header);
 	return NULL; // TODO: useless
 }
+
+// t_mem_ctrl*	split_memory(size_t size)
+// {
+// 	t_mem_ctrl* new_header;
+
+// 	if (!(new_header = pop_lost_mem_ctrl()))
+// 	{
+// 		if (pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
+// 			if (!(extend_header_pge()))
+// 				return (NULL);
+// 		new_header = pges_ctrl.header_pge++;
+// 		// assert(new_header == pges_ctrl.header_pge - 1);
+// 	}
+// 	// else
+// 	// 	if (pges_ctrl.debug == 0)
+// 	// 		ft_printf("POP HEADER %p | ", new_header);
+// 	// if (pges_ctrl.debug == 0)
+// 	// 	ft_printf("HEADER: f=%p lc=%p rc=%p\n", new_header->father, new_header->lchild, new_header->rchild);
+// 	// assert(new_header->father == NULL);
+// 	// assert(new_header->lchild == NULL);
+// 	// assert(new_header->rchild == NULL);
+// 	new_header->addr = pges_ctrl.ret->addr + size;
+// 	new_header->size = pges_ctrl.ret->size - size;
+// 	new_header->prev = pges_ctrl.ret;
+// 	new_header->next = pges_ctrl.ret->next;
+// 	new_header->pge_id = pges_ctrl.ret->pge_id;
+// 	pges_ctrl.ret->size = size;
+// 	if (pges_ctrl.ret->next)
+// 		pges_ctrl.ret->next->prev = new_header;
+// 	pges_ctrl.ret->next = new_header;
+// 	add_node(new_header);
+// 	return NULL; // TODO: useless
+// }
 
 // TODO: try with push_front
 void	add_to_free(t_mem_ctrl** free_head, t_mem_ctrl* new_header)
@@ -87,7 +120,8 @@ void	add_to_free(t_mem_ctrl** free_head, t_mem_ctrl* new_header)
 		new_header->next_free = tmp->next_free;
 		tmp->next_free = new_header;
 	}
-	new_header->free = TRUE;
+	// block->free = TRUE;
+	new_header->mem_flags |= FREE_M; // free flag
 }
 
 void	remove_from_free(t_mem_ctrl* tmp, t_mem_ctrl* block)
@@ -108,7 +142,8 @@ void	remove_from_free(t_mem_ctrl* tmp, t_mem_ctrl* block)
 			tmp = tmp->next_free;
 		}
 	}
-	block->free = FALSE;
+	// block->free = FALSE;
+	block->mem_flags &= NOT_FREE_M; // free flag
 }
 
 t_mem_ctrl* pop_lost_mem_ctrl()

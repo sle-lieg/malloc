@@ -1,4 +1,6 @@
 #include "malloc.h"
+#include "ft_printf.h"
+// #include "malloc.h"
 
 int checkDepth(t_mem_ctrl* node)
 {

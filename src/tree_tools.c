@@ -31,7 +31,7 @@ int	replace_if_root(t_mem_ctrl* node, t_mem_ctrl* newRoot)
 
 int	get_height(t_mem_ctrl* node)
 {
-	return node ? node->height : 0;
+	return node ? node->mem_flags & HEIGHT_M : 0;
 }
 
 void	swap_nodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)

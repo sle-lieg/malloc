@@ -25,7 +25,7 @@ void*	malloc(size_t size)
 		handle_large(size);
 	// if (pges_ctrl.debug == 0)
 	// {
-	// 	show_alloc_mem();
+		// show_alloc_mem();
 	// 	printTree2(pges_ctrl.root);
 	// 	print_empty();
 	// }
