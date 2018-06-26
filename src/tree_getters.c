@@ -32,7 +32,8 @@ t_mem_ctrl*	get_predecessor(t_mem_ctrl* to_replace, t_mem_ctrl* node)
 		if (node->rchild)
 		{
 			to_return = get_predecessor(to_replace, node->rchild);
-			node->height = max_height(node->lchild, node->rchild) + 1;
+			// node->height = max_height(node->lchild, node->rchild) + 1;
+			node->mem_flags &= 0xFFFF0000 + max_height(node->lchild, node->rchild) + 1;
 			check_balance(node);
 			return to_return;
 		}
@@ -62,7 +63,8 @@ t_mem_ctrl*	get_successor(t_mem_ctrl* to_replace, t_mem_ctrl* node)
 		if (node->lchild)
 		{
 			to_return = get_successor(to_replace, node->lchild);
-			node->height = max_height(node->lchild, node->rchild) + 1;
+			// node->height = max_height(node->lchild, node->rchild) + 1;
+			node->mem_flags &= 0xFFFF0000 + max_height(node->lchild, node->rchild) + 1;
 			check_balance(node);
 			return to_return;
 		}

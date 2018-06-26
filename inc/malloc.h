@@ -17,7 +17,7 @@
 #define MEM_ALIGN_SHIFT ( 4 )
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN ( 16 )
-#define NB_PAGES ( 2 )
+#define NB_PAGES ( 1 )
 
 #define MMAP_BAD_ALLOC ( 0x1 )
 
@@ -35,14 +35,14 @@ struct	s_pages_control
 {
 	t_mem_ctrl* header_pge; 	// contains the address of the last created header
 	t_mem_ctrl* header_pge_limit; 	// contains the address of the last created header
-	
+
 	t_mem_ctrl* root;	// contains the root header of all headers created
 	t_mem_ctrl* lost_mem_ctrl;	// list of headers lost after blocks fusion
 
 	t_mem_ctrl* fst_tiny;		// contains the first header of	tiny
 	t_mem_ctrl* lst_tiny;		// contains the last header of	tiny
 	t_mem_ctrl* free_tiny;		// head of the list of free tiny's
-	
+
 	t_mem_ctrl* fst_small;		// 		"								small
 	t_mem_ctrl* lst_small;		// 		"								small
 	t_mem_ctrl* free_small;		// 		"								smalls
