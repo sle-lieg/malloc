@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:24:48 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/25 10:41:52 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/28 00:05:24 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	find_free_block(t_mem_ctrl* block, size_t size)
 	{
 		if (block->size >= size)
 		{
-			// if (pges_ctrl.debug == 0)
-			// 	ft_printf("FREE BLOCK FOUND: %p\n", block);
-			// assert(block->free == 1);
+			if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
+				ft_printf("FREE BLOCK FOUND: %p\n", block);
+			assert(block->free == 1);
 			pges_ctrl.ret = block;
 			if (size <= TINY_MAX)
 				remove_from_free(pges_ctrl.free_tiny, block);
@@ -44,10 +44,10 @@ t_mem_ctrl*	split_memory(size_t size)
 		new_header = pges_ctrl.header_pge++;
 		// assert(new_header == pges_ctrl.header_pge - 1);
 	}
-	// else
-	// 	if (pges_ctrl.debug == 0)
-	// 		ft_printf("POP HEADER %p | ", new_header);
-	// if (pges_ctrl.debug == 0)
+	else
+		if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
+			ft_printf("POP HEADER %p | ", new_header);
+	// if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
 	// 	ft_printf("HEADER: f=%p lc=%p rc=%p\n", new_header->father, new_header->lchild, new_header->rchild);
 	// assert(new_header->father == NULL);
 	// assert(new_header->lchild == NULL);

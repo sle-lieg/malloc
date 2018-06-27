@@ -5,18 +5,18 @@ void	add_links(t_mem_ctrl* father, t_mem_ctrl* child)
 	// assert(father != NULL);
 	// assert(child != NULL);
 	// if (father && child && child->addr <= father->addr)
-	if (child->addr <= father->addr)
+	if (child->addr < father->addr)
 	{
 		father->lchild = child;
 	}
-	else if (father)
+	else
 	{
 		father->rchild = child;
 	}
-	if (child)
-	{
-		child->father = father;
-	}
+	// if (child)
+	// {
+	child->father = father;
+	// }
 }
 
 int	replace_if_root(t_mem_ctrl* node, t_mem_ctrl* newRoot)

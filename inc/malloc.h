@@ -4,25 +4,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/mman.h>
-#include "libft.h"
-#include "ft_printf.h"
 #include <sys/resource.h>
 
+#include "libft.h"
+#include "ft_printf.h"
 #include <assert.h>
 
 #define TINY_MAX ( 128 )
 #define SMALL_MAX ( 4096 )
-#define MEM_ALIGN_SHIFT ( 4 )
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
-#define MEM_ALIGN ( 16 )
-#define NB_PAGES ( 2 )
+#define MEM_ALIGN_16_SHIFT ( 4 )
+#define MEM_ALIGN_16 ( 16 )
+#define MEM_ALIGN_PAGE_SHIFT ( 12 )
+#define NB_PAGES ( 1 )
 
 #define MMAP_BAD_ALLOC ( 0x1 )
+#define MEM_CTRL_SIZE ( sizeof(t_mem_ctrl) )
 
 typedef struct s_memory_ctrl		t_mem_ctrl;
 typedef struct s_pages_control	t_pge_ctrl;
 
-#define MEM_CTRL_SIZE sizeof(t_mem_ctrl)
 
 struct	s_pages_control
 {
@@ -40,6 +41,9 @@ struct	s_pages_control
 	t_mem_ctrl* lst_small;		// 		"								small
 	t_mem_ctrl* free_small;		// 		"								smalls
 
+	t_mem_ctrl* fst_large;		// 		"								large
+	t_mem_ctrl* lst_large;		// 		"								large
+
 	t_mem_ctrl* ret;				// header that contains the address to return
 	int			pages_id;		// to give an id to the header of the same pages
 
@@ -54,17 +58,17 @@ struct	s_pages_control
 
 struct s_memory_ctrl
 {
-	t_mem_ctrl* father;		// tree links for the research by address
-	t_mem_ctrl* lchild;
-	t_mem_ctrl* rchild;
-	t_mem_ctrl* prev;			// list links for the order of the memory blocks, to
-	t_mem_ctrl* next;			// merge blocks together if they are free
-	t_mem_ctrl* next_free; 	// link to the next free header, to speed up search
-	char*			addr;			// point to the address to return from malloc
-	size_t		size;
-	int			height;		// height in the tree for balance factor
-	char			free;			// booleen, is free: TRUE, else FALSE
-	int			pge_id;		// allow fusion if eguals to other memCtrl
+	t_mem_ctrl*		father;		// tree links for the research by address
+	t_mem_ctrl*		lchild;
+	t_mem_ctrl*		rchild;
+	t_mem_ctrl*		prev;			// list links for the order of the memory blocks, to
+	t_mem_ctrl*		next;			// merge blocks together if they are free
+	t_mem_ctrl*		next_free; 	// link to the next free header, to speed up search
+	char*				addr;			// point to the address to return from malloc
+	size_t			size;
+	int				height;		// height in the tree for balance factor
+	unsigned short	pge_id;		// allow fusion if eguals to other memCtrl
+	char				free;			// booleen, is free: TRUE, else FALSE
 };
 
 t_pge_ctrl	pges_ctrl;
@@ -91,9 +95,10 @@ t_mem_ctrl*	pop_lost_mem_ctrl();
  **/
 int			extend_header_pge();
 void*			create_new_page(size_t size);
-int			extend_heap(t_mem_ctrl* last_mctrl);
+int			extend_heap(t_mem_ctrl* last_mctrl, size_t size);
 int			checkLimit(size_t size);
-size_t		align_memory(size_t size);
+size_t		align_memory16(size_t size);
+size_t		align_memory_page_size(size_t size);
 
 /**
  *			INIT.C
@@ -191,7 +196,7 @@ void			printTree2(t_mem_ctrl* root);
 void			printTree(t_mem_ctrl* root);
 void			printLevels(t_mem_ctrl* node, int i);
 void			printAll();
-void			printLosts();
+void			print_lost();
 void			checkFree();
 void			checkGoodHeight(t_mem_ctrl* node);
 void			print_empty();

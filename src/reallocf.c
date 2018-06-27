@@ -6,8 +6,8 @@ void *reallocf(void *ptr, size_t size)
 	// char			*to_return;
 
 	// to_return = NULL;
-	// if (pges_ctrl.debug > 0)
-	// 	ft_printf("REALLOC_F(%p, %lu)", ptr, size);
+	if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
+		ft_printf("REALLOC_F(%p, %lu)", ptr, size);
 	to_realloc = NULL;
 	if (!ptr)
 		return (malloc(size));
@@ -17,7 +17,7 @@ void *reallocf(void *ptr, size_t size)
 		return (malloc(16));
 	}
 	to_realloc = find_mem_ctrl(pges_ctrl.root, ptr);
-	assert(to_realloc != NULL);
+	// assert(to_realloc != NULL);
 	// if ((to_return = malloc(size)))
 	// ft_printf("REALLOCF (%p, %lu)\n", ptr, size);
 	// assert(to_realloc != NULL);
@@ -30,8 +30,5 @@ void *reallocf(void *ptr, size_t size)
 		free(ptr);
 		return (pges_ctrl.ret->addr);
 	}
-	return (malloc(size));
-	// 	ft_memmove(to_return, ptr, to_realloc->size);
-	// free(ptr);
-	// return (to_return);
+	return (NULL);
 }
