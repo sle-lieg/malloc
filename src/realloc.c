@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   realloc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/28 23:00:47 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/06/28 23:01:15 by sle-lieg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "malloc.h"
 
-void *realloc(void *ptr, size_t size)
+void	*realloc(void *ptr, size_t size)
 {
-	t_mem_ctrl* to_realloc;
+	t_mem_ctrl *to_realloc;
 
 	if (!ptr)
 		return (malloc(size));

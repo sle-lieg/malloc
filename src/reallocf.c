@@ -1,13 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reallocf.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/28 22:59:21 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/06/28 22:59:42 by sle-lieg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "malloc.h"
 
-void *reallocf(void *ptr, size_t size)
+void	*reallocf(void *ptr, size_t size)
 {
-	t_mem_ctrl	*to_realloc;
-	// char			*to_return;
+	t_mem_ctrl *to_realloc;
 
-	// to_return = NULL;
-	// if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
-	// 	ft_printf("REALLOC_F(%p, %lu)", ptr, size);
 	to_realloc = NULL;
 	if (!ptr)
 		return (malloc(size));
@@ -16,11 +24,9 @@ void *reallocf(void *ptr, size_t size)
 		free(ptr);
 		return (malloc(16));
 	}
+	pthread_mutex_lock(&mutex_alloc);
 	to_realloc = find_mem_ctrl(pges_ctrl.root, ptr);
-	// assert(to_realloc != NULL);
-	// if ((to_return = malloc(size)))
-	// ft_printf("REALLOCF (%p, %lu)\n", ptr, size);
-	// assert(to_realloc != NULL);
+	pthread_mutex_unlock(&mutex_alloc);
 	if (to_realloc)
 	{
 		if (to_realloc->size >= size)

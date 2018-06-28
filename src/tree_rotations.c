@@ -6,16 +6,15 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:55:03 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/22 18:25:37 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/28 23:40:36 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-void  rotate_left(t_mem_ctrl* node)
+void	rotate_left(t_mem_ctrl *node)
 {
-	// ft_printf("ROT LEFT\n");
-	t_mem_ctrl* tmp;
+	t_mem_ctrl *tmp;
 
 	tmp = node->rchild;
 	node->rchild = tmp ? tmp->lchild : NULL;
@@ -37,10 +36,9 @@ void  rotate_left(t_mem_ctrl* node)
 	tmp ? tmp->height = max_height(tmp->lchild, tmp->rchild) + 1 : 0;
 }
 
-void	rotate_right(t_mem_ctrl* node)
+void	rotate_right(t_mem_ctrl *node)
 {
-	// ft_printf("ROT RIGHT\n");
-	t_mem_ctrl* tmp;
+	t_mem_ctrl *tmp;
 
 	tmp = node->lchild;
 	node->lchild = tmp ? tmp->rchild : NULL;

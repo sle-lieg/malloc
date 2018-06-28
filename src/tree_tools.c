@@ -1,40 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tree_tools.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/28 23:41:31 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/06/28 23:50:12 by sle-lieg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "malloc.h"
 
-void	add_links(t_mem_ctrl* father, t_mem_ctrl* child)
+void	add_links(t_mem_ctrl *father, t_mem_ctrl *child)
 {
-	// assert(father != NULL);
-	// assert(child != NULL);
-	// if (father && child && child->addr <= father->addr)
 	if (child->addr < father->addr)
-	{
 		father->lchild = child;
-	}
 	else
-	{
 		father->rchild = child;
-	}
-	// if (child)
-	// {
 	child->father = father;
-	// }
 }
 
-int	replace_if_root(t_mem_ctrl* node, t_mem_ctrl* newRoot)
-{
-	if (pges_ctrl.root == node)
-	{
-		pges_ctrl.root = newRoot;
-		return (1);
-	}
-	return (0);
-}
-
-int	get_height(t_mem_ctrl* node)
-{
-	return node ? node->height : 0;
-}
-
-void	swap_nodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)
+void	swap_nodes(t_mem_ctrl *predecessor, t_mem_ctrl *node)
 {
 	predecessor->lchild = node->lchild;
 	predecessor->rchild = node->rchild;
@@ -47,21 +34,12 @@ void	swap_nodes(t_mem_ctrl* predecessor, t_mem_ctrl* node)
 		node->father->rchild = predecessor;
 }
 
-void	link_nodes(t_mem_ctrl* father, t_mem_ctrl* child)
+void	link_nodes(t_mem_ctrl *father, t_mem_ctrl *child)
 {
 	if (father && child && father->lchild == child->father)
-	{
-		// ft_printf(" LINK lchild");
 		father->lchild = child;
-	}
 	else if (father)
-	{
-		// ft_printf(" LINK rchild");
 		father->rchild = child;
-	}
 	if (child)
-	{
-		// ft_printf(" LINK lfath");
 		child->father = father;
-	}
 }

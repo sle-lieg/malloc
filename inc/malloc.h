@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   malloc.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/28 23:52:12 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/06/28 23:52:13 by sle-lieg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_MALLOC_H
 # define FT_MALLOC_H
 
@@ -7,16 +19,15 @@
 #include <sys/resource.h>
 #include <pthread.h>
 
-#include "libft.h"
 #include "ft_printf.h"
 #include <assert.h>
 
 #define TINY_MAX ( 128 )
 #define SMALL_MAX ( 2048 )
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
-#define MEM_ALIGN_16_SHIFT ( 4 )
+#define ALIGN_16_SHIFT ( 4 )
 #define MEM_ALIGN_16 ( 16 )
-#define MEM_ALIGN_PAGE_SHIFT ( 12 )
+#define ALIGN_PAGE_SHIFT ( 12 )
 #define NB_PAGES ( 1 )
 
 #define MMAP_BAD_ALLOC ( 0x1 )
@@ -85,94 +96,89 @@ void			handle_large(size_t size);
 /**
  *			MEMORY_CTRL_TOOLS.C
  **/
-void			find_free_block(t_mem_ctrl* block, size_t size);
-t_mem_ctrl*	split_memory(size_t size);
-void			add_to_free(t_mem_ctrl** free_head, t_mem_ctrl* new_header);
-void			remove_from_free(t_mem_ctrl* tmp, t_mem_ctrl* block);
-t_mem_ctrl*	pop_lost_mem_ctrl();
+void		find_free_block(t_mem_ctrl *block, size_t size);
+void		split_memory(size_t size);
+void		add_to_free(t_mem_ctrl **free_head, t_mem_ctrl *new_header);
+void		remove_from_free(t_mem_ctrl *tmp, t_mem_ctrl *block);
+t_mem_ctrl	*pop_lost_mem_ctrl(void);
 
 /**
  *			HEAP_CTRL.C
  **/
-int			extend_header_pge();
-void*			create_new_page(size_t size);
-int			extend_heap(t_mem_ctrl* last_mctrl, size_t size);
-int			checkLimit(size_t size);
-size_t		align_memory16(size_t size);
-size_t		align_memory_page_size(size_t size);
+int		extend_header_pge(void);
+void	*create_new_page(size_t size);
+int		extend_heap(t_mem_ctrl *last_mctrl, size_t size);
+size_t	align_memory16(size_t size);
+size_t	align_memory_page(size_t size);
 
 /**
  *			INIT.C
  **/
-int			init_tiny();
-int			init_small();
+int			init_tiny(void);
+int			init_small(void);
 
 /**
  *			TREE_INSERTERS.C
  **/
-void			add_node(t_mem_ctrl* newNode);
-void			recursive_add(t_mem_ctrl* node, t_mem_ctrl* newNode);
+void			add_node(t_mem_ctrl *new_node);
+void			recursive_add(t_mem_ctrl *node, t_mem_ctrl *new_node);
 
 /**
  *			TREE_TOOLS.C
  **/
-void			add_links(t_mem_ctrl* father, t_mem_ctrl* child);
-int			replace_if_root(t_mem_ctrl* node, t_mem_ctrl* newRoot);
-int			get_height(t_mem_ctrl* node);
-void			link_nodes(t_mem_ctrl* father, t_mem_ctrl* child);
-void			swap_nodes(t_mem_ctrl* predecessor, t_mem_ctrl* node);
+void			add_links(t_mem_ctrl *father, t_mem_ctrl *child);
+void			swap_nodes(t_mem_ctrl *predecessor, t_mem_ctrl *node);
+void			link_nodes(t_mem_ctrl *father, t_mem_ctrl *child);
 
 /**
  *			TREE_CHECKER.C
  **/
-int			check_balance(t_mem_ctrl* node);
-int			max_height(t_mem_ctrl* nodeA, t_mem_ctrl* nodeB);
+int				check_balance(t_mem_ctrl *node);
+int				max_height(t_mem_ctrl *nod_a, t_mem_ctrl *nod_b);
 
 /**
  *			TREE_ROTATIONS.C
  **/
-void			rotate_left(t_mem_ctrl* node);
-void			rotate_right(t_mem_ctrl* node);
+void			rotate_left(t_mem_ctrl *node);
+void			rotate_right(t_mem_ctrl *node);
 
 /**
  *			TREE_REMOVER.C
  **/
-void			remove_node(t_mem_ctrl* node);
-void			remove_leaf(t_mem_ctrl* node);
-void			remove_parent_of_children(t_mem_ctrl* node);
-void			remove_orphan(t_mem_ctrl* node);
-void			recursive_balance(t_mem_ctrl* node);
+void			remove_node(t_mem_ctrl *node);
+void			remove_leaf(t_mem_ctrl *node);
+void			remove_parent_of_children(t_mem_ctrl *node);
+void			remove_orphan(t_mem_ctrl *node);
+void			recursive_balance(t_mem_ctrl *node);
 
 /**
  *			TREE_GETTERS.C
  **/
-t_mem_ctrl*	get_predecessor(t_mem_ctrl* toReplace, t_mem_ctrl* node);
-t_mem_ctrl*	get_successor(t_mem_ctrl* toReplace, t_mem_ctrl* node);
-t_mem_ctrl*	find_mem_ctrl(t_mem_ctrl* tmp, char* ptr);
+t_mem_ctrl		*get_predecessor(t_mem_ctrl *to_replace, t_mem_ctrl *node);
+t_mem_ctrl		*get_successor(t_mem_ctrl *to_replace, t_mem_ctrl *node);
+t_mem_ctrl		*find_mem_ctrl(t_mem_ctrl *node, char *addr_to_free);
 
 /**
  *			FREE.C
  **/
-void			free(void* ptr);
-void			free_mem_ctrl(t_mem_ctrl* ptr);
-void			push_to_lost(t_mem_ctrl* ptr);
-// void			free_tiny(t_mem_ctrl* to_free);
-// void			free_small(t_mem_ctrl* to_free);
+void	free(void *ptr);
+void	free_mem_ctrl(t_mem_ctrl *to_f);
+void	push_to_lost(t_mem_ctrl *ptr);
 
 /**
  *			REALLOC.C
  **/
-void*			realloc(void *ptr, size_t size);
+void			*realloc(void *ptr, size_t size);
 
 /**
  *			REALLOCF.C
  **/
-void*			reallocf(void *ptr, size_t size);
+void			*reallocf(void *ptr, size_t size);
 
 /**
  *			CALLOC.C
  **/
-void*	calloc(size_t count, size_t size);
+void	*calloc(size_t count, size_t size);
 
 // *****************************************************************************
 

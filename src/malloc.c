@@ -1,20 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   malloc.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/28 22:17:18 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/06/28 23:16:20 by sle-lieg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "malloc.h"
 
-void*	malloc(size_t size)
+void	*malloc(size_t size)
 {
-	if (!checkLimit(size))
-		return NULL;
 	pges_ctrl.tiny_zone = (((TINY_MAX * 100) >> 12) << 12) + getpagesize();
 	pges_ctrl.small_zone = (((SMALL_MAX * 100) >> 12) << 12) + getpagesize();
 	pges_ctrl.ret = NULL;
-	size = (size <= SMALL_MAX ? align_memory16(size) : align_memory_page_size(size));
+	size = (size <= SMALL_MAX ? align_memory16(size) : align_memory_page(size));
 	pthread_mutex_lock(&mutex_alloc);
-	if (!pges_ctrl.header_pge || pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
+	if (!pges_ctrl.header_pge ||
+		pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
+	{
 		if (!(extend_header_pge()))
 		{
 			pthread_mutex_unlock(&mutex_alloc);
-			return NULL;
+			return (NULL);
 		}
+	}
 	if (size <= TINY_MAX)
 		handle_tiny(size);
 	else if (size <= SMALL_MAX)
@@ -23,14 +36,14 @@ void*	malloc(size_t size)
 		handle_large(size);
 	pthread_mutex_unlock(&mutex_alloc);
 	if (pges_ctrl.errors)
-		return NULL;
-	return pges_ctrl.ret->addr;
+		return (NULL);
+	return (pges_ctrl.ret->addr);
 }
 
 void	handle_tiny(size_t size)
 {
 	if (!pges_ctrl.fst_tiny)
-		if (!init_tiny(size))
+		if (!init_tiny())
 			return;
 	find_free_block(pges_ctrl.free_tiny, size);
 	if (!pges_ctrl.ret)
@@ -51,7 +64,7 @@ void	handle_tiny(size_t size)
 void	handle_small(size_t size)
 {
 	if (!pges_ctrl.fst_small)
-		if (!init_small(size))
+		if (!init_small())
 			return;
 	find_free_block(pges_ctrl.free_small, size);
 	if (!pges_ctrl.ret)
