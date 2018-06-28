@@ -17,6 +17,7 @@ static void show_mem(t_mem_ctrl* tmp)
 
 void	show_alloc_mem()
 {
+	pthread_mutex_lock(&mutex_alloc);
 	if (pges_ctrl.fst_tiny)
 		ft_printf("TINY : {}%5p\n", pges_ctrl.fst_tiny->addr);
 	show_mem(pges_ctrl.fst_tiny);
@@ -26,6 +27,7 @@ void	show_alloc_mem()
 	if (pges_ctrl.fst_large)
 		ft_printf("LARGE : %5p\n", pges_ctrl.fst_large->addr);
 	show_mem(pges_ctrl.fst_large);
+	pthread_mutex_unlock(&mutex_alloc);
 }
 
 

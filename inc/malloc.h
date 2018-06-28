@@ -5,13 +5,14 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include <sys/resource.h>
+#include <pthread.h>
 
 #include "libft.h"
 #include "ft_printf.h"
 #include <assert.h>
 
 #define TINY_MAX ( 128 )
-#define SMALL_MAX ( 4096 )
+#define SMALL_MAX ( 2048 )
 // TODO : TRY WITH MEMORY ALIGN ON 8 AND 4
 #define MEM_ALIGN_16_SHIFT ( 4 )
 #define MEM_ALIGN_16 ( 16 )
@@ -23,7 +24,6 @@
 
 typedef struct s_memory_ctrl		t_mem_ctrl;
 typedef struct s_pages_control	t_pge_ctrl;
-
 
 struct	s_pages_control
 {
@@ -71,7 +71,8 @@ struct s_memory_ctrl
 	char				free;			// booleen, is free: TRUE, else FALSE
 };
 
-t_pge_ctrl	pges_ctrl;
+t_pge_ctrl					pges_ctrl;
+static pthread_mutex_t	mutex_alloc = PTHREAD_MUTEX_INITIALIZER;
 
 /**
  *			MALLOC.C

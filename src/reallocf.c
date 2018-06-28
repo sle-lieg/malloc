@@ -6,8 +6,8 @@ void *reallocf(void *ptr, size_t size)
 	// char			*to_return;
 
 	// to_return = NULL;
-	if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
-		ft_printf("REALLOC_F(%p, %lu)", ptr, size);
+	// if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
+	// 	ft_printf("REALLOC_F(%p, %lu)", ptr, size);
 	to_realloc = NULL;
 	if (!ptr)
 		return (malloc(size));

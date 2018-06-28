@@ -2,19 +2,14 @@
 
 void	free(void* ptr)
 {
-	if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
-		ft_printf("FREE(%p)", ptr);
-	// ft_printf("FREE (%p)\n", ptr);
 	t_mem_ctrl* to_free;
 
 	if (!ptr)
 		return;
-	to_free = find_mem_ctrl(pges_ctrl.root, ptr);	
-	// assert(to_free != NULL);
+	pthread_mutex_lock(&mutex_alloc);
+	to_free = find_mem_ctrl(pges_ctrl.root, ptr);
 	if (to_free)
 	{
-		if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
-			ft_printf(" FOUND ", ptr);
 		if (to_free->size <= SMALL_MAX)
 			free_mem_ctrl(to_free);
 		else
@@ -24,13 +19,7 @@ void	free(void* ptr)
 			push_to_lost(to_free);
 		}
 	}
-	// assert(pges_ctrl.fst_tiny->prev == NULL);
-	if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
-	{
-		show_alloc_mem();
-		printTree2(pges_ctrl.root);
-		print_empty();
-	}
+	pthread_mutex_unlock(&mutex_alloc);
 }
 
 void	free_mem_ctrl(t_mem_ctrl* to_free)
@@ -88,6 +77,4 @@ void	push_to_lost(t_mem_ctrl* ptr)
 	ptr->next = pges_ctrl.lost_mem_ctrl;
 	ptr->prev = NULL;
 	pges_ctrl.lost_mem_ctrl = ptr;
-	if (pges_ctrl.debug < 1 && pges_ctrl.debug < 1000)
-		print_lost();
 }

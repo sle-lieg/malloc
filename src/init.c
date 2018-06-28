@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 09:06:08 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/25 10:41:52 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/28 12:21:14 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,8 @@
 
 int	init_tiny()
 {
-	// ft_printf("INIT TINY\n");
 	pges_ctrl.fst_tiny = pges_ctrl.header_pge++;
-	// assert((char*)pges_ctrl.fst_tiny == (char*)(pges_ctrl.header_pge) - sizeof(t_mem_ctrl));
-	// assert(pges_ctrl.fst_tiny->prev == NULL);
-	// assert(pges_ctrl.fst_tiny->next == NULL);
-	// assert(pges_ctrl.fst_tiny->next_free == NULL);
-	// assert(pges_ctrl.fst_tiny->father == NULL);
-	// assert(pges_ctrl.fst_tiny->lchild == NULL);
-	// assert(pges_ctrl.fst_tiny->rchild == NULL);
-	
+
 	if (!(pges_ctrl.fst_tiny->addr = create_new_page(pges_ctrl.tiny_zone)))
 		return (0);
 	pges_ctrl.fst_tiny->free = TRUE;
@@ -32,8 +24,6 @@ int	init_tiny()
 	pges_ctrl.lst_tiny = pges_ctrl.fst_tiny;
 	pges_ctrl.free_tiny = pges_ctrl.fst_tiny;
 	add_node(pges_ctrl.fst_tiny);
-	// ft_printf("First_tiny: %p\nLast_tiny: %p\nFree_tiny: %p\n", pges_ctrl.fst_tiny, pges_ctrl.lst_tiny, pges_ctrl.free_tiny);
-	// ft_printf("addr: %p\nnext: %p\nprev: %p\n", pges_ctrl.fst_tiny->addr, pges_ctrl.fst_tiny->next, pges_ctrl.fst_tiny->prev);
 	return 1;
 }
 

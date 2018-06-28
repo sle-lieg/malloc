@@ -5,7 +5,7 @@ int main()
 {
 	int i;
 	char *addr;
-	printf("SIZE: %lu\n", sizeof(t_mem_ctrl));
+	ft_printf("SIZE: %lu\n", sizeof(t_mem_ctrl));
 
 	i = 0;
 	while (i < 1024)
