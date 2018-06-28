@@ -1,92 +1,80 @@
 #include "malloc.h"
 
-//TODO: shit free, just implemented to check if malloc works
-//			implement it with multithreading
 void	free(void* ptr)
 {
-	// if (!pgePointers.count)
-	// 	ft_printf("Free(%p)\n", ptr);
+	t_mem_ctrl* to_free;
+
 	if (!ptr)
 		return;
-	// if (pgePointers.firstTinyCtrl && (char*)ptr >= pgePointers.firstTinyCtrl->pageAddr
-	// 										&& (char*)ptr <= pgePointers.lastTinyCtrl->pageAddr)
-	checkTiny(ptr);
-	// if (ptr >= pgePointers.firstSmallCtrl && ptr <= pgePointers.lastSmallCtrl)
-	// 	checkSmall(ptr);
-	// if (ptr >= pgePointers.firstLargeCtrl && ptr <= pgePointers.lastLargeCtrl)
-	// 	checkLarge(ptr);
-	// pgePointers.count++;
-	// if (!pgePointers.count)
-	// {
-	// 	printAll();
-	// 	printTree2(pgePointers.rootTiny);
-	// }
-	// checkGoodHeight(pgePointers.rootTiny);
-}
-
-void	checkTiny(void* ptr)
-{
-	t_mem_ctrl* tmp;
-
-	tmp = pgePointers.firstTinyCtrl;
-	while (tmp)
+	pthread_mutex_lock(&mutex_alloc);
+	to_free = find_mem_ctrl(pges_ctrl.root, ptr);
+	if (to_free)
 	{
-		if (tmp->pageAddr == ptr && !tmp->free)
+		if (to_free->size <= SMALL_MAX)
+			free_mem_ctrl(to_free);
+		else
 		{
-			freeMemCtrl(tmp);
-			return;
+			munmap(ptr, to_free->size);
+			remove_node(to_free);
+			push_to_lost(to_free);
 		}
-		tmp = tmp->next;
 	}
+	pthread_mutex_unlock(&mutex_alloc);
 }
 
-void	freeMemCtrl(t_mem_ctrl* ptr)
+void	free_mem_ctrl(t_mem_ctrl* to_free)
 {
-	t_mem_ctrl* tmp;
+	int size;
 
-	ptr->free = TRUE;
-	ptr->requiredSize = 0;
-	while (ptr->next && ptr->next->free == 1 && ptr->pageSerie == ptr->next->pageSerie)
+	size = to_free->size;
+	to_free->free = TRUE;
+	if (!to_free->prev || !to_free->prev->free || (to_free->prev->pge_id != to_free->pge_id))
 	{
-		// if (!pgePointers.count)
-		// 	ft_printf("\nLink freed next\n", ptr);
-		tmp = ptr->next;
-		removeNode(tmp);
-		linkLostPrevNext(ptr);
-		pushToLost(tmp);
+		if (to_free->size <= TINY_MAX)
+			add_to_free(&pges_ctrl.free_tiny, to_free);
+		else
+			add_to_free(&pges_ctrl.free_small, to_free);
 	}
-	while (ptr->prev && ptr->prev->free == 1 && ptr->pageSerie == ptr->prev->pageSerie)
+	while (to_free->prev && to_free->prev->free &&
+			to_free->prev->pge_id == to_free->pge_id)
+		to_free = to_free->prev;
+	while (to_free->next && to_free->next->free &&
+		to_free->next->pge_id == to_free->pge_id)
 	{
-		// if (!pgePointers.count)
-		// 	ft_printf("Link freed prev\n", ptr);
-		tmp = ptr;
-		ptr = ptr->prev;
-		removeNode(ptr);
-		linkLostPrevNext(ptr);
-		pushToLost(tmp);
+		to_free->size += to_free->next->size;
+		remove_node(to_free->next);
+		if (size <= TINY_MAX)
+			remove_from_free(pges_ctrl.free_tiny, to_free->next);
+		else
+			remove_from_free(pges_ctrl.free_small, to_free->next);
+		push_to_lost(to_free->next);
 	}
-	addNode(&pgePointers.rootTiny, ptr);
 }
 
-void linkLostPrevNext(t_mem_ctrl* ptr)
+void	push_to_lost(t_mem_ctrl* ptr)
 {
-	ptr->allocatedSize += ptr->next->allocatedSize;
-	if (ptr->next->next)
-		ptr->next->next->prev = ptr;
-	ptr->next = ptr->next->next;
-}
-
-void	pushToLost(t_mem_ctrl* ptr)
-{
-	ptr->pageAddr = NULL;
-	ptr->allocatedSize = 0;
-	ptr->requiredSize = 0;
-	ptr->pageSerie = 0;
+	ptr->addr = NULL;
+	ptr->size = 0;
+	ptr->pge_id = 0;
 	ptr->height = 0;
-	ptr->father = NULL;	
+	ptr->father = NULL;
 	ptr->lchild = NULL;
 	ptr->rchild = NULL;
+	if (ptr->prev)
+	{
+		if (ptr == pges_ctrl.lst_tiny)
+			pges_ctrl.lst_tiny = pges_ctrl.lst_tiny->prev;
+		else if (ptr == pges_ctrl.lst_small)
+			pges_ctrl.lst_small = pges_ctrl.lst_small->prev;
+		else if (ptr == pges_ctrl.lst_large)
+			pges_ctrl.lst_large = pges_ctrl.lst_large->prev;
+		ptr->prev->next = ptr->next;
+	}
+	if (ptr->next)
+		ptr->next->prev = ptr->prev;
+	if (ptr == pges_ctrl.fst_large)
+		pges_ctrl.fst_large = ptr->next;
+	ptr->next = pges_ctrl.lost_mem_ctrl;
 	ptr->prev = NULL;
-	ptr->next = pgePointers.lost_mem_ctrl;
-	pgePointers.lost_mem_ctrl = ptr;
+	pges_ctrl.lost_mem_ctrl = ptr;
 }

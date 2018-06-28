@@ -2,102 +2,90 @@
 
 void*	malloc(size_t size)
 {
-	// pgePointers.count++;
- 	// if (!pgePointers.count)
-		// ft_printf("MALLOC(%lu)\n", size);
-	// ft_printf("Malloc(%lu): MEM_CTRL_SIZE=%lu\n", size, pgePointers.memCtrlSizeLeft);
-	// if (!checkLimit(size))
-	// 	return NULL;
-	pgePointers.toReturn = NULL;
-	pgePointers.pageSize = getpagesize();
-	pgePointers.size = size;
-	size = size ? size : 16;
-	size = (size % MEM_ALIGN) ?
-		((size >> MEM_ALIGN_SHIFT) << MEM_ALIGN_SHIFT) + MEM_ALIGN : size;
-	if (size <= TINY_MAX)
-		handleTiny(size);
-	// else if (size < SMALL_MAX)
-	// 	handleSmall(size);
-	// else
-	// 	handleLarge(size);
-	if (pgePointers.errors)
+	if (!checkLimit(size))
 		return NULL;
-	// pgePointers.count++;
-
-	// if (!pgePointers.count)
-	// {
-	// 	printAll();
-	// 	printTree2(pgePointers.rootTiny);
-	// }
-	return pgePointers.toReturn->pageAddr;
+	pges_ctrl.tiny_zone = (((TINY_MAX * 100) >> 12) << 12) + getpagesize();
+	pges_ctrl.small_zone = (((SMALL_MAX * 100) >> 12) << 12) + getpagesize();
+	pges_ctrl.ret = NULL;
+	size = (size <= SMALL_MAX ? align_memory16(size) : align_memory_page_size(size));
+	pthread_mutex_lock(&mutex_alloc);
+	if (!pges_ctrl.header_pge || pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
+		if (!(extend_header_pge()))
+		{
+			pthread_mutex_unlock(&mutex_alloc);
+			return NULL;
+		}
+	if (size <= TINY_MAX)
+		handle_tiny(size);
+	else if (size <= SMALL_MAX)
+		handle_small(size);
+	else
+		handle_large(size);
+	pthread_mutex_unlock(&mutex_alloc);
+	if (pges_ctrl.errors)
+		return NULL;
+	return pges_ctrl.ret->addr;
 }
 
-// TODO: remove or clean it
-t_mem_ctrl*	getLastTinyLink()
+void	handle_tiny(size_t size)
 {
-	t_mem_ctrl* tmp;
-
-	tmp = pgePointers.firstTinyCtrl;
-	while (tmp->next)
-		tmp = tmp->next;
-	return tmp;
-}
-
-/**
- * @brief
- * @note		If tinyRoot == NULL:
- * 				init tinyRoot
- * 			findFreeSpace (saved in pgePointer.toReturn)
- * 			!if pgeP.toReturn: ( means not enough space free on the heap)
- * 				alloc new Page
- * 			if size > pgeP.toReturn->allocSize + 20:
- * 				tmp = splitMemory()
- *
- * @param  size:
- * @retval None
- */
-void	handleTiny(size_t size)
-{
-	if (!pgePointers.firstTinyCtrl)
-		if (!initRootTiny(size))
+	if (!pges_ctrl.fst_tiny)
+		if (!init_tiny(size))
 			return;
-	findFreeBlock(pgePointers.rootTiny, size);
-	
-	if (!pgePointers.toReturn) // not enough place on the heap, need to allocate a new page.
+	find_free_block(pges_ctrl.free_tiny, size);
+	if (!pges_ctrl.ret)
 	{
-		if (!(pgePointers.toReturn = createNewMemCtrl(getLastTinyLink())))
+		if (!(extend_heap(pges_ctrl.lst_tiny, pges_ctrl.tiny_zone)))
 			return;
-		pgePointers.toReturn->free = FALSE;
-		getNewPage(pgePointers.toReturn, size);
-		if (pgePointers.errors)
+		pges_ctrl.lst_tiny = pges_ctrl.ret;
+	}
+	if (pges_ctrl.ret->size - size >= 16)
+	{
+		split_memory(size);
+		add_to_free(&pges_ctrl.free_tiny, pges_ctrl.ret->next);
+		if (pges_ctrl.ret == pges_ctrl.lst_tiny)
+			pges_ctrl.lst_tiny = pges_ctrl.ret->next;
+	}
+}
+
+void	handle_small(size_t size)
+{
+	if (!pges_ctrl.fst_small)
+		if (!init_small(size))
 			return;
+	find_free_block(pges_ctrl.free_small, size);
+	if (!pges_ctrl.ret)
+	{
+		if (!(extend_heap(pges_ctrl.lst_small, pges_ctrl.small_zone)))
+			return;
+		pges_ctrl.lst_small = pges_ctrl.ret;
+	}
+	if (pges_ctrl.ret->size - size >= TINY_MAX)
+	{
+		split_memory(size);
+		add_to_free(&pges_ctrl.free_small, pges_ctrl.ret->next);
+		if (pges_ctrl.ret == pges_ctrl.lst_small)
+			pges_ctrl.lst_small = pges_ctrl.ret->next;
+	}
+}
+
+void	handle_large(size_t size)
+{
+	if (!(pges_ctrl.ret = pop_lost_mem_ctrl()))
+		pges_ctrl.ret = pges_ctrl.header_pge++;
+	if (!(pges_ctrl.ret->addr = create_new_page(size)))
+		return;
+	pges_ctrl.ret->size = size;
+	add_node(pges_ctrl.ret);
+	if (!pges_ctrl.fst_large)
+	{
+		pges_ctrl.fst_large = pges_ctrl.ret;
+		pges_ctrl.lst_large = pges_ctrl.ret;
 	}
 	else
-		removeNode(pgePointers.toReturn);
-	if (size + 32 <= pgePointers.toReturn->allocatedSize)
-		addNode(&pgePointers.rootTiny, splitMemory(size));
+	{
+		pges_ctrl.lst_large->next = pges_ctrl.ret;
+		pges_ctrl.ret->prev = pges_ctrl.lst_large;
+		pges_ctrl.lst_large = pges_ctrl.lst_large->next;
+	}
 }
-
-int	initRootTiny(size_t size)
-{
-	pgePointers.memCtrlSizeLeft = pgePointers.pageSize * NB_PAGES;
-	if (!(pgePointers.firstTinyCtrl = getNewPage(NULL, pgePointers.memCtrlSizeLeft)) ||
-												!(getNewPage(pgePointers.firstTinyCtrl, size)))
-		return 0;
-	pgePointers.firstTinyCtrl->next = NULL;
-	pgePointers.memCtrlSizeLeft -= MEM_CTRL_SIZE;
-	pgePointers.lastTinyCtrl = pgePointers.firstTinyCtrl;
-	pgePointers.rootTiny = pgePointers.firstTinyCtrl;
-
-	return 1;
-}
-
-// int	checkLimit(size_t size)
-// {
-// 	struct rlimit limit;
-
-// 	getrlimit(RLIMIT_DATA, &limit);
-// 	if (size > limit.rlim_max)
-// 		return 0;
-// 	return 1;
-// }

@@ -1,52 +1,28 @@
 #include "malloc.h"
 
-#include <string.h>
-
 void *realloc(void *ptr, size_t size)
 {
- 	// if (!pgePointers.count)
-	// 	ft_printf("REALLOC(%p, %lu)", ptr, size);
+	t_mem_ctrl* to_realloc;
+
 	if (!ptr)
 		return (malloc(size));
-	else
+	if (!size)
 	{
-		if (!(pgePointers.toReturn = getMemCtrl(ptr)))
-		// if (!checkLimit(size) || !(pgePointers.toReturn = getMemCtrl(ptr)))
-			return NULL;
+		free(ptr);
+		return (malloc(0));
 	}
-	return checkSize(size);
-}
-
-// TODO: multi threads
-t_mem_ctrl* getMemCtrl(void* ptr)
-{
-	t_mem_ctrl* tmp;
-
-	tmp = pgePointers.firstTinyCtrl;
-	while (tmp)
+	pthread_mutex_lock(&mutex_alloc);
+	to_realloc = find_mem_ctrl(pges_ctrl.root, ptr);
+	pthread_mutex_unlock(&mutex_alloc);
+	if (to_realloc)
 	{
-		if (tmp->pageAddr == ptr)
-			return tmp;
-		tmp = tmp->next;
+		if (to_realloc->size >= size)
+			return (to_realloc->addr);
+		if (!(malloc(size)))
+			return (NULL);
+		ft_memmove(pges_ctrl.ret->addr, ptr, to_realloc->size);
+		free(ptr);
+		return (pges_ctrl.ret->addr);
 	}
-	return NULL;
-}
-
-void*	checkSize(size_t size)
-{
-	void*			tmp;
-	t_mem_ctrl* toFree;
-
-	toFree = pgePointers.toReturn;
-	if (size <= toFree->allocatedSize)
-	{
-		toFree->requiredSize = size;
-		return toFree->pageAddr;
-	}
-	if (!(tmp = malloc(size)))
-		return NULL;
-	ft_memmove(tmp, toFree->pageAddr,
-		toFree->requiredSize);
-	free(toFree->pageAddr);
-	return tmp;
+	return (NULL);
 }
