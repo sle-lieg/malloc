@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 23:27:53 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/28 23:28:38 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/29 10:45:19 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	add_node(t_mem_ctrl *new_node)
 {
-	if (!pges_ctrl.root)
+	if (!g_pges_ctrl.root)
 	{
-		pges_ctrl.root = new_node;
+		g_pges_ctrl.root = new_node;
 		new_node->height = 1;
 	}
 	else
-		recursive_add(pges_ctrl.root, new_node);
+		recursive_add(g_pges_ctrl.root, new_node);
 }
 
 void	recursive_add(t_mem_ctrl *node, t_mem_ctrl *new_node)

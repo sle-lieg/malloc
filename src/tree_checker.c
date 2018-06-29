@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:55:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/28 23:57:09 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/29 10:45:19 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static	int	replace_if_root(t_mem_ctrl *node, t_mem_ctrl *new_root)
 {
-	if (pges_ctrl.root == node)
+	if (g_pges_ctrl.root == node)
 	{
-		pges_ctrl.root = new_root;
+		g_pges_ctrl.root = new_root;
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 23:29:41 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/28 23:34:48 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/29 10:45:19 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	remove_node(t_mem_ctrl *node)
 
 void	remove_leaf(t_mem_ctrl *node)
 {
-	if (pges_ctrl.root == node)
-		pges_ctrl.root = NULL;
+	if (g_pges_ctrl.root == node)
+		g_pges_ctrl.root = NULL;
 	else if (node == node->father->lchild)
 	{
 		node->father->lchild = NULL;
@@ -60,8 +60,8 @@ void	remove_parent_of_children(t_mem_ctrl *node)
 			swap_nodes(tmp, node);
 		tmp->height = max_height(tmp->lchild, tmp->rchild) + 1;
 	}
-	if (node == pges_ctrl.root)
-		pges_ctrl.root = tmp;
+	if (node == g_pges_ctrl.root)
+		g_pges_ctrl.root = tmp;
 }
 
 void	remove_orphan(t_mem_ctrl *node)
@@ -70,8 +70,8 @@ void	remove_orphan(t_mem_ctrl *node)
 		link_nodes(node->father, node->lchild);
 	else
 		link_nodes(node->father, node->rchild);
-	if (node == pges_ctrl.root)
-		pges_ctrl.root = (node->lchild ? node->lchild : node->rchild);
+	if (node == g_pges_ctrl.root)
+		g_pges_ctrl.root = (node->lchild ? node->lchild : node->rchild);
 }
 
 void	recursive_balance(t_mem_ctrl *node)

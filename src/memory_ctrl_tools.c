@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 09:24:48 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/28 23:11:28 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/29 14:56:16 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void		find_free_block(t_mem_ctrl *block, size_t size)
 	{
 		if (block->size >= size)
 		{
-			pges_ctrl.ret = block;
+			g_pges_ctrl.ret = block;
 			if (size <= TINY_MAX)
-				remove_from_free(pges_ctrl.free_tiny, block);
+				remove_from_free(g_pges_ctrl.free_tiny, block);
 			else
-				remove_from_free(pges_ctrl.free_small, block);
+				remove_from_free(g_pges_ctrl.free_small, block);
 			break ;
 		}
 		block = block->next_free;
@@ -35,20 +35,20 @@ void		split_memory(size_t size)
 
 	if (!(new_header = pop_lost_mem_ctrl()))
 	{
-		if (pges_ctrl.header_pge + 1 > pges_ctrl.header_pge_limit)
+		if (g_pges_ctrl.header_pge + 1 > g_pges_ctrl.header_pge_limit)
 			if (!(extend_header_pge()))
 				return ;
-		new_header = pges_ctrl.header_pge++;
+		new_header = g_pges_ctrl.header_pge++;
 	}
-	new_header->addr = pges_ctrl.ret->addr + size;
-	new_header->size = pges_ctrl.ret->size - size;
-	new_header->prev = pges_ctrl.ret;
-	new_header->next = pges_ctrl.ret->next;
-	new_header->pge_id = pges_ctrl.ret->pge_id;
-	pges_ctrl.ret->size = size;
-	if (pges_ctrl.ret->next)
-		pges_ctrl.ret->next->prev = new_header;
-	pges_ctrl.ret->next = new_header;
+	new_header->addr = g_pges_ctrl.ret->addr + size;
+	new_header->size = g_pges_ctrl.ret->size - size;
+	new_header->prev = g_pges_ctrl.ret;
+	new_header->next = g_pges_ctrl.ret->next;
+	new_header->pge_id = g_pges_ctrl.ret->pge_id;
+	g_pges_ctrl.ret->size = size;
+	if (g_pges_ctrl.ret->next)
+		g_pges_ctrl.ret->next->prev = new_header;
+	g_pges_ctrl.ret->next = new_header;
 	add_node(new_header);
 }
 
@@ -78,10 +78,10 @@ void		add_to_free(t_mem_ctrl **free_head, t_mem_ctrl *new_header)
 
 void		remove_from_free(t_mem_ctrl *tmp, t_mem_ctrl *block)
 {
-	if (pges_ctrl.free_tiny == block)
-		pges_ctrl.free_tiny = block->next_free;
-	else if (pges_ctrl.free_small == block)
-		pges_ctrl.free_small = block->next_free;
+	if (g_pges_ctrl.free_tiny == block)
+		g_pges_ctrl.free_tiny = block->next_free;
+	else if (g_pges_ctrl.free_small == block)
+		g_pges_ctrl.free_small = block->next_free;
 	else
 	{
 		while (tmp->next_free)
@@ -101,10 +101,10 @@ t_mem_ctrl	*pop_lost_mem_ctrl(void)
 {
 	t_mem_ctrl *new_mem_ctrl;
 
-	if (!pges_ctrl.lost_mem_ctrl)
+	if (!g_pges_ctrl.lost_mem_ctrl)
 		return (NULL);
-	new_mem_ctrl = pges_ctrl.lost_mem_ctrl;
-	pges_ctrl.lost_mem_ctrl = pges_ctrl.lost_mem_ctrl->next;
+	new_mem_ctrl = g_pges_ctrl.lost_mem_ctrl;
+	g_pges_ctrl.lost_mem_ctrl = g_pges_ctrl.lost_mem_ctrl->next;
 	new_mem_ctrl->next = NULL;
 	return (new_mem_ctrl);
 }

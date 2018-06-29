@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 22:44:05 by sle-lieg          #+#    #+#             */
-/*   Updated: 2018/06/28 22:53:56 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2018/06/29 10:45:43 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	free(void *ptr)
 
 	if (!ptr)
 		return ;
-	pthread_mutex_lock(&mutex_alloc);
-	to_free = find_mem_ctrl(pges_ctrl.root, ptr);
+	pthread_mutex_lock(&g_mutex_alloc);
+	to_free = find_mem_ctrl(g_pges_ctrl.root, ptr);
 	if (to_free)
 	{
 		if (to_free->size <= SMALL_MAX)
@@ -31,7 +31,7 @@ void	free(void *ptr)
 			push_to_lost(to_free);
 		}
 	}
-	pthread_mutex_unlock(&mutex_alloc);
+	pthread_mutex_unlock(&g_mutex_alloc);
 }
 
 void	free_mem_ctrl(t_mem_ctrl *to_f)
@@ -44,9 +44,9 @@ void	free_mem_ctrl(t_mem_ctrl *to_f)
 		(to_f->prev->pge_id != to_f->pge_id))
 	{
 		if (to_f->size <= TINY_MAX)
-			add_to_free(&pges_ctrl.free_tiny, to_f);
+			add_to_free(&g_pges_ctrl.free_tiny, to_f);
 		else
-			add_to_free(&pges_ctrl.free_small, to_f);
+			add_to_free(&g_pges_ctrl.free_small, to_f);
 	}
 	while (to_f->prev && to_f->prev->free && to_f->prev->pge_id == to_f->pge_id)
 		to_f = to_f->prev;
@@ -55,9 +55,9 @@ void	free_mem_ctrl(t_mem_ctrl *to_f)
 		to_f->size += to_f->next->size;
 		remove_node(to_f->next);
 		if (size <= TINY_MAX)
-			remove_from_free(pges_ctrl.free_tiny, to_f->next);
+			remove_from_free(g_pges_ctrl.free_tiny, to_f->next);
 		else
-			remove_from_free(pges_ctrl.free_small, to_f->next);
+			remove_from_free(g_pges_ctrl.free_small, to_f->next);
 		push_to_lost(to_f->next);
 	}
 }
@@ -74,19 +74,19 @@ void	push_to_lost(t_mem_ctrl *ptr)
 	ptr->next_free = NULL;
 	if (ptr->prev)
 	{
-		if (ptr == pges_ctrl.lst_tiny)
-			pges_ctrl.lst_tiny = pges_ctrl.lst_tiny->prev;
-		else if (ptr == pges_ctrl.lst_small)
-			pges_ctrl.lst_small = pges_ctrl.lst_small->prev;
-		else if (ptr == pges_ctrl.lst_large)
-			pges_ctrl.lst_large = pges_ctrl.lst_large->prev;
+		if (ptr == g_pges_ctrl.lst_tiny)
+			g_pges_ctrl.lst_tiny = g_pges_ctrl.lst_tiny->prev;
+		else if (ptr == g_pges_ctrl.lst_small)
+			g_pges_ctrl.lst_small = g_pges_ctrl.lst_small->prev;
+		else if (ptr == g_pges_ctrl.lst_large)
+			g_pges_ctrl.lst_large = g_pges_ctrl.lst_large->prev;
 		ptr->prev->next = ptr->next;
 	}
 	if (ptr->next)
 		ptr->next->prev = ptr->prev;
-	if (ptr == pges_ctrl.fst_large)
-		pges_ctrl.fst_large = ptr->next;
-	ptr->next = pges_ctrl.lost_mem_ctrl;
+	if (ptr == g_pges_ctrl.fst_large)
+		g_pges_ctrl.fst_large = ptr->next;
+	ptr->next = g_pges_ctrl.lost_mem_ctrl;
 	ptr->prev = NULL;
-	pges_ctrl.lost_mem_ctrl = ptr;
+	g_pges_ctrl.lost_mem_ctrl = ptr;
 }
